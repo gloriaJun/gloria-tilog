@@ -2,7 +2,7 @@ import React from 'react';
 
 import Header from 'components/header';
 
-import GlobalStyle from 'styles/GlobalStyle';
+import GlobalStyle from 'styles/globalStyle';
 
 const IndexPage: React.FC = () => {
   return (
