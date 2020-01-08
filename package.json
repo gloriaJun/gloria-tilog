@@ -9,6 +9,7 @@
     "babel-plugin-styled-components": "^1.10.6",
     "gatsby": "^2.18.17",
     "gatsby-image": "^2.2.37",
+    "gatsby-plugin-alias-imports": "^1.0.5",
     "gatsby-plugin-manifest": "^2.2.34",
     "gatsby-plugin-offline": "^3.0.30",
     "gatsby-plugin-react-helmet": "^3.1.18",
@@ -17,6 +18,7 @@
     "gatsby-plugin-typescript": "^2.1.23",
     "gatsby-source-filesystem": "^2.1.43",
     "gatsby-transformer-sharp": "^2.3.9",
+    "polished": "^3.4.2",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
@@ -24,14 +26,14 @@
     "styled-components": "^4.4.1"
   },
   "devDependencies": {
-    "husky": "^4.0.0",
-    "lint-staged": "^9.5.0",
     "@typescript-eslint/eslint-plugin": "^2.15.0",
     "@typescript-eslint/parser": "^2.14.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.9.0",
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.17.0",
+    "husky": "^4.0.0",
+    "lint-staged": "^9.5.0",
     "prettier": "^1.19.1",
     "typescript": "^3.7.4"
   },
@@ -48,7 +50,7 @@
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
     "lint": "eslint --ignore-path .gitignore . --ext ts --ext tsx --ext js --ext jsx",
-    "lint:fix": "yarn lint --fix"
+    "lint:fix": "npm run lint --fix"
   },
   "repository": {
     "type": "git",
