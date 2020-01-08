@@ -1,3 +1,7 @@
+const path = require('path');
+
+const resolve = dir => path.resolve(__dirname, dir);
+
 module.exports = {
   siteMetadata: {
     title: `L.E.T`,
@@ -5,7 +9,16 @@ module.exports = {
     author: `@gloriaJun`,
   },
   plugins: [
-    'gatsby-alias-imports',
+    {
+      resolve: `gatsby-plugin-alias-imports`,
+      options: {
+        alias: {
+          components: resolve('src/components'),
+          styles: resolve('src/styles'),
+        },
+        extensions: ['js', 'tsx'],
+      },
+    },
     `gatsby-plugin-react-helmet`,
     // {
     //   resolve: `gatsby-source-filesystem`,
