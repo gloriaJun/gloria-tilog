@@ -4,6 +4,30 @@
   "description": "My develop log and story",
   "version": "0.1.0",
   "author": "gloriaJun <pureainu@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gloriaJun/gloria-tilog"
+  },
+  "bugs": {
+    "url": "https://github.com/gloriaJun/gloria-tilog/issues"
+  },
+  "keywords": [
+    "gatsby",
+    "styled-components",
+    "typescript"
+  ],
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "lint": "eslint --ignore-path .gitignore . --ext ts --ext tsx --ext js --ext jsx",
+    "lint:fix": "npm run lint --fix"
+  },
   "dependencies": {
     "@types/styled-components": "^4.4.2",
     "babel-plugin-styled-components": "^1.10.6",
@@ -36,27 +60,5 @@
     "lint-staged": "^9.5.0",
     "prettier": "^1.19.1",
     "typescript": "^3.7.4"
-  },
-  "keywords": [
-    "gatsby"
-  ],
-  "license": "MIT",
-  "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "start": "npm run develop",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
-    "lint": "eslint --ignore-path .gitignore . --ext ts --ext tsx --ext js --ext jsx",
-    "lint:fix": "npm run lint --fix"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gloriaJun/gloria-tilog"
-  },
-  "bugs": {
-    "url": "https://github.com/gloriaJun/gloria-tilog/issues"
   }
 }
