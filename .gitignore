@@ -71,3 +71,8 @@ yarn-error.log
 
 # Ide files
 .idea/
+
+# Output of 'storybook'
+.out
+storybook-static
+
