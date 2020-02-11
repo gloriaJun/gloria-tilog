@@ -4,6 +4,30 @@
   "description": "My develop log and story",
   "version": "0.1.0",
   "author": "gloriaJun <pureainu@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gloriaJun/gloria-tilog"
+  },
+  "bugs": {
+    "url": "https://github.com/gloriaJun/gloria-tilog/issues"
+  },
+  "keywords": [
+    "gatsby",
+    "styled-components",
+    "typescript"
+  ],
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "lint": "eslint --ignore-path .gitignore . --ext ts --ext tsx --ext js --ext jsx",
+    "lint:fix": "npm run lint --fix"
+  },
   "dependencies": {
     "@types/styled-components": "^4.4.2",
     "babel-plugin-styled-components": "^1.10.6",
@@ -18,12 +42,12 @@
     "gatsby-plugin-typescript": "^2.1.23",
     "gatsby-source-filesystem": "^2.1.43",
     "gatsby-transformer-sharp": "^2.3.9",
-    "polished": "^3.4.2",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
-    "styled-components": "^4.4.1"
+    "styled-components": "^4.4.1",
+    "styled-normalize": "^8.0.7"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^2.15.0",
@@ -36,27 +60,5 @@
     "lint-staged": "^10.0.4",
     "prettier": "^1.19.1",
     "typescript": "^3.7.4"
-  },
-  "keywords": [
-    "gatsby"
-  ],
-  "license": "MIT",
-  "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "start": "npm run develop",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
-    "lint": "eslint --ignore-path .gitignore . --ext ts --ext tsx --ext js --ext jsx",
-    "lint:fix": "npm run lint --fix"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gloriaJun/gloria-tilog"
-  },
-  "bugs": {
-    "url": "https://github.com/gloriaJun/gloria-tilog/issues"
   }
 }
