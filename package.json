@@ -30,6 +30,7 @@
     "lint:fix": "cross-env $npm_execpath run lint --fix",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
+    "deploy-storybook": "storybook-to-ghpages",
     "prepreview-storybook": "cross-env $npm_execpath run build-storybook",
     "preview-storybook": "serve storybook-static"
   },
@@ -60,6 +61,7 @@
     "@storybook/addon-links": "^5.3.12",
     "@storybook/addons": "^5.3.12",
     "@storybook/react": "^5.3.12",
+    "@storybook/storybook-deployer": "^2.8.1",
     "@typescript-eslint/eslint-plugin": "^2.15.0",
     "@typescript-eslint/parser": "^2.14.0",
     "babel-loader": "^8.0.6",
