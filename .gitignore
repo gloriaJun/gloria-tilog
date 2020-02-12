@@ -62,8 +62,17 @@ public
 .DS_Store
 
 # Yarn
+yarn.lock
 yarn-error.log
 .pnp/
 .pnp.js
 # Yarn Integrity file
 .yarn-integrity
+
+# Ide files
+.idea/
+
+# Output of 'storybook'
+.out
+storybook-static
+
