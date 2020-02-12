@@ -1,0 +1,35 @@
+language: node_js
+
+node_js:
+  - 'stable'
+
+cache:
+  directories:
+    - node_modules
+
+branches:
+  only:
+    - master
+
+before_install:
+  - npm install -g yarn --cache-min 999999999
+
+install:
+  - yarn install
+  - yarn build-storybook
+
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN # Set in travis-ci.org dashboard, marked secure https://docs.travis-ci.com/user/deployment/pages/#Setting-the-GitHub-token
+  target-branch: gh-pages
+  local-dir: storybook-static
+  # on:
+  #   branch: master
+# notifications:
+#   email: false
+#   slack:
+#     rooms:
+#       - glriaroom:$SLACK_TOKEN#devops
+#     on_success: change # default : always
+#     on_failure: always # default : always
