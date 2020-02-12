@@ -10,6 +10,7 @@ cache:
 branches:
   only:
     - master
+    - /^greenkeeper/.*$/
 
 before_install:
   - npm install -g yarn --cache-min 999999999
