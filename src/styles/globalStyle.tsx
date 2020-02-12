@@ -1,13 +1,15 @@
-import { createGlobalStyle } from 'styled-components';
-import { normalize } from 'styled-normalize';
+/** @jsx jsx */
+import { Global, css, jsx } from '@emotion/core';
+import normalize from 'emotion-normalize';
 
-//@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
-//@import url(//fonts.googleapis.com/css?family=Monoton|Nanum+Gothic&display=swap);
-const GlobalStyle = createGlobalStyle`
+const styles = css`
   ${normalize}
 
   body {
+    font-size: 16px;
   }
 `;
+
+const GlobalStyle = () => <Global styles={styles} />;
 
 export default GlobalStyle;
