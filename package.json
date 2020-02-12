@@ -25,7 +25,7 @@
     "start": "cross-env $npm_execpath run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 0",
     "lint": "eslint --ignore-path .gitignore . --ext ts --ext tsx --ext js --ext jsx",
     "lint:fix": "cross-env $npm_execpath run lint --fix",
     "storybook": "start-storybook -p 6006",
