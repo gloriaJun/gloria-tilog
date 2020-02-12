@@ -18,6 +18,6 @@
 
 - Gatsby
 - React
-- Styled-component
 - TypeScript
+- Emotion
 - Storybook
