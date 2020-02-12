@@ -14,7 +14,7 @@
   },
   "keywords": [
     "gatsby",
-    "styled-components",
+    "emotion",
     "typescript",
     "storybook"
   ],
@@ -35,25 +35,24 @@
     "preview-storybook": "serve storybook-static"
   },
   "dependencies": {
-    "@types/styled-components": "^4.4.2",
-    "babel-plugin-styled-components": "^1.10.6",
+    "@emotion/core": "^10.0.27",
+    "@emotion/styled": "^10.0.27",
+    "emotion-normalize": "^10.1.0",
     "gatsby": "^2.18.17",
     "gatsby-image": "^2.2.37",
     "gatsby-plugin-alias-imports": "^1.0.5",
+    "gatsby-plugin-emotion": "^4.1.22",
     "gatsby-plugin-manifest": "^2.2.34",
     "gatsby-plugin-offline": "^3.0.30",
     "gatsby-plugin-react-helmet": "^3.1.18",
     "gatsby-plugin-sharp": "^2.3.10",
-    "gatsby-plugin-styled-components": "^3.1.16",
     "gatsby-plugin-typescript": "^2.1.23",
     "gatsby-source-filesystem": "^2.1.43",
     "gatsby-transformer-sharp": "^2.3.9",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-helmet": "^5.2.1",
-    "styled-components": "^4.4.1",
-    "styled-normalize": "^8.0.7"
+    "react-helmet": "^5.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
