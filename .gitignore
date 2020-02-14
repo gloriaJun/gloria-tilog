@@ -76,3 +76,6 @@ yarn-error.log
 .out
 storybook-static
 
+# cypress
+cypress/screenshots
+cypress/videos

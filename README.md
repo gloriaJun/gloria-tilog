@@ -21,3 +21,4 @@
 - TypeScript
 - Emotion
 - Storybook
+- Cypress
