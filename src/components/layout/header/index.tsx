@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
-type HeaderProps = {
+type Props = {
   title: string;
 };
 
@@ -16,7 +16,7 @@ const Wrapper = styled.div`
   color: #fff;
 `;
 
-const Header = ({ title }: HeaderProps) => {
+const Header = ({ title }: Props) => {
   return (
     <Wrapper>
       <h1>{title}</h1>
