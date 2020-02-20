@@ -6,63 +6,60 @@ const path = require('path');
  *
  */
 
-const pages = [
-  { id: 1, content: 'Gatsby 로 블로그 만들기' },
-  { id: 2, content: '거기에 타입스크립트 적용 해 보기' },
-  { id: 3, content: '확실히 어렵네요' },
-];
-
 // You can delete this file if you're not using it
 // Implement the Gatsby API “createPages”. This is called once the
 // data layer is bootstrapped to let plugins create pages from data.
-exports.createPages = async ({ actions }) => {
-  //   console.log('### createPages ####', graphql, actions, reporter);
+exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions;
 
-  //   // Query for markdown nodes to use in creating pages.
-  //   const result = await graphql(
-  //     `
-  //       {
-  //         allMarkdownRemark(limit: 1000) {
-  //           edges {
-  //             node {
-  //               frontmatter {
-  //                 path
-  //               }
-  //             }
-  //           }
-  //         }
-  //       }
-  //     `,
-  //   );
+  // Query for markdown nodes to use in creating pages.
+  const result = await graphql(
+    `
+      query {
+        allMarkdownRemark(limit: 10) {
+          edges {
+            node {
+              id
+              html
+              frontmatter {
+                title
+                date
+              }
+            }
+          }
+        }
+      }
+    `,
+  );
+
   // Handle errors
-  //   if (result.errors) {
-  //     reporter.panicOnBuild(`Error while running GraphQL query.`);
-  //     return;
-  //   }
+  if (result.errors) {
+    reporter.panicOnBuild(`Error while running GraphQL query.`);
+    return;
+  }
 
   // Create pages for each markdown file.
   const blogPostTemplate = path.resolve(`src/templates/post/index.tsx`);
 
-  pages.map(item => {
+  result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+    const {
+      id,
+      frontmatter: { title, date },
+    } = node;
+
     createPage({
-      path: item.id.toString(),
+      path: '/test',
       component: blogPostTemplate,
-      context: item,
+
+      // In your blog post template's graphql query, you can use path
+      // as a GraphQL variable to query for data from the markdown file.
+      context: {
+        id,
+        title,
+        date,
+      },
     });
   });
-  //   result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-  //     const path = node.frontmatter.path;
-  //     createPage({
-  //       path,
-  //       component: blogPostTemplate,
-  //       // In your blog post template's graphql query, you can use path
-  //       // as a GraphQL variable to query for data from the markdown file.
-  //       context: {
-  //         path,
-  //       },
-  //     });
-  //   });
 };
 
 // exports.onCreatePage = ({ page, actions }) => {
@@ -76,4 +73,8 @@ exports.createPages = async ({ actions }) => {
 //   //   deletePage(oldPage)
 //   //   createPage(page)
 //   // }
+// };
+
+// exports.onCreateNode = ({ node }) => {
+//   console.log('### onCreateNode ####', node.internal.type);
 // };
