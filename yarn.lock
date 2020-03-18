@@ -424,7 +424,7 @@
     "@babel/helper-plugin-utils" "^7.8.3"
     "@babel/plugin-syntax-nullish-coalescing-operator" "^7.8.0"
 
-"@babel/plugin-proposal-numeric-separator@7.8.3", "@babel/plugin-proposal-numeric-separator@^7.7.4":
+"@babel/plugin-proposal-numeric-separator@7.8.3", "@babel/plugin-proposal-numeric-separator@^7.8.3":
   version "7.8.3"
   resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-numeric-separator/-/plugin-proposal-numeric-separator-7.8.3.tgz#5d6769409699ec9b3b68684cd8116cedff93bad8"
   integrity sha512-jWioO1s6R/R+wEHizfaScNsAx+xKgwTLNXSh7tTC4Usj3ItsPEhYkEpU4h+lpnBwq7NBVOJXfO6cRFYcX69JUQ==
@@ -1086,7 +1086,7 @@
     "@babel/plugin-transform-react-jsx-self" "^7.8.3"
     "@babel/plugin-transform-react-jsx-source" "^7.8.3"
 
-"@babel/preset-typescript@7.8.3", "@babel/preset-typescript@^7.1.0", "@babel/preset-typescript@^7.7.4":
+"@babel/preset-typescript@7.8.3", "@babel/preset-typescript@^7.1.0", "@babel/preset-typescript@^7.8.3":
   version "7.8.3"
   resolved "https://registry.yarnpkg.com/@babel/preset-typescript/-/preset-typescript-7.8.3.tgz#90af8690121beecd9a75d0cc26c6be39d1595d13"
   integrity sha512-qee5LgPGui9zQ0jR1TeU5/fP9L+ovoArklEqY12ek8P/wV5ZeM/VYSQYwICeoT6FfpJTekG9Ilay5PhwsOpMHA==
@@ -2177,17 +2177,17 @@
     vue-docgen-api "^4.1.0"
     vue-docgen-loader "^1.3.0-beta.0"
 
-"@storybook/addon-knobs@^5.3.13":
-  version "5.3.13"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-knobs/-/addon-knobs-5.3.13.tgz#fe8be71eadd118edf19656442388e2e7262d2fad"
-  integrity sha512-Ef3D8bbV+6fywjR4JUX699gT7ZfuNBXlXqZB1qgGde5swbuttEGty1+RRwK1fqIeBr6EbzPvhRBTVOFIQp5Ysg==
+"@storybook/addon-knobs@^5.3.17":
+  version "5.3.17"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-knobs/-/addon-knobs-5.3.17.tgz#5c255a1369bfec898c2a6ea7de904b3eeb7a31d1"
+  integrity sha512-SMjvH3EjUbt4Xn1Q22thXVQSDrJRUB3IAzhUNdBovFB3RwOXmRFd0iSHC3TTKJfW2TYPssl8cnNGQTH6O2d14g==
   dependencies:
-    "@storybook/addons" "5.3.13"
-    "@storybook/api" "5.3.13"
-    "@storybook/client-api" "5.3.13"
-    "@storybook/components" "5.3.13"
-    "@storybook/core-events" "5.3.13"
-    "@storybook/theming" "5.3.13"
+    "@storybook/addons" "5.3.17"
+    "@storybook/api" "5.3.17"
+    "@storybook/client-api" "5.3.17"
+    "@storybook/components" "5.3.17"
+    "@storybook/core-events" "5.3.17"
+    "@storybook/theming" "5.3.17"
     "@types/react-color" "^3.0.1"
     copy-to-clipboard "^3.0.8"
     core-js "^3.0.1"
@@ -4626,11 +4626,6 @@ blob@0.0.5:
   version "0.0.5"
   resolved "https://registry.yarnpkg.com/blob/-/blob-0.0.5.tgz#d680eeef25f8cd91ad533f5b01eed48e64caf683"
   integrity sha512-gaqbzQPqOoamawKg0LGVd7SzLgXS+JH61oWprSLH+P+abTczqJbhTR8CmJ2u9/bUYNmHTGJx/UEmn6doAvvuig==
-
-bluebird@3.7.1:
-  version "3.7.1"
-  resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.7.1.tgz#df70e302b471d7473489acf26a93d63b53f874de"
-  integrity sha512-DdmyoGCleJnkbp3nkbxTLJ18rjDsE4yCggEwKNXkeV123sPNfOCYeDoeuOY+F2FrSjO1YXcTU+dsy96KMy+gcg==
 
 bluebird@3.7.2, bluebird@^3.3.5, bluebird@^3.5.5, bluebird@^3.7.2:
   version "3.7.2"
@@ -7603,10 +7598,10 @@ execa@1.0.0, execa@^1.0.0:
     signal-exit "^3.0.0"
     strip-eof "^1.0.0"
 
-execa@4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/execa/-/execa-4.0.0.tgz#7f37d6ec17f09e6b8fc53288611695b6d12b9daf"
-  integrity sha512-JbDUxwV3BoT5ZVXQrSVbAiaXhXUkIwvbhPIwZ0N13kX+5yCzOhUNdocxB/UQRuYOHRYYwAxKYwJYc0T4D12pDA==
+execa@3.4.0, execa@^3.2.0, execa@^3.4.0:
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/execa/-/execa-3.4.0.tgz#c08ed4550ef65d858fac269ffc8572446f37eb89"
+  integrity sha512-r9vdGQk4bmCuK1yKQu1KTwcT2zwfWdbdaXfCtAh+5nU/4fSX+JAb7vZGvI5naJrQlvONrEB20jeruESI69530g==
   dependencies:
     cross-spawn "^7.0.0"
     get-stream "^5.0.0"
@@ -7615,6 +7610,7 @@ execa@4.0.0:
     merge-stream "^2.0.0"
     npm-run-path "^4.0.0"
     onetime "^5.1.0"
+    p-finally "^2.0.0"
     signal-exit "^3.0.2"
     strip-final-newline "^2.0.0"
 
@@ -7656,22 +7652,6 @@ execa@^0.8.0:
     p-finally "^1.0.0"
     signal-exit "^3.0.0"
     strip-eof "^1.0.0"
-
-execa@^3.2.0, execa@^3.4.0:
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/execa/-/execa-3.4.0.tgz#c08ed4550ef65d858fac269ffc8572446f37eb89"
-  integrity sha512-r9vdGQk4bmCuK1yKQu1KTwcT2zwfWdbdaXfCtAh+5nU/4fSX+JAb7vZGvI5naJrQlvONrEB20jeruESI69530g==
-  dependencies:
-    cross-spawn "^7.0.0"
-    get-stream "^5.0.0"
-    human-signals "^1.1.1"
-    is-stream "^2.0.0"
-    merge-stream "^2.0.0"
-    npm-run-path "^4.0.0"
-    onetime "^5.1.0"
-    p-finally "^2.0.0"
-    signal-exit "^3.0.2"
-    strip-final-newline "^2.0.0"
 
 executable@4.1.1, executable@^4.1.0:
   version "4.1.1"
@@ -8648,18 +8628,18 @@ gatsby-plugin-sharp@^2.4.12:
     svgo "1.3.2"
     uuid "^3.3.3"
 
-gatsby-plugin-typescript@^2.2.2:
-  version "2.2.2"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-typescript/-/gatsby-plugin-typescript-2.2.2.tgz#37ab70aaf96b28e7c1cc5852fae26df55ea8a75a"
-  integrity sha512-U4fYeDIgMF6jHf0UajxeUubtQblQZIHZrX5ZdD39nJsDTuEZ4aHrrATZ7+cqsRRRfH3aNcqMOUPRuBZ9/YjSUQ==
+gatsby-plugin-typescript@^2.2.5:
+  version "2.2.5"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-typescript/-/gatsby-plugin-typescript-2.2.5.tgz#60d136ed9ce02dc05054f987934bfee1b0cca97e"
+  integrity sha512-C17SW9tW08xUDl6K6niwY0FUi4INMVb5n29+6QwMGJw4Nxrztt3l99C6rKGR4qogsNjNEW0T/xRp2ehuHY/9rw==
   dependencies:
-    "@babel/core" "^7.7.5"
-    "@babel/plugin-proposal-nullish-coalescing-operator" "^7.7.4"
-    "@babel/plugin-proposal-numeric-separator" "^7.7.4"
-    "@babel/plugin-proposal-optional-chaining" "^7.7.5"
-    "@babel/preset-typescript" "^7.7.4"
-    "@babel/runtime" "^7.7.6"
-    babel-plugin-remove-graphql-queries "^2.7.24"
+    "@babel/core" "^7.8.7"
+    "@babel/plugin-proposal-nullish-coalescing-operator" "^7.8.3"
+    "@babel/plugin-proposal-numeric-separator" "^7.8.3"
+    "@babel/plugin-proposal-optional-chaining" "^7.8.3"
+    "@babel/preset-typescript" "^7.8.3"
+    "@babel/runtime" "^7.8.7"
+    babel-plugin-remove-graphql-queries "^2.7.26"
 
 gatsby-react-router-scroll@^2.1.24:
   version "2.1.24"
@@ -15261,15 +15241,15 @@ react-docgen@^5.0.0:
     node-dir "^0.1.10"
     strip-indent "^3.0.0"
 
-react-dom@^16.12.0, react-dom@^16.8.3:
-  version "16.12.0"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.12.0.tgz#0da4b714b8d13c2038c9396b54a92baea633fe11"
-  integrity sha512-LMxFfAGrcS3kETtQaCkTKjMiifahaMySFDn71fZUNpPHZQEzmk/GiAeIT8JSOrHB23fnuCOMruL2a8NYlw+8Gw==
+react-dom@^16.13.0, react-dom@^16.8.3:
+  version "16.13.0"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.13.0.tgz#cdde54b48eb9e8a0ca1b3dc9943d9bb409b81866"
+  integrity sha512-y09d2c4cG220DzdlFkPTnVvGTszVvNpC73v+AaLGLHbkpy3SSgvYq8x0rNwPJ/Rk/CicTNgk0hbHNw1gMEZAXg==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
     prop-types "^15.6.2"
-    scheduler "^0.18.0"
+    scheduler "^0.19.0"
 
 react-draggable@^4.0.3:
   version "4.2.0"
@@ -17056,15 +17036,15 @@ stackframe@^1.1.1:
   resolved "https://registry.yarnpkg.com/stackframe/-/stackframe-1.1.1.tgz#ffef0a3318b1b60c3b58564989aca5660729ec71"
   integrity sha512-0PlYhdKh6AfFxRyK/v+6/k+/mMfyiEBbTM5L94D0ZytQnJ166wuwoTYLHFWGbs2dpA8Rgq763KGWmN1EQEYHRQ==
 
-start-server-and-test@^1.10.8:
-  version "1.10.8"
-  resolved "https://registry.yarnpkg.com/start-server-and-test/-/start-server-and-test-1.10.8.tgz#878b0e69d1295bcb4914787c333bdd60a10ce1c6"
-  integrity sha512-5I190MiIHBqmArTnxk9dfHlwO8I35B1hFhuAgv2L/UMDArRCtIXL/QftgNtgfuIz5NQN3yrN0kCsY+zYkX+dUg==
+start-server-and-test@^1.10.11:
+  version "1.10.11"
+  resolved "https://registry.yarnpkg.com/start-server-and-test/-/start-server-and-test-1.10.11.tgz#24290ee8a5ed15f4a34e9bb45a5d6ff93c93c83e"
+  integrity sha512-CZilaj293uQWdD4vgOxTOuzlCWxOyBm6bzmH1r6OGLG/q5zcBmGYevLfOimkg0kSn9jLHwYSXLuoKG/DDQJhww==
   dependencies:
-    bluebird "3.7.1"
+    bluebird "3.7.2"
     check-more-types "2.24.0"
     debug "4.1.1"
-    execa "4.0.0"
+    execa "3.4.0"
     lazy-ass "1.6.0"
     ps-tree "1.2.0"
     wait-on "4.0.0"
