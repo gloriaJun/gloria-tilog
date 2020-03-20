@@ -88,6 +88,6 @@
     "serve": "^11.3.0",
     "start-server-and-test": "^1.10.11",
     "ts-jest": "^25.2.0",
-    "typescript": "^3.7.4"
+    "typescript": "^3.8.3"
   }
 }
