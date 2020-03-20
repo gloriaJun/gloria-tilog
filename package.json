@@ -43,7 +43,7 @@
     "@emotion/core": "^10.0.27",
     "@emotion/styled": "^10.0.27",
     "emotion-normalize": "^10.1.0",
-    "gatsby": "^2.19.45",
+    "gatsby": "^2.19.49",
     "gatsby-image": "^2.2.43",
     "gatsby-plugin-alias-imports": "^1.0.5",
     "gatsby-plugin-emotion": "^4.1.22",
