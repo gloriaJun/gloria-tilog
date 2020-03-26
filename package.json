@@ -73,7 +73,7 @@
     "@types/node": "^13.9.2",
     "@typescript-eslint/eslint-plugin": "^2.23.0",
     "@typescript-eslint/parser": "^2.14.0",
-    "babel-loader": "^8.0.6",
+    "babel-loader": "^8.1.0",
     "babel-preset-react-app": "^9.1.1",
     "cross-env": "^7.0.2",
     "cypress": "^4.2.0",
