@@ -10,13 +10,14 @@ cache:
 branches:
   only:
     - master
-    - /^greenkeeper/.*$/
+    - develop
 
 before_install:
   - npm install -g yarn --cache-min 999999999
 
 install:
   - yarn install
+  - yarn build
   - yarn build-storybook
 
 deploy:
