@@ -71,6 +71,7 @@ yarn-error.log
 
 # Ide files
 .idea/
+*.iml
 
 # Output of 'storybook'
 .out
@@ -80,6 +81,8 @@ storybook-static
 cypress/screenshots
 cypress/videos
 
+# sync
+.synk
 
 # auto generated file
 src/_generated_/graphql-types.d.ts
