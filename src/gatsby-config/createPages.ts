@@ -1,6 +1,9 @@
 import * as path from 'path';
 import { CreatePagesArgs } from 'gatsby';
 
+// @ts-nocheck: Cannot find module
+import { Query } from '../_generated_/graphql-types';
+
 const resolve = (dir: string) => path.resolve(__dirname, '..', dir);
 
 /**
@@ -13,18 +16,18 @@ const resolve = (dir: string) => path.resolve(__dirname, '..', dir);
 // You can delete this file if you're not using it
 // Implement the Gatsby API “createPages”. This is called once the
 // data layer is bootstrapped to let plugins create pages from data.
-export const createPages = async ({
-  actions,
+export async function createPages({
+  actions: { createPage },
   graphql,
-  reporter,
-}: CreatePagesArgs) => {
-  const { createPage } = actions;
-
+}: CreatePagesArgs) {
   // Query for markdown nodes to use in creating pages.
-  const { errors, data } = await graphql(
+  const { data, errors } = await graphql<Query>(
     `
-      query {
-        allMarkdownRemark(limit: 10) {
+      {
+        allMarkdownRemark(
+          sort: { fields: [frontmatter___date], order: DESC }
+          limit: 10
+        ) {
           edges {
             node {
               id
@@ -42,19 +45,20 @@ export const createPages = async ({
 
   // Handle errors
   if (errors) {
-    reporter.panicOnBuild(`Error while running GraphQL query.`);
-    return;
+    throw errors;
+  }
+
+  if (!data) {
+    throw new Error('ERROR: Could not fetch posts on build');
   }
 
   // Create pages for each markdown file.
   const blogPostTemplate = resolve(`templates/post/index.tsx`);
 
-  data.allMarkdownRemark.edges.forEach(({ node }: any) => {
-    const {
-      id,
-      html,
-      frontmatter: { title, date },
-    } = node;
+  // @ts-nocheck binding element error
+  data.allMarkdownRemark.edges.forEach(({ node }) => {
+    const { id, html, frontmatter } = node;
+    const { title, date } = frontmatter || {};
 
     createPage({
       path: '/test',
@@ -65,12 +69,12 @@ export const createPages = async ({
       context: {
         id,
         title,
-        html,
         date,
+        html,
       },
     });
   });
-};
+}
 
 // exports.onCreatePage = ({ page, actions }) => {
 //   console.log('### onCreatePage ###', { page, actions });
