@@ -110,3 +110,73 @@ patch:
         patched: '2020-05-14T08:24:15.226Z'
     - gatsby > gatsby-cli > gatsby-recipes > @mdx-js/runtime > @mdx-js/mdx > remark-mdx > @babel/core > @babel/helper-module-transforms > @babel/helper-replace-supers > @babel/traverse > @babel/helper-function-name > @babel/template > @babel/types > lodash:
         patched: '2020-05-14T08:24:15.226Z'
+    - gatsby-transformer-remark > lodash:
+        patched: '2020-05-26T17:08:06.401Z'
+    - gatsby-plugin-graphql-codegen > @graphql-toolkit/core > lodash:
+        patched: '2020-05-26T17:08:06.401Z'
+    - gatsby-plugin-graphql-codegen > @graphql-toolkit/url-loader > @graphql-toolkit/common > lodash:
+        patched: '2020-05-26T17:08:06.401Z'
+    - gatsby-plugin-graphql-codegen > @graphql-toolkit/core > @graphql-toolkit/schema-merging > @graphql-toolkit/common > lodash:
+        patched: '2020-05-26T17:08:06.401Z'
+    - gatsby-plugin-graphql-codegen > @graphql-toolkit/code-file-loader > @graphql-toolkit/graphql-tag-pluck > @babel/traverse > @babel/generator > lodash:
+        patched: '2020-05-26T17:08:06.401Z'
+    - gatsby-plugin-graphql-codegen > @graphql-toolkit/code-file-loader > @graphql-toolkit/graphql-tag-pluck > @babel/traverse > @babel/helper-split-export-declaration > @babel/types > lodash:
+        patched: '2020-05-26T17:08:06.401Z'
+    - gatsby-plugin-graphql-codegen > @graphql-codegen/typescript-operations > @graphql-codegen/visitor-plugin-common > @graphql-tools/relay-operation-optimizer > relay-compiler > @babel/core > lodash:
+        patched: '2020-05-26T17:08:06.401Z'
+    - gatsby-plugin-graphql-codegen > @graphql-codegen/typescript-operations > @graphql-codegen/visitor-plugin-common > @graphql-tools/relay-operation-optimizer > relay-compiler > @babel/core > @babel/helper-module-transforms > lodash:
+        patched: '2020-05-26T17:08:06.401Z'
+    - gatsby-plugin-graphql-codegen > @graphql-toolkit/code-file-loader > @graphql-toolkit/graphql-tag-pluck > @babel/traverse > @babel/helper-function-name > @babel/template > @babel/types > lodash:
+        patched: '2020-05-26T17:08:06.401Z'
+    - gatsby-plugin-graphql-codegen > @graphql-codegen/typescript-operations > @graphql-codegen/typescript > @graphql-codegen/visitor-plugin-common > @graphql-tools/relay-operation-optimizer > relay-compiler > @babel/core > lodash:
+        patched: '2020-05-26T17:08:06.401Z'
+    - gatsby-plugin-graphql-codegen > @graphql-codegen/typescript-operations > @graphql-codegen/visitor-plugin-common > @graphql-tools/relay-operation-optimizer > relay-compiler > babel-preset-fbjs > @babel/plugin-transform-block-scoping > lodash:
+        patched: '2020-05-26T17:08:06.401Z'
+    - gatsby-plugin-graphql-codegen > @graphql-codegen/typescript-operations > @graphql-codegen/visitor-plugin-common > @graphql-tools/relay-operation-optimizer > relay-compiler > @babel/core > @babel/helpers > @babel/traverse > lodash:
+        patched: '2020-05-26T17:08:06.401Z'
+    - gatsby-plugin-graphql-codegen > @graphql-codegen/typescript-operations > @graphql-codegen/typescript > @graphql-codegen/visitor-plugin-common > @graphql-tools/relay-operation-optimizer > relay-compiler > @babel/core > @babel/helper-module-transforms > lodash:
+        patched: '2020-05-26T17:08:06.401Z'
+    - gatsby-plugin-graphql-codegen > @graphql-codegen/typescript-operations > @graphql-codegen/visitor-plugin-common > @graphql-tools/relay-operation-optimizer > relay-compiler > babel-preset-fbjs > @babel/plugin-transform-classes > @babel/helper-define-map > lodash:
+        patched: '2020-05-26T17:08:06.401Z'
+    - gatsby-plugin-graphql-codegen > @graphql-codegen/typescript-operations > @graphql-codegen/typescript > @graphql-codegen/visitor-plugin-common > @graphql-tools/relay-operation-optimizer > relay-compiler > babel-preset-fbjs > @babel/plugin-transform-block-scoping > lodash:
+        patched: '2020-05-26T17:08:06.401Z'
+    - gatsby-plugin-graphql-codegen > @graphql-codegen/typescript-operations > @graphql-codegen/visitor-plugin-common > @graphql-tools/relay-operation-optimizer > relay-compiler > @babel/core > @babel/helper-module-transforms > @babel/helper-replace-supers > @babel/traverse > lodash:
+        patched: '2020-05-26T17:08:06.401Z'
+    - gatsby-plugin-graphql-codegen > @graphql-codegen/typescript-operations > @graphql-codegen/typescript > @graphql-codegen/visitor-plugin-common > @graphql-tools/relay-operation-optimizer > relay-compiler > @babel/core > @babel/helpers > @babel/traverse > lodash:
+        patched: '2020-05-26T17:08:06.401Z'
+    - gatsby-plugin-graphql-codegen > @graphql-codegen/typescript-operations > @graphql-codegen/visitor-plugin-common > @graphql-tools/relay-operation-optimizer > relay-compiler > babel-preset-fbjs > @babel/plugin-transform-object-super > @babel/helper-replace-supers > @babel/traverse > lodash:
+        patched: '2020-05-26T17:08:06.401Z'
+    - gatsby-plugin-graphql-codegen > @graphql-codegen/typescript-operations > @graphql-codegen/typescript > @graphql-codegen/visitor-plugin-common > @graphql-tools/relay-operation-optimizer > relay-compiler > babel-preset-fbjs > @babel/plugin-transform-classes > @babel/helper-define-map > lodash:
+        patched: '2020-05-26T17:08:06.401Z'
+    - gatsby-plugin-graphql-codegen > @graphql-codegen/typescript-operations > @graphql-codegen/typescript > @graphql-codegen/visitor-plugin-common > @graphql-tools/relay-operation-optimizer > relay-compiler > @babel/core > @babel/helper-module-transforms > @babel/helper-replace-supers > @babel/traverse > lodash:
+        patched: '2020-05-26T17:08:06.401Z'
+    - gatsby-plugin-graphql-codegen > @graphql-codegen/typescript-operations > @graphql-codegen/visitor-plugin-common > @graphql-tools/relay-operation-optimizer > relay-compiler > babel-preset-fbjs > @babel/plugin-proposal-class-properties > @babel/helper-create-class-features-plugin > @babel/helper-replace-supers > @babel/traverse > lodash:
+        patched: '2020-05-26T17:08:06.401Z'
+    - gatsby-plugin-graphql-codegen > @graphql-codegen/typescript-operations > @graphql-codegen/visitor-plugin-common > @graphql-tools/relay-operation-optimizer > relay-compiler > @babel/core > @babel/helper-module-transforms > @babel/helper-replace-supers > @babel/traverse > @babel/generator > lodash:
+        patched: '2020-05-26T17:08:06.401Z'
+    - gatsby-plugin-graphql-codegen > @graphql-codegen/typescript-operations > @graphql-codegen/typescript > @graphql-codegen/visitor-plugin-common > @graphql-tools/relay-operation-optimizer > relay-compiler > babel-preset-fbjs > @babel/plugin-transform-object-super > @babel/helper-replace-supers > @babel/traverse > lodash:
+        patched: '2020-05-26T17:08:06.401Z'
+    - gatsby-plugin-graphql-codegen > @graphql-codegen/typescript-operations > @graphql-codegen/typescript > @graphql-codegen/visitor-plugin-common > @graphql-tools/relay-operation-optimizer > relay-compiler > babel-preset-fbjs > @babel/plugin-proposal-class-properties > @babel/helper-create-class-features-plugin > @babel/helper-replace-supers > @babel/traverse > lodash:
+        patched: '2020-05-26T17:08:06.401Z'
+    - gatsby-plugin-graphql-codegen > @graphql-codegen/typescript-operations > @graphql-codegen/visitor-plugin-common > @graphql-tools/relay-operation-optimizer > relay-compiler > @babel/core > @babel/helper-module-transforms > @babel/helper-replace-supers > @babel/traverse > @babel/helper-split-export-declaration > @babel/types > lodash:
+        patched: '2020-05-26T17:08:06.401Z'
+    - gatsby-plugin-graphql-codegen > @graphql-codegen/typescript-operations > @graphql-codegen/visitor-plugin-common > @graphql-tools/relay-operation-optimizer > relay-compiler > babel-preset-fbjs > @babel/plugin-proposal-class-properties > @babel/helper-create-class-features-plugin > @babel/helper-replace-supers > @babel/traverse > @babel/generator > lodash:
+        patched: '2020-05-26T17:08:06.401Z'
+    - gatsby-plugin-graphql-codegen > @graphql-codegen/typescript-operations > @graphql-codegen/typescript > @graphql-codegen/visitor-plugin-common > @graphql-tools/relay-operation-optimizer > relay-compiler > @babel/core > @babel/helper-module-transforms > @babel/helper-replace-supers > @babel/traverse > @babel/generator > lodash:
+        patched: '2020-05-26T17:08:06.401Z'
+    - gatsby-plugin-graphql-codegen > @graphql-codegen/typescript-operations > @graphql-codegen/typescript > @graphql-codegen/visitor-plugin-common > @graphql-tools/relay-operation-optimizer > relay-compiler > @babel/core > @babel/helper-module-transforms > @babel/helper-replace-supers > @babel/traverse > @babel/helper-split-export-declaration > @babel/types > lodash:
+        patched: '2020-05-26T17:08:06.401Z'
+    - gatsby-plugin-graphql-codegen > @graphql-codegen/typescript-operations > @graphql-codegen/visitor-plugin-common > @graphql-tools/relay-operation-optimizer > relay-compiler > babel-preset-fbjs > @babel/plugin-proposal-class-properties > @babel/helper-create-class-features-plugin > @babel/helper-replace-supers > @babel/traverse > @babel/helper-split-export-declaration > @babel/types > lodash:
+        patched: '2020-05-26T17:08:06.401Z'
+    - gatsby-plugin-graphql-codegen > @graphql-codegen/typescript-operations > @graphql-codegen/typescript > @graphql-codegen/visitor-plugin-common > @graphql-tools/relay-operation-optimizer > relay-compiler > babel-preset-fbjs > @babel/plugin-proposal-class-properties > @babel/helper-create-class-features-plugin > @babel/helper-replace-supers > @babel/traverse > @babel/generator > lodash:
+        patched: '2020-05-26T17:08:06.401Z'
+    - gatsby-plugin-graphql-codegen > @graphql-codegen/typescript-operations > @graphql-codegen/visitor-plugin-common > @graphql-tools/relay-operation-optimizer > relay-compiler > @babel/core > @babel/helper-module-transforms > @babel/helper-replace-supers > @babel/traverse > @babel/helper-function-name > @babel/template > @babel/types > lodash:
+        patched: '2020-05-26T17:08:06.401Z'
+    - gatsby-plugin-graphql-codegen > @graphql-codegen/typescript-operations > @graphql-codegen/typescript > @graphql-codegen/visitor-plugin-common > @graphql-tools/relay-operation-optimizer > relay-compiler > babel-preset-fbjs > @babel/plugin-proposal-class-properties > @babel/helper-create-class-features-plugin > @babel/helper-replace-supers > @babel/traverse > @babel/helper-split-export-declaration > @babel/types > lodash:
+        patched: '2020-05-26T17:08:06.401Z'
+    - gatsby-plugin-graphql-codegen > @graphql-codegen/typescript-operations > @graphql-codegen/typescript > @graphql-codegen/visitor-plugin-common > @graphql-tools/relay-operation-optimizer > relay-compiler > @babel/core > @babel/helper-module-transforms > @babel/helper-replace-supers > @babel/traverse > @babel/helper-function-name > @babel/template > @babel/types > lodash:
+        patched: '2020-05-26T17:08:06.401Z'
+    - gatsby-plugin-graphql-codegen > @graphql-codegen/typescript-operations > @graphql-codegen/visitor-plugin-common > @graphql-tools/relay-operation-optimizer > relay-compiler > babel-preset-fbjs > @babel/plugin-proposal-class-properties > @babel/helper-create-class-features-plugin > @babel/helper-replace-supers > @babel/traverse > @babel/helper-function-name > @babel/template > @babel/types > lodash:
+        patched: '2020-05-26T17:08:06.401Z'
+    - gatsby-plugin-graphql-codegen > @graphql-codegen/typescript-operations > @graphql-codegen/typescript > @graphql-codegen/visitor-plugin-common > @graphql-tools/relay-operation-optimizer > relay-compiler > babel-preset-fbjs > @babel/plugin-proposal-class-properties > @babel/helper-create-class-features-plugin > @babel/helper-replace-supers > @babel/traverse > @babel/helper-function-name > @babel/template > @babel/types > lodash:
+        patched: '2020-05-26T17:08:06.401Z'
