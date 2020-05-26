@@ -20,6 +20,7 @@ module.exports = {
       },
     },
     `gatsby-plugin-react-helmet`,
+    `gatsby-transformer-remark`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -46,5 +47,12 @@ module.exports = {
     // `gatsby-plugin-offline`,
     'gatsby-plugin-typescript',
     'gatsby-plugin-emotion',
+    {
+      // automatically generate typings from graphql schema
+      resolve: 'gatsby-plugin-graphql-codegen',
+      options: {
+        fileName: './src/_generated_/graphql-types.d.ts',
+      },
+    },
   ],
 };

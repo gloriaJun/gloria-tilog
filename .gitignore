@@ -83,3 +83,6 @@ cypress/videos
 
 # sync
 .synk
+
+# auto generated file
+src/_generated_/graphql-types.d.ts
