@@ -1,11 +1,39 @@
 import React from 'react';
+import { graphql } from 'gatsby';
 
-const PostTemplate: React.FC = (props) => {
+interface IQueryProps {
+  data: {
+    markdownRemark: {
+      html: string;
+      frontmatter: {
+        title: string;
+        date: string;
+      };
+    };
+  };
+}
+
+const PostTemplate: React.FC<IQueryProps> = ({ data }) => {
+  const post = data.markdownRemark;
+
   return (
-    <code>
-      <pre>{JSON.stringify(props, null, 4)}</pre>
-    </code>
+    <>
+      <pre>{post.frontmatter.title}</pre>
+      <div dangerouslySetInnerHTML={{ __html: post.html }} />
+    </>
   );
 };
 
 export default PostTemplate;
+
+export const pageQuery = graphql`
+  query BlogPostBySlug($slug: String!) {
+    markdownRemark(fields: { slug: { eq: $slug } }) {
+      html
+      frontmatter {
+        date
+        title
+      }
+    }
+  }
+`;
