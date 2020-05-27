@@ -1,6 +1,6 @@
 const path = require('path');
 
-const resolve = dir => path.resolve(__dirname, dir);
+const resolve = (dir) => path.resolve(__dirname, dir);
 
 module.exports = {
   siteMetadata: {
@@ -25,7 +25,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `posts`,
-        path: `${__dirname}/posts`,
+        path: `${__dirname}/posts/`,
       },
     },
     `gatsby-transformer-sharp`,
@@ -48,11 +48,8 @@ module.exports = {
     'gatsby-plugin-typescript',
     'gatsby-plugin-emotion',
     {
-      // automatically generate typings from graphql schema
-      resolve: 'gatsby-plugin-graphql-codegen',
-      options: {
-        fileName: './src/_generated_/graphql-types.d.ts',
-      },
+      resolve: 'gatsby-plugin-codegen',
+      options: {},
     },
   ],
 };
