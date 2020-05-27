@@ -47,12 +47,9 @@ module.exports = {
     // `gatsby-plugin-offline`,
     'gatsby-plugin-typescript',
     'gatsby-plugin-emotion',
-    // {
-    //   // automatically generate typings from graphql schema
-    //   resolve: 'gatsby-plugin-graphql-codegen',
-    //   options: {
-    //     fileName: './src/_generated_/graphql-types.d.ts',
-    //   },
-    // },
+    {
+      resolve: 'gatsby-plugin-codegen',
+      options: {},
+    },
   ],
 };
