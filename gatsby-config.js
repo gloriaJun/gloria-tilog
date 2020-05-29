@@ -20,19 +20,24 @@ module.exports = {
       },
     },
     `gatsby-plugin-react-helmet`,
-    `gatsby-transformer-remark`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `sample1`,
-        path: `${__dirname}/posts/sample1`,
+        path: `${__dirname}/posts/sample1/`,
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `blog`,
-        path: `${__dirname}/posts/blog`,
+        path: `${__dirname}/posts/blog/`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        extensions: [`.mdx`, `.md`],
       },
     },
     `gatsby-transformer-sharp`,

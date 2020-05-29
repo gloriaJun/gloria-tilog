@@ -1,10 +1,12 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+import { MDXProvider } from '@mdx-js/react';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 
 interface IQueryProps {
   data: {
-    markdownRemark: {
-      html: string;
+    mdx: {
+      body: string;
       frontmatter: {
         title: string;
         date: string;
@@ -13,13 +15,13 @@ interface IQueryProps {
   };
 }
 
-const PostTemplate: React.FC<IQueryProps> = ({ data }) => {
-  const post = data.markdownRemark;
-
+const PostTemplate: React.FC<IQueryProps> = ({ data: { mdx } }) => {
   return (
     <>
-      <pre>{post.frontmatter.title}</pre>
-      <div dangerouslySetInnerHTML={{ __html: post.html }} />
+      <pre>{mdx.frontmatter.title}</pre>
+      <MDXProvider>
+        <MDXRenderer>{mdx.body}</MDXRenderer>
+      </MDXProvider>
     </>
   );
 };
@@ -27,9 +29,10 @@ const PostTemplate: React.FC<IQueryProps> = ({ data }) => {
 export default PostTemplate;
 
 export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
+  query BlogPostBySlug($id: String!) {
+    mdx(id: { eq: $id }) {
+      id
+      body
       frontmatter {
         date
         title

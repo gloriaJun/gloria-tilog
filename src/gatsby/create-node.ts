@@ -8,13 +8,19 @@ export const CreateNode: GatsbyNode['onCreateNode'] = ({
 }) => {
   const { createNodeField } = actions;
 
-  if (node.internal.type === `MarkdownRemark`) {
-    const slug = createFilePath({ node, getNode });
+  if (node.internal.type === `Mdx`) {
+    // const type = node.frontmatter.type;
+    const filePath = createFilePath({ node, getNode });
+    const path = filePath.replace('/blog/', '').replace(/(^\/|\/$)/, '');
+
+    console.log('#####');
+    console.log(node, node.sourceInstanceName);
+    console.log('#####');
 
     createNodeField({
-      node,
       name: `slug`,
-      value: slug,
+      value: `/blog/${path}`,
+      node,
     });
   }
 };

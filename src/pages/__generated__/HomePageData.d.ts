@@ -7,30 +7,32 @@
 // GraphQL query operation: HomePageData
 // ====================================================
 
-export interface HomePageData_allMarkdownRemark_edges_node_fields {
+export interface HomePageData_allMdx_edges_node_fields {
   slug: string | null;
 }
 
-export interface HomePageData_allMarkdownRemark_edges_node_frontmatter {
+export interface HomePageData_allMdx_edges_node_frontmatter {
+  category: string | null;
+  tags: (string | null)[] | null;
   date: any | null;
-  title: string | null;
+  title: string;
 }
 
-export interface HomePageData_allMarkdownRemark_edges_node {
+export interface HomePageData_allMdx_edges_node {
   id: string;
-  fields: HomePageData_allMarkdownRemark_edges_node_fields | null;
-  frontmatter: HomePageData_allMarkdownRemark_edges_node_frontmatter | null;
-  excerpt: string | null;
+  fields: HomePageData_allMdx_edges_node_fields | null;
+  frontmatter: HomePageData_allMdx_edges_node_frontmatter | null;
+  excerpt: string;
 }
 
-export interface HomePageData_allMarkdownRemark_edges {
-  node: HomePageData_allMarkdownRemark_edges_node;
+export interface HomePageData_allMdx_edges {
+  node: HomePageData_allMdx_edges_node;
 }
 
-export interface HomePageData_allMarkdownRemark {
-  edges: HomePageData_allMarkdownRemark_edges[];
+export interface HomePageData_allMdx {
+  edges: HomePageData_allMdx_edges[];
 }
 
 export interface HomePageData {
-  allMarkdownRemark: HomePageData_allMarkdownRemark;
+  allMdx: HomePageData_allMdx;
 }

@@ -2,17 +2,14 @@ import * as path from 'path';
 import { GatsbyNode } from 'gatsby';
 
 interface INode {
+  id: string;
   fields: {
     slug: string;
-  };
-  frontmatter: {
-    title: string;
-    date: string;
   };
 }
 
 interface IQueryResult {
-  allMarkdownRemark: {
+  allMdx: {
     edges: {
       node: INode;
     }[];
@@ -45,18 +42,12 @@ export const createPages: GatsbyNode['createPages'] = async ({
   const { data, errors } = await graphql<IQueryResult>(
     `
       {
-        allMarkdownRemark(
-          sort: { fields: [frontmatter___date], order: DESC }
-          limit: 1000
-        ) {
+        allMdx {
           edges {
             node {
+              id
               fields {
                 slug
-              }
-              frontmatter {
-                title
-                date(formatString: "YYYY.MM.DD")
               }
             }
           }
@@ -67,6 +58,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
 
   // Handle errors
   if (errors) {
+    console.error(errors);
     throw errors;
   }
 
@@ -75,9 +67,11 @@ export const createPages: GatsbyNode['createPages'] = async ({
   }
 
   // Create pages for each markdown file.
+  const posts = data.allMdx.edges;
 
-  data.allMarkdownRemark.edges.forEach(({ node }) => {
+  posts.forEach(({ node }) => {
     const {
+      id,
       fields: { slug },
     } = node;
 
@@ -88,7 +82,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
       // In your blog post template's graphql query, you can use path
       // as a GraphQL variable to query for data from the markdown file.
       context: {
-        slug,
+        id,
       },
     });
   });

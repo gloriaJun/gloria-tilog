@@ -23,11 +23,12 @@ const IndexPage: React.FC<IQueryProps> = ({ data }) => {
         <h1>Hello, World!!!</h1>
         <h2>This is message.</h2>
 
-        {data.allMarkdownRemark.edges.map(({ node }) => (
+        {data.allMdx.edges.map(({ node }) => (
           <div key={node.id}>
             <Link to={node?.fields?.slug}>
+              <p>{node?.fields?.slug}</p>
               <h3>
-                {node?.frontmatter?.title}{' '}
+                [{node?.frontmatter?.category}] {node?.frontmatter?.title}{' '}
                 <span>— {node?.frontmatter?.date}</span>
               </h3>
               <p>{node.excerpt}</p>
@@ -43,7 +44,7 @@ export default IndexPage;
 
 export const pageQuery = graphql`
   query HomePageData {
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
       edges {
         node {
           id
@@ -51,6 +52,8 @@ export const pageQuery = graphql`
             slug
           }
           frontmatter {
+            category
+            tags
             date(formatString: "MMMM DD, YYYY")
             title
           }

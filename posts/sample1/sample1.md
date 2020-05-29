@@ -1,4 +1,5 @@
 ---
+type: 'project'
 category: 'sample'
 tags: ['tag1', 'tag2']
 title: 'Sweet Pandas Eating Sweets'
