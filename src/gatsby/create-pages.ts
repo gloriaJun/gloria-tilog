@@ -2,14 +2,17 @@ import * as path from 'path';
 import { GatsbyNode } from 'gatsby';
 
 interface INode {
-  id: string;
-  fields: {
-    slug: string;
+  sourceInstanceName: string;
+  childMdx: {
+    id: string;
+    fields: {
+      slug: string;
+    };
   };
 }
 
 interface IQueryResult {
-  allMdx: {
+  blog: {
     edges: {
       node: INode;
     }[];
@@ -42,12 +45,15 @@ export const createPages: GatsbyNode['createPages'] = async ({
   const { data, errors } = await graphql<IQueryResult>(
     `
       {
-        allMdx {
+        blog: allFile {
           edges {
             node {
-              id
-              fields {
-                slug
+              sourceInstanceName
+              childMdx {
+                id
+                fields {
+                  slug
+                }
               }
             }
           }
@@ -67,16 +73,13 @@ export const createPages: GatsbyNode['createPages'] = async ({
   }
 
   // Create pages for each markdown file.
-  const posts = data.allMdx.edges;
+  const posts = data.blog.edges;
 
   posts.forEach(({ node }) => {
-    const {
-      id,
-      fields: { slug },
-    } = node;
+    const { id, fields } = node.childMdx;
 
     createPage({
-      path: slug,
+      path: fields.slug,
       component: blogPostTemplate,
 
       // In your blog post template's graphql query, you can use path

@@ -13,13 +13,12 @@ export const CreateNode: GatsbyNode['onCreateNode'] = ({
     const filePath = createFilePath({ node, getNode });
     const path = filePath.replace('/blog/', '').replace(/(^\/|\/$)/, '');
 
-    console.log('#####');
-    console.log(node, node.sourceInstanceName);
-    console.log('#####');
+    const fileNode = getNode(node.parent);
+    const source = fileNode.sourceInstanceName;
 
     createNodeField({
       name: `slug`,
-      value: `/blog/${path}`,
+      value: `/${source}/${path}`,
       node,
     });
   }
