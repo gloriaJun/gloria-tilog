@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Header from './index';
 
 export default {
@@ -6,6 +7,6 @@ export default {
   component: Header,
 };
 
-export const normal = () => {
+export const header = () => {
   return <Header title={'HELLO'} />;
 };
