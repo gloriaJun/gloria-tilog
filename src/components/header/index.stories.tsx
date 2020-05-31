@@ -6,4 +6,6 @@ export default {
   component: Header,
 };
 
-export const normal = () => <Header title={'HELLO'} />;
+export const normal = () => {
+  return <Header title={'HELLO'} />;
+};

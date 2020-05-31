@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = ({ config }) => {
   // set the NODE_ENV to 'production' by default, to allow babel-plugin-remove-graphql-queries to remove static queries
   // process.env.NODE_ENV = 'production';
@@ -23,15 +25,17 @@ module.exports = ({ config }) => {
 
   config.module.rules.push({
     test: /\.(ts|tsx)$/,
-    loader: require.resolve('babel-loader'),
-    options: {
-      presets: [['react-app', { flow: false, typescript: true }]],
-      // plugins: [
-      //   require.resolve('@babel/plugin-proposal-class-properties'),
-      //   // use babel-plugin-remove-graphql-queries to remove static queries from components when rendering in storybook
-      //   require.resolve('babel-plugin-remove-graphql-queries'),
-      // ],
-    },
+    use: [
+      {
+        loader: require.resolve('babel-loader'),
+        options: {
+          presets: [['react-app', { flow: false, typescript: true }]],
+        },
+      },
+      {
+        loader: require.resolve('react-docgen-typescript-loader'),
+      },
+    ],
   });
 
   // Prefer Gatsby ES6 entrypoint (module) over commonjs (main) entrypoint
