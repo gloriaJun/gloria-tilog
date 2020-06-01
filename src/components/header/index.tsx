@@ -19,6 +19,9 @@ export interface IHeaderProps {
 //   pathname: string;
 // }
 
+/**
+ * The world's most _basic_ button
+ */
 const Header: React.FC<IHeaderProps> = ({ title }) => {
   return (
     <Wrapper>
