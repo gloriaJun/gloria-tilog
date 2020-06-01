@@ -8,6 +8,10 @@ const styles = css`
   body {
     font-size: 16px;
   }
+
+  a {
+    text-decoration: none;
+  }
 `;
 
 const GlobalStyle = () => <Global styles={styles} />;
