@@ -2,6 +2,7 @@
 import { Global, css, jsx } from '@emotion/core';
 import normalize from 'emotion-normalize';
 
+// https://flatuicolors.com/palette/us
 const styles = css`
   ${normalize}
 

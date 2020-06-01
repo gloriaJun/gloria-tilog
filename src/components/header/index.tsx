@@ -1,15 +1,6 @@
 import React from 'react';
-import styled from '@emotion/styled';
 
-const Wrapper = styled.header`
-  position: sticky;
-  top: 0;
-  display: flex;
-  height: 3.5rem;
-  background-color: #fff;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.0975);
-  z-index: 10;
-`;
+import { Wrapper, Logo } from './style';
 
 export interface IHeaderProps {
   title: string;
@@ -25,7 +16,11 @@ export interface IHeaderProps {
 const Header: React.FC<IHeaderProps> = ({ title }) => {
   return (
     <Wrapper>
-      <h1>{title}</h1>
+      <Logo>
+        <h1>
+          <a href="">{title}</a>
+        </h1>
+      </Logo>
     </Wrapper>
   );
 };
