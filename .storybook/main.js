@@ -69,6 +69,9 @@ module.exports = {
 
     config.resolve.extensions.push('.ts', '.tsx');
 
+    // custom configuration
+    config.resolve.modules.push(path.resolve(__dirname, '../src'));
+
     return config;
   },
 };
