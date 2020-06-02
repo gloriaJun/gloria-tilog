@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Wrapper, Logo, LinkGroup } from './style';
+import { ReactComponent as GithubIcon } from 'icons/github.svg';
 
 export interface IHeaderProps {
   title: string;
@@ -22,6 +23,7 @@ const Header: React.FC<IHeaderProps> = ({ title }) => {
 
       <LinkGroup>
         <span>Test</span>
+        <GithubIcon />
       </LinkGroup>
     </Wrapper>
   );
