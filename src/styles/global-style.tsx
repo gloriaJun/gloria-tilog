@@ -1,17 +1,14 @@
 /** @jsx jsx */
 import { Global, css, jsx } from '@emotion/core';
-import normalize from 'emotion-normalize';
+import { reset } from './reset';
+import { color, typography } from './variables';
 
-// https://flatuicolors.com/palette/us
 const styles = css`
-  ${normalize}
+  ${reset}
 
   body {
-    font-size: 16px;
-  }
-
-  a {
-    text-decoration: none;
+    font-size: ${typography.size.paragraph[1]};
+    color: ${color.gray_100};
   }
 `;
 
