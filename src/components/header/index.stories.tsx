@@ -1,4 +1,5 @@
 import React from 'react';
+import { text } from '@storybook/addon-knobs';
 
 import Header from './index';
 
@@ -8,5 +9,7 @@ export default {
 };
 
 export const header = () => {
-  return <Header title={'HELLO'} />;
+  const title = text('title', 'Logo');
+
+  return <Header title={title} />;
 };

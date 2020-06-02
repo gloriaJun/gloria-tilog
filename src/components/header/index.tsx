@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Wrapper, Logo } from './style';
+import { Wrapper, Logo, LinkGroup } from './style';
 
 export interface IHeaderProps {
   title: string;
@@ -17,10 +17,12 @@ const Header: React.FC<IHeaderProps> = ({ title }) => {
   return (
     <Wrapper>
       <Logo>
-        <h1>
-          <a href="">{title}</a>
-        </h1>
+        <a href="">{title}</a>
       </Logo>
+
+      <LinkGroup>
+        <span>Test</span>
+      </LinkGroup>
     </Wrapper>
   );
 };
