@@ -25,7 +25,9 @@ module.exports = {
     config.module.rules[0].use[0].options.presets = [
       require.resolve('@babel/preset-react'),
       require.resolve('@babel/preset-env'),
-      // require.resolve('babel-preset-react-app'),
+      // Emotion preset must run BEFORE reacts preset to properly convert css-prop.
+      // Babel preset-ordering runs reversed (from last to first). Emotion has to be after React preset.
+      require.resolve('@emotion/babel-preset-css-prop'),
     ];
 
     config.module.rules[0].use[0].options.plugins = [
@@ -46,11 +48,17 @@ module.exports = {
         {
           loader: require.resolve('babel-loader'),
           options: {
-            presets: [['react-app', { flow: false, typescript: true }]],
+            presets: [
+              ['react-app', { flow: false, typescript: true }],
+              // Emotion preset must run BEFORE reacts preset to properly convert css-prop.
+              // Babel preset-ordering runs reversed (from last to first). Emotion has to be after React preset.
+              require.resolve('@emotion/babel-preset-css-prop'),
+            ],
             plugins: [
               require.resolve('@babel/plugin-proposal-class-properties'),
               // use babel-plugin-remove-graphql-queries to remove static queries from components when rendering in storybook
               require.resolve('babel-plugin-remove-graphql-queries'),
+
               // To generate props
               require.resolve('babel-plugin-react-docgen'),
             ],
