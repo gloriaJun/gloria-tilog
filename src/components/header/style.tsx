@@ -1,11 +1,14 @@
 import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 
-import { zIndex, color, space } from 'styles/variables';
+import { zIndex, color, space, icon } from 'styles/variables';
+
+const headerFontColor = color.white;
 
 export const Wrapper = styled.header`
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   padding: ${space.xlarge} ${space.large};
   margin-bottom: ${space.medium};
   width: 100%;
@@ -17,9 +20,17 @@ export const Wrapper = styled.header`
 `;
 
 export const Logo = styled.h1`
-  color: ${color.white};
+  display: flex;
+  align-items: center;
+  color: ${headerFontColor};
 `;
 
 export const LinkGroup = styled.div`
-  color: ${color.white};
+  display: flex;
+  align-items: center;
+  color: ${headerFontColor};
+`;
+
+export const iconStyle = css`
+  ${icon.style};
 `;

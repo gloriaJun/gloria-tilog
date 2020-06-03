@@ -1,36 +1,44 @@
 import React from 'react';
+import { Link } from 'gatsby';
 
-import { Wrapper, Logo, LinkGroup } from './style';
+import { Wrapper, Logo, LinkGroup, iconStyle } from './style';
 import { ReactComponent as GithubIcon } from 'icons/github.svg';
+import { css } from '@emotion/core';
 
-export interface IHeaderProps {
-  title: string;
+interface Navigation {
+  github: string;
 }
 
-// interface PathParamsProps {
-//   pathname: string;
-// }
+interface IHeaderProps {
+  /** Title for the site */
+  title: string;
+  /** Object of navigation items */
+  navigation?: Navigation;
+}
 
 /**
- * The world's most _basic_ button
+ * header of layout
  */
-const Header: React.FC<IHeaderProps> = ({ title }) => {
+const Header: React.FC<IHeaderProps> = ({ title, navigation }) => {
   return (
     <Wrapper>
       <Logo>
-        <a href="">{title}</a>
+        <Link to="">{title}</Link>
       </Logo>
 
       <LinkGroup>
-        <span>Test</span>
-        <GithubIcon />
+        <a href={navigation?.github} target="_blank" rel="noopener noreferrer">
+          <GithubIcon css={iconStyle} />
+        </a>
       </LinkGroup>
     </Wrapper>
   );
 };
 
 Header.defaultProps = {
-  // title: '',
+  navigation: {
+    github: '',
+  },
 };
 
 export default Header;
