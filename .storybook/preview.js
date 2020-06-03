@@ -14,7 +14,7 @@ import GlobalStyleProvider from './decorator/GlobalStyleProvider';
 addParameters({
   viewport: {
     viewports: INITIAL_VIEWPORTS,
-    defaultViewport: 'responsive',
+    // defaultViewport: 'responsive',
   },
   options: {
     showRoots: true,
