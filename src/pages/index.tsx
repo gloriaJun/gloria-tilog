@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
 
-import Header from 'components/header';
+import { Header } from 'components/header';
 import Content from 'components/content';
 
 import GlobalStyle from 'styles/global-style';

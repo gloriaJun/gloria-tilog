@@ -19,7 +19,7 @@ interface IHeaderProps {
 /**
  * header of layout
  */
-const Header: React.FC<IHeaderProps> = ({ title, navigation }) => {
+export const Header: React.FC<IHeaderProps> = ({ title, navigation }) => {
   return (
     <Wrapper>
       <Logo>
@@ -40,5 +40,3 @@ Header.defaultProps = {
     github: '',
   },
 };
-
-export default Header;

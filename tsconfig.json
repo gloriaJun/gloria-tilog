@@ -3,7 +3,8 @@
     "rootDirs": ["src"],
     "baseUrl": "src",
     "paths": {
-      "~/*": ["src/*"]
+      "*": ["*", "src/*"],
+      "tests/*": ["test-helpers/*"]
     },
     /* Basic Options */
     // "incremental": true,                   /* Enable incremental compilation */
@@ -30,12 +31,18 @@
     /* Advanced Options */
     "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */
   },
-  "include": ["src/**/*"],
+  "include": [
+    "src/**/*",
+    "test-helpers/**/*",
+    "__mocks__/**/*",
+    "jest-preprocess.ts"
+  ],
   "exclude": [
     "node_modules",
     "public",
     ".cache",
     "**/*.spec.ts",
+    "**/*.spec.tsx",
     "**/_generated_/*.ts"
   ]
 }

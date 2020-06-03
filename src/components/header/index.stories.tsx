@@ -1,7 +1,7 @@
 import React from 'react';
 import { text } from '@storybook/addon-knobs';
 
-import Header from './index';
+import { Header } from './index';
 
 export default {
   title: 'Layout/Header',
