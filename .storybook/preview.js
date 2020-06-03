@@ -1,20 +1,12 @@
 // import React from 'react';
-<<<<<<< HEAD
-import { addParameters } from '@storybook/react';
-=======
 import { addDecorator, addParameters } from '@storybook/react';
->>>>>>> d557def812489b95083297b8e30cc9f2e1bbc9f5
 import { DocsPage, DocsContainer } from '@storybook/addon-docs/blocks';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 // import { withA11y } from '@storybook/addon-a11y';
 // import { action } from '@storybook/addon-actions';
 //
 // // simple layout component that generates a mocked Global Style in Styled components
-<<<<<<< HEAD
-// import GlobalStyle from '../src/components/GlobalStyle';
-=======
 import GlobalStyleProvider from './decorator/GlobalStyleProvider';
->>>>>>> d557def812489b95083297b8e30cc9f2e1bbc9f5
 
 // Storybook Addons
 // ============================================
@@ -43,22 +35,10 @@ addParameters({
   },
 });
 
-<<<<<<< HEAD
-// // Storybook Decorators
-// // ============================================
-// // Global Styles ==============================
-// addDecorator(story => (
-//   <>
-//     <GlobalStyles />
-//     <div style={{ padding: '3rem' }}>{story()}</div>
-//   </>
-// ));
-=======
 // Storybook Decorators
 // ============================================
 // Global Styles ==============================
 addDecorator(GlobalStyleProvider);
->>>>>>> d557def812489b95083297b8e30cc9f2e1bbc9f5
 
 // // Emotion Theme Provider =====================
 // addDecorator(EmotionThemeProvider);
