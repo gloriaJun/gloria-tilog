@@ -13,6 +13,8 @@ module.exports = {
     // set the NODE_ENV to 'production' by default, to allow babel-plugin-remove-graphql-queries to remove static queries
     // process.env.NODE_ENV = 'production';
 
+    // config.module.rules[0].test = /\.(js|mjs|jsx|ts|tsx)$/;
+
     // Transpile Gatsby module because Gatsby includes un-transpiled ES6 code.
     config.module.rules[0].exclude = [/node_modules\/(?!(gatsby)\/)/];
 
@@ -23,6 +25,7 @@ module.exports = {
     config.module.rules[0].use[0].options.presets = [
       require.resolve('@babel/preset-react'),
       require.resolve('@babel/preset-env'),
+      // require.resolve('babel-preset-react-app'),
     ];
 
     config.module.rules[0].use[0].options.plugins = [
@@ -30,6 +33,8 @@ module.exports = {
       require.resolve('@babel/plugin-proposal-class-properties'),
       // use babel-plugin-remove-graphql-queries to remove static queries from components when rendering in storybook
       require.resolve('babel-plugin-remove-graphql-queries'),
+      // To generate props
+      require.resolve('babel-plugin-react-docgen'),
     ];
 
     // Prefer Gatsby ES6 entrypoint (module) over commonjs (main) entrypoint
@@ -46,21 +51,26 @@ module.exports = {
               require.resolve('@babel/plugin-proposal-class-properties'),
               // use babel-plugin-remove-graphql-queries to remove static queries from components when rendering in storybook
               require.resolve('babel-plugin-remove-graphql-queries'),
+              // To generate props
+              require.resolve('babel-plugin-react-docgen'),
             ],
           },
         },
-        {
-          loader: require.resolve('react-docgen-typescript-loader'),
-          options: {
-            // Provide the path to your tsconfig.json so that your stories can
-            // display types from outside each individual story.
-            tsconfigPath: path.resolve(__dirname, '../tsconfig.json'),
-          },
-        },
+        // {
+        //   loader: require.resolve('react-docgen-typescript-loader'),
+        //   // options: {
+        //   //   // Provide the path to your tsconfig.json so that your stories can
+        //   //   // display types from outside each individual story.
+        //   //   tsconfigPath: path.resolve(__dirname, '../tsconfig.json'),
+        //   // },
+        // },
       ],
     });
 
     config.resolve.extensions.push('.ts', '.tsx');
+
+    // custom configuration
+    config.resolve.modules.push(path.resolve(__dirname, '../src'));
 
     return config;
   },

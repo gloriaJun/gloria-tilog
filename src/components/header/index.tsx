@@ -1,15 +1,7 @@
 import React from 'react';
-import styled from '@emotion/styled';
 
-const Wrapper = styled.header`
-  position: sticky;
-  top: 0;
-  display: flex;
-  height: 3.5rem;
-  background-color: #fff;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.0975);
-  z-index: 10;
-`;
+import { Wrapper, Logo, LinkGroup } from './style';
+import { ReactComponent as GithubIcon } from 'icons/github.svg';
 
 export interface IHeaderProps {
   title: string;
@@ -19,10 +11,20 @@ export interface IHeaderProps {
 //   pathname: string;
 // }
 
+/**
+ * The world's most _basic_ button
+ */
 const Header: React.FC<IHeaderProps> = ({ title }) => {
   return (
     <Wrapper>
-      <h1>{title}</h1>
+      <Logo>
+        <a href="">{title}</a>
+      </Logo>
+
+      <LinkGroup>
+        <span>Test</span>
+        <GithubIcon />
+      </LinkGroup>
     </Wrapper>
   );
 };
