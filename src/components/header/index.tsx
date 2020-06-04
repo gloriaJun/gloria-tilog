@@ -1,15 +1,14 @@
 import React from 'react';
 import { Link } from 'gatsby';
 
-import { Wrapper, Logo, LinkGroup, iconStyle } from './style';
 import { ReactComponent as GithubIcon } from 'icons/github.svg';
-import { css } from '@emotion/core';
+import { Wrapper, Logo, LinkGroup, iconStyle } from './style';
 
 interface Navigation {
   github: string;
 }
 
-interface IHeaderProps {
+export interface IHeaderProps {
   /** Title for the site */
   title: string;
   /** Object of navigation items */
@@ -19,7 +18,10 @@ interface IHeaderProps {
 /**
  * header of layout
  */
-export const Header: React.FC<IHeaderProps> = ({ title, navigation }) => {
+export const Header: React.FC<IHeaderProps> = ({
+  title,
+  navigation,
+}: IHeaderProps) => {
   return (
     <Wrapper>
       <Logo>
