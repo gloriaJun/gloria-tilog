@@ -7,30 +7,42 @@
 // GraphQL query operation: HomePageData
 // ====================================================
 
-export interface HomePageData_allMarkdownRemark_edges_node_fields {
+export interface HomePageData_list_group_edges_node_childMdx_fields {
   slug: string | null;
 }
 
-export interface HomePageData_allMarkdownRemark_edges_node_frontmatter {
+export interface HomePageData_list_group_edges_node_childMdx_frontmatter {
+  category: string | null;
   date: any | null;
-  title: string | null;
+  tags: (string | null)[] | null;
+  title: string;
 }
 
-export interface HomePageData_allMarkdownRemark_edges_node {
+export interface HomePageData_list_group_edges_node_childMdx {
   id: string;
-  fields: HomePageData_allMarkdownRemark_edges_node_fields | null;
-  frontmatter: HomePageData_allMarkdownRemark_edges_node_frontmatter | null;
-  excerpt: string | null;
+  fields: HomePageData_list_group_edges_node_childMdx_fields | null;
+  frontmatter: HomePageData_list_group_edges_node_childMdx_frontmatter | null;
+  excerpt: string;
 }
 
-export interface HomePageData_allMarkdownRemark_edges {
-  node: HomePageData_allMarkdownRemark_edges_node;
+export interface HomePageData_list_group_edges_node {
+  id: string;
+  sourceInstanceName: string;
+  childMdx: HomePageData_list_group_edges_node_childMdx | null;
 }
 
-export interface HomePageData_allMarkdownRemark {
-  edges: HomePageData_allMarkdownRemark_edges[];
+export interface HomePageData_list_group_edges {
+  node: HomePageData_list_group_edges_node;
+}
+
+export interface HomePageData_list_group {
+  edges: HomePageData_list_group_edges[];
+}
+
+export interface HomePageData_list {
+  group: HomePageData_list_group[];
 }
 
 export interface HomePageData {
-  allMarkdownRemark: HomePageData_allMarkdownRemark;
+  list: HomePageData_list;
 }
