@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { render } from '../../../test-helpers';
-// import { render } from 'tests';
+// import { render } from '../../../__tests__';
+import { render } from 'tests/helpers';
 import { Header } from './index';
 
 describe('<Header />', () => {

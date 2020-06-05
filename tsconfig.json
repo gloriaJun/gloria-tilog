@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
     "rootDirs": ["src"],
-    "baseUrl": "src",
+    "baseUrl": "./",
     "paths": {
       "*": ["*", "src/*"],
-      "tests/*": ["test-helpers/*"]
+      "tests/*": ["__tests__/*"]
     },
     /* Basic Options */
     // "incremental": true,                   /* Enable incremental compilation */
