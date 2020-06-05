@@ -14,6 +14,7 @@ module.exports = {
       '<rootDir>/__mocks__/fileMock.ts',
     '^tests/(.*)$': '<rootDir>/__tests__/$1',
     '^src/(.*)$': '<rootDir>/src/$1',
+    '^components/(.*)$': '<rootDir>/src/components/$1',
     '^styles/(.*)$': '<rootDir>/src/styles/$1',
     '^icons/(.*)$': '<rootDir>/src/icons/$1',
   },
