@@ -1,9 +1,15 @@
 import React from 'react';
-import Header from './index';
+import { text } from '@storybook/addon-knobs';
+
+import { Header } from './index';
 
 export default {
   title: 'Layout/Header',
   component: Header,
 };
 
-export const normal = () => <Header title={'HELLO'} />;
+export const header = () => {
+  const title = text('title', 'Logo');
+
+  return <Header title={title} />;
+};

@@ -63,5 +63,6 @@ module.exports = {
       resolve: 'gatsby-plugin-codegen',
       options: {},
     },
+    'gatsby-plugin-svgr',
   ],
 };

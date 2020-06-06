@@ -1,27 +1,47 @@
 import React from 'react';
-import styled from '@emotion/styled';
+import { Link } from 'gatsby';
 
-type Props = {
+import { ExternalLink } from 'components/external-link';
+import { ReactComponent as GithubIcon } from 'icons/github.svg';
+import { Wrapper, Logo, LinkGroup, iconStyle } from './style';
+
+interface Navigation {
+  github: string;
+}
+
+interface IHeaderProps {
+  /** Title for the site */
   title: string;
-};
+  /** Object of navigation items */
+  navigation?: Navigation;
+}
 
-const Wrapper = styled.div`
-  position: sticky;
-  top: 0;
-  display: flex;
-  height: 3.5rem;
-  background-color: #cd84f1;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.0975);
-
-  color: #fff;
-`;
-
-const Header = ({ title }: Props) => {
+/**
+ * header of layout
+ */
+export const Header: React.FC<IHeaderProps> = ({
+  title,
+  navigation,
+}: IHeaderProps) => {
   return (
     <Wrapper>
-      <h1>{title}</h1>
+      <Logo>
+        <Link to="" data-testid="logo-link">
+          {title}
+        </Link>
+      </Logo>
+
+      {navigation && (
+        <LinkGroup data-testid="link-group">
+          {navigation.github && (
+            <ExternalLink href={navigation.github}>
+              <GithubIcon css={iconStyle} />
+            </ExternalLink>
+          )}
+        </LinkGroup>
+      )}
     </Wrapper>
   );
 };
 
-export default Header;
+Header.defaultProps = {};
