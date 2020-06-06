@@ -26,7 +26,6 @@ export interface HomePageData_list_group_edges_node_childMdx {
 }
 
 export interface HomePageData_list_group_edges_node {
-  id: string;
   sourceInstanceName: string;
   childMdx: HomePageData_list_group_edges_node_childMdx | null;
 }

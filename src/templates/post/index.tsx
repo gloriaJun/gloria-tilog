@@ -18,7 +18,7 @@ interface IQueryProps {
 const PostTemplate: React.FC<IQueryProps> = ({ data: { mdx } }) => {
   return (
     <>
-      <pre>{mdx.frontmatter.title}</pre>
+      <pre>{mdx.frontmatter?.title}</pre>
       <MDXProvider>
         <MDXRenderer>{mdx.body}</MDXRenderer>
       </MDXProvider>
