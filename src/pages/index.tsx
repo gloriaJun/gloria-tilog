@@ -26,16 +26,17 @@ const IndexPage: React.FC<IQueryProps> = ({ data }) => {
           <>
             <h2>{edges[0].node.sourceInstanceName}</h2>
             <ul>
-              {edges.map(({ node }) => (
-                <li key={node.id}>
-                  <Link to={node.childMdx?.fields?.slug}>
-                    <p>{node.childMdx?.fields?.slug}</p>
+              {edges.map(({ node: { childMdx } }) => (
+                <li key={childMdx?.id}>
+                  <Link to={childMdx?.fields?.slug}>
+                    <p>{childMdx?.id}</p>
+                    <p>{childMdx?.fields?.slug}</p>
                     <h3>
-                      [{node.childMdx?.frontmatter?.category}]{' '}
-                      {node.childMdx?.frontmatter?.title}{' '}
-                      <span>— {node.childMdx?.frontmatter?.date}</span>
+                      [{childMdx?.frontmatter?.category}]{' '}
+                      {childMdx?.frontmatter?.title}{' '}
+                      <span>— {childMdx?.frontmatter?.date}</span>
                     </h3>
-                    <p>{node.childMdx?.excerpt}</p>
+                    <p>{childMdx?.excerpt}</p>
                   </Link>
                 </li>
               ))}
@@ -75,7 +76,6 @@ export const pageQuery = graphql`
       group(field: sourceInstanceName) {
         edges {
           node {
-            id
             sourceInstanceName
             childMdx {
               id

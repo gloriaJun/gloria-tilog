@@ -2,9 +2,9 @@ import * as path from 'path';
 import { GatsbyNode } from 'gatsby';
 
 interface INode {
-  id: string;
   sourceInstanceName: string;
   childMdx: {
+    id: string;
     fields: {
       slug: string;
     };
@@ -48,9 +48,9 @@ export const createPages: GatsbyNode['createPages'] = async ({
         blog: allFile {
           edges {
             node {
-              id
               sourceInstanceName
               childMdx {
+                id
                 fields {
                   slug
                 }
@@ -76,10 +76,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
   const posts = data.blog.edges;
 
   posts.forEach(({ node }) => {
-    const {
-      id,
-      childMdx: { fields },
-    } = node;
+    const { id, fields } = node.childMdx;
 
     createPage({
       path: fields.slug,

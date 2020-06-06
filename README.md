@@ -8,13 +8,11 @@
 </h1>
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/0c173e77-2b08-479c-9002-08cbdde55ddd/deploy-status)](https://app.netlify.com/sites/gtilog/deploys)
-[![Build Status](https://travis-ci.org/gloriaJun/gloria-tilog.svg?branch=master)](https://travis-ci.org/gloriaJun/gloria-tilog) 
-[![Dependencies](https://badgen.net/dependabot/gloriaJun/gloria-tilog/231395721?icon=dependabot)](https://app.dependabot.com/accounts/gloriaJun/repos/231395721) 
-
+[![Netlify Status - storybook](https://api.netlify.com/api/v1/badges/84f362a0-2606-4860-822c-11a858d050fc/deploy-status)](https://app.netlify.com/sites/gtilog-storybook/deploys)
 
 ## 🚀 Homepages
 
-- Storybook : https://gloriajun.github.io/gloria-tilog/
+- Storybook : https://gtilog-storybook.netlify.app
 
 ## 🧐 What's inside?
 
@@ -24,3 +22,5 @@
 - Emotion
 - Storybook
 - Cypress
+- Jest
+- @testing-library/react
