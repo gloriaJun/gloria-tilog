@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 
 import { ExternalLink } from 'components/external-link';
 import { ReactComponent as GithubIcon } from 'icons/github.svg';
-import { Wrapper, Logo, LinkGroup, iconStyle } from './style';
+import { Wrapper, Logo, LinkGroup, iconStyle, LogoLinkStyle } from './style';
 
 interface Navigation {
   github: string;
@@ -26,7 +26,7 @@ export const Header: React.FC<IHeaderProps> = ({
   return (
     <Wrapper>
       <Logo>
-        <Link to="" data-testid="logo-link">
+        <Link css={LogoLinkStyle} to="" data-testid="logo-link">
           {title}
         </Link>
       </Logo>
