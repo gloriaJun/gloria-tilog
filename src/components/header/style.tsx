@@ -23,6 +23,18 @@ export const Logo = styled.h1`
   display: flex;
   align-items: center;
   color: ${headerFontColor};
+  font-weight: 600;
+`;
+
+export const LogoLinkStyle = css`
+  color: inherit;
+  font-weight: inherit;
+  text-shadow: none;
+  background-image: none;
+  text-decoration: none;
+  &:hover {
+    color: inherit;
+  }
 `;
 
 export const LinkGroup = styled.div`
