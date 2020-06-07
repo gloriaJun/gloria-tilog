@@ -4,4 +4,13 @@
  * See: https://www.gatsbyjs.org/docs/browser-apis/
  */
 
-// You can delete this file if you're not using it
+// https://prismjs.com/plugins/inline-color/
+// https://prismjs.com/plugins/diff-highlight/
+
+require('prismjs/themes/prism-tomorrow.css');
+// customize style
+require('./src/styles/prism.css');
+
+// plugin
+require('prismjs/plugins/line-numbers/prism-line-numbers.css');
+// require('prismjs/plugins/line-highlight/prism-line-highlight.js');
