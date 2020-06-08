@@ -3,19 +3,19 @@ import { graphql } from 'gatsby';
 import { MDXProvider } from '@mdx-js/react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 
+import { BlogPostBySlug } from './__generated__/BlogPostBySlug';
+
 interface IQueryProps {
-  data: {
-    mdx: {
-      body: string;
-      frontmatter: {
-        title: string;
-        date: string;
-      };
-    };
-  };
+  data: BlogPostBySlug;
 }
 
 const PostTemplate: React.FC<IQueryProps> = ({ data: { mdx } }) => {
+  if (!mdx) {
+    return <></>;
+  }
+
+  console.log(mdx);
+
   return (
     <>
       <pre>{mdx.frontmatter?.title}</pre>
@@ -36,6 +36,13 @@ export const pageQuery = graphql`
       frontmatter {
         date
         title
+        thumbnail {
+          childImageSharp {
+            fluid {
+              src
+            }
+          }
+        }
       }
     }
   }
