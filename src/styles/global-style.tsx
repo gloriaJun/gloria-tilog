@@ -1,11 +1,13 @@
 /** @jsx jsx */
 import { Global, css, jsx } from '@emotion/core';
-import { reset } from './reset';
+import normalize from 'emotion-normalize';
 
 const styles = css`
-  ${reset}
+  ${normalize}
 
-  body {
+  /* reset */
+   * {
+    box-sizing: border-box;
   }
 `;
 
