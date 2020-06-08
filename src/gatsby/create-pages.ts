@@ -45,7 +45,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
   const { data, errors } = await graphql<IQueryResult>(
     `
       {
-        blog: allFile {
+        blog: allFile(filter: { childMdx: { id: { ne: null } } }) {
           edges {
             node {
               sourceInstanceName
