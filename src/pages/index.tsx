@@ -72,6 +72,7 @@ export const pageQuery = graphql`
         order: DESC
         fields: [sourceInstanceName, childMdx___frontmatter___date]
       }
+      filter: { childMdx: { id: { ne: null } } }
     ) {
       group(field: sourceInstanceName) {
         edges {

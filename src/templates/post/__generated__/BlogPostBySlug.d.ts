@@ -10,6 +10,7 @@
 export interface BlogPostBySlug_mdx_frontmatter {
   date: any | null;
   title: string;
+  thumbnail: string | null;
 }
 
 export interface BlogPostBySlug_mdx {
