@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useLayoutEffect } from 'react';
 import { attributes } from '../constants/utterances';
 
 /**
@@ -8,7 +8,7 @@ import { attributes } from '../constants/utterances';
 export const Utterances: React.FC = () => {
   const ref = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const el = document.createElement('script');
 
     el.setAttribute('data-testId', 'utterances');

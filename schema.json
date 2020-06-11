@@ -15948,6 +15948,37 @@
                 "ofType": null
               },
               "defaultValue": null
+            },
+            {
+              "name": "social",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "SiteSiteMetadataSocialFilterInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            }
+          ],
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "INPUT_OBJECT",
+          "name": "SiteSiteMetadataSocialFilterInput",
+          "description": null,
+          "fields": null,
+          "inputFields": [
+            {
+              "name": "github",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "StringQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
             }
           ],
           "interfaces": null,
@@ -16233,6 +16264,41 @@
               },
               "isDeprecated": false,
               "deprecationReason": null
+            },
+            {
+              "name": "social",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "SiteSiteMetadataSocial",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "SiteSiteMetadataSocial",
+          "description": null,
+          "fields": [
+            {
+              "name": "github",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
             }
           ],
           "inputFields": null,
@@ -16418,6 +16484,12 @@
             },
             {
               "name": "siteMetadata___author",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "siteMetadata___social___github",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null
