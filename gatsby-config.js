@@ -10,6 +10,9 @@ module.exports = {
     social: {
       github: 'https://github.com/gloriaJun',
     },
+    comment: {
+      utterances: 'gloriaJun/gloria-tilog-comment',
+    },
   },
   plugins: [
     {

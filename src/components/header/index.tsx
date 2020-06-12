@@ -19,10 +19,7 @@ interface IHeaderProps {
 /**
  * header of layout
  */
-export const Header: React.FC<IHeaderProps> = ({
-  title,
-  navigation,
-}: IHeaderProps) => {
+export const Header: React.FC<IHeaderProps> = ({ title, navigation }) => {
   return (
     <Wrapper>
       <Logo>

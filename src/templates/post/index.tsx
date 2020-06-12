@@ -10,20 +10,20 @@ interface IQueryProps {
   data: BlogPostBySlug;
 }
 
-const PostTemplate: React.FC<IQueryProps> = ({ data: { mdx } }) => {
+const PostTemplate: React.FC<IQueryProps> = ({ data: { site, mdx } }) => {
   if (!mdx) {
     return <></>;
   }
 
   return (
-    <>
+    <article>
       <pre>{mdx.frontmatter?.title}</pre>
       <MDXProvider>
         <MDXRenderer>{mdx.body}</MDXRenderer>
       </MDXProvider>
 
-      <Utterances />
-    </>
+      <Utterances repo={site.siteMetadata.comment.utterances} />
+    </article>
   );
 };
 
@@ -31,6 +31,13 @@ export default PostTemplate;
 
 export const pageQuery = graphql`
   query BlogPostBySlug($id: String!) {
+    site {
+      siteMetadata {
+        comment {
+          utterances
+        }
+      }
+    }
     mdx(id: { eq: $id }) {
       id
       body
