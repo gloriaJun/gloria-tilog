@@ -1,8 +1,9 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import { MDXProvider } from '@mdx-js/react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
+import { MDXProvider } from '@mdx-js/react';
 
+import { Utterances } from 'components/utterances';
 import { BlogPostBySlug } from './__generated__/BlogPostBySlug';
 
 interface IQueryProps {
@@ -14,14 +15,14 @@ const PostTemplate: React.FC<IQueryProps> = ({ data: { mdx } }) => {
     return <></>;
   }
 
-  console.log(mdx);
-
   return (
     <>
       <pre>{mdx.frontmatter?.title}</pre>
       <MDXProvider>
         <MDXRenderer>{mdx.body}</MDXRenderer>
       </MDXProvider>
+
+      <Utterances />
     </>
   );
 };

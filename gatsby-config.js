@@ -7,6 +7,9 @@ module.exports = {
     title: `L.E.T`,
     description: `Learn! Experience! Think!`,
     author: `@gloriaJun`,
+    social: {
+      github: 'https://github.com/gloriaJun',
+    },
   },
   plugins: [
     {
