@@ -6,7 +6,7 @@ type Props = {
 };
 
 const Wrapper = styled.div`
-  margin: 1rem 2.5rem;
+  margin: 3rem 5rem;
 `;
 
 const Content = ({ children }: Props) => {
