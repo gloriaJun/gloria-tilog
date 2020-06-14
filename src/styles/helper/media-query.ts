@@ -1,7 +1,7 @@
 import { css, SerializedStyles } from '@emotion/core';
 
 const getMediaQuery = (breakpoint: number, styles: SerializedStyles) => css`
-  @media (min-width: ${breakpoint}px) {
+  @media (max-width: ${breakpoint}px) {
     ${styles}
   }
 `;
