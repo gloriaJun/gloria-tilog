@@ -1,4 +1,5 @@
 /** @jsx jsx */
+import { ReactElement } from 'react';
 import { Global, css, jsx } from '@emotion/core';
 import normalize from 'emotion-normalize';
 
@@ -21,6 +22,6 @@ const styles = css`
   }
 `;
 
-const GlobalStyle = () => <Global styles={styles} />;
+const GlobalStyle = (): ReactElement => <Global styles={styles} />;
 
 export default GlobalStyle;

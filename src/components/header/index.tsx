@@ -9,7 +9,7 @@ interface Navigation {
   github: string;
 }
 
-interface IHeaderProps {
+export interface IHeaderProps {
   /** Title for the site */
   title: string;
   /** Object of navigation items */
