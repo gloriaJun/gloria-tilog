@@ -1,9 +1,10 @@
 import React from 'react';
+
 import Content from './index';
 
 export default {
-  title: 'Layout/Content',
+  title: 'Content',
   component: Content,
 };
 
-export const normal = () => <Content>This is text.</Content>;
+export const normal: React.FC = () => <Content>This is text.</Content>;
