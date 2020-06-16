@@ -11,6 +11,10 @@ export const Title = styled.h1`
 export const Info = styled.div`
   display: flex;
   font-size: 0.9rem;
+
+  p {
+    margin: 0;
+  }
 `;
 
 export const Category = styled.p`
