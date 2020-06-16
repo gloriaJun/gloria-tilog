@@ -5,7 +5,7 @@ import GlobalStyle from '../../src/styles/global-style';
 const GlobalStyleProvider = (storyFn) => (
   <>
     <GlobalStyle />
-    <div style={{ padding: '1rem' }}>{storyFn()}</div>
+    <div>{storyFn()}</div>
   </>
 );
 
