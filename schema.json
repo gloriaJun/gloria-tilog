@@ -13064,6 +13064,37 @@
                 "ofType": null
               },
               "defaultValue": null
+            },
+            {
+              "name": "commentPlugins",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "SitePageContextCommentPluginsFilterInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            }
+          ],
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "INPUT_OBJECT",
+          "name": "SitePageContextCommentPluginsFilterInput",
+          "description": null,
+          "fields": null,
+          "inputFields": [
+            {
+              "name": "utterances",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "StringQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
             }
           ],
           "interfaces": null,
@@ -13798,6 +13829,41 @@
           "fields": [
             {
               "name": "id",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "commentPlugins",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "SitePageContextCommentPlugins",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "SitePageContextCommentPlugins",
+          "description": null,
+          "fields": [
+            {
+              "name": "utterances",
               "description": null,
               "args": [],
               "type": {
@@ -15138,6 +15204,12 @@
               "deprecationReason": null
             },
             {
+              "name": "context___commentPlugins___utterances",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "pluginCreator___id",
               "description": null,
               "isDeprecated": false,
@@ -15958,6 +16030,16 @@
                 "ofType": null
               },
               "defaultValue": null
+            },
+            {
+              "name": "comment",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "SiteSiteMetadataCommentFilterInput",
+                "ofType": null
+              },
+              "defaultValue": null
             }
           ],
           "interfaces": null,
@@ -15972,6 +16054,27 @@
           "inputFields": [
             {
               "name": "github",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "StringQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            }
+          ],
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "INPUT_OBJECT",
+          "name": "SiteSiteMetadataCommentFilterInput",
+          "description": null,
+          "fields": null,
+          "inputFields": [
+            {
+              "name": "utterances",
               "description": "",
               "type": {
                 "kind": "INPUT_OBJECT",
@@ -16276,6 +16379,18 @@
               },
               "isDeprecated": false,
               "deprecationReason": null
+            },
+            {
+              "name": "comment",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "SiteSiteMetadataComment",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
             }
           ],
           "inputFields": null,
@@ -16290,6 +16405,29 @@
           "fields": [
             {
               "name": "github",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "SiteSiteMetadataComment",
+          "description": null,
+          "fields": [
+            {
+              "name": "utterances",
               "description": null,
               "args": [],
               "type": {
@@ -16490,6 +16628,12 @@
             },
             {
               "name": "siteMetadata___social___github",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "siteMetadata___comment___utterances",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null

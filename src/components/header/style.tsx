@@ -9,7 +9,7 @@ export const Wrapper = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: ${space.xlarge} ${space.large};
+  padding: ${space.medium} ${space.small};
   margin-bottom: ${space.medium};
   width: 100%;
   background-color: ${color.primary};

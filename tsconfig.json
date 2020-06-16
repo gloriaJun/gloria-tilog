@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
     "rootDirs": ["src"],
-    "baseUrl": "./",
+    "baseUrl": "src",
     "paths": {
-      "*": ["*", "src/*"],
+      "*": ["*"],
       "tests/*": ["__tests__/*"]
     },
     /* Basic Options */
@@ -31,12 +31,7 @@
     /* Advanced Options */
     "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */
   },
-  "include": [
-    "src/**/*",
-    "test-helpers/**/*",
-    "__mocks__/**/*",
-    "jest-preprocess.ts"
-  ],
+  "include": ["src/**/*", "test-helpers/**/*", "jest-preprocess.ts"],
   "exclude": [
     "node_modules",
     "public",

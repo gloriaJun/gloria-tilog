@@ -3,27 +3,42 @@ import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
 
+import { Layout } from 'components/layout';
+import { PostHeader } from 'components/post-header';
 import { Utterances } from 'components/utterances';
+import { ItemplateProps } from 'interfaces';
 import { BlogPostBySlug } from './__generated__/BlogPostBySlug';
 
-interface IQueryProps {
-  data: BlogPostBySlug;
-}
+type IQueryProps = ItemplateProps<BlogPostBySlug>;
 
-const PostTemplate: React.FC<IQueryProps> = ({ data: { mdx } }) => {
-  if (!mdx) {
-    return <></>;
-  }
+const PostTemplate: React.FC<IQueryProps> = ({
+  pageContext,
+  data: { mdx },
+}) => {
+  const { frontmatter, body } = mdx || {};
 
   return (
-    <>
-      <pre>{mdx.frontmatter?.title}</pre>
-      <MDXProvider>
-        <MDXRenderer>{mdx.body}</MDXRenderer>
-      </MDXProvider>
+    <Layout>
+      <article>
+        {frontmatter && (
+          <PostHeader
+            title={frontmatter.title}
+            date={frontmatter.date}
+            category={frontmatter.category}
+          />
+        )}
 
-      <Utterances />
-    </>
+        {body && (
+          <MDXProvider>
+            <MDXRenderer>{body}</MDXRenderer>
+          </MDXProvider>
+        )}
+
+        {pageContext.commentPlugins.utterances && (
+          <Utterances repo={pageContext.commentPlugins.utterances} />
+        )}
+      </article>
+    </Layout>
   );
 };
 
@@ -35,8 +50,10 @@ export const pageQuery = graphql`
       id
       body
       frontmatter {
-        date
         title
+        date
+        category
+        tags
         thumbnail {
           childImageSharp {
             fluid {

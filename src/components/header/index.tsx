@@ -9,7 +9,7 @@ interface Navigation {
   github: string;
 }
 
-interface IHeaderProps {
+export interface IHeaderProps {
   /** Title for the site */
   title: string;
   /** Object of navigation items */
@@ -19,10 +19,7 @@ interface IHeaderProps {
 /**
  * header of layout
  */
-export const Header: React.FC<IHeaderProps> = ({
-  title,
-  navigation,
-}: IHeaderProps) => {
+export const Header: React.FC<IHeaderProps> = ({ title, navigation }) => {
   return (
     <Wrapper>
       <Logo>

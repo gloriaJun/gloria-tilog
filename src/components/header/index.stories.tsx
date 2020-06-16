@@ -1,14 +1,14 @@
 import React from 'react';
 import { text } from '@storybook/addon-knobs';
 
-import { Header } from './index';
+import { Header, IHeaderProps } from './index';
 
 export default {
-  title: 'Layout/Header',
+  title: 'Header',
   component: Header,
 };
 
-export const header = () => {
+export const normal: React.FC<IHeaderProps> = () => {
   const title = text('title', 'Logo');
 
   return <Header title={title} />;
