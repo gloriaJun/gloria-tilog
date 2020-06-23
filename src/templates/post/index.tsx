@@ -11,10 +11,10 @@ import { BlogPostBySlug } from './__generated__/BlogPostBySlug';
 
 type IQueryProps = ItemplateProps<BlogPostBySlug>;
 
-const PostTemplate: React.FC<IQueryProps> = ({
+const PostTemplate = ({
   pageContext,
   data: { mdx },
-}) => {
+}: IQueryProps): JSX.Element => {
   const { frontmatter, body } = mdx || {};
 
   return (

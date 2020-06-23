@@ -4,9 +4,9 @@ import styled from '@emotion/styled';
 import mediaQuery from 'styles/helper/media-query';
 import { css } from '@emotion/core';
 
-type Props = {
+interface IContentProps {
   children: React.ReactNode;
-};
+}
 
 const Wrapper = styled.div`
   margin: 3rem 5rem;
@@ -15,8 +15,6 @@ const Wrapper = styled.div`
   `)}
 `;
 
-const Content = ({ children }: Props) => {
+export default function Content({ children }: IContentProps): JSX.Element {
   return <Wrapper>{children}</Wrapper>;
-};
-
-export default Content;
+}

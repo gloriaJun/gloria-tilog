@@ -6,4 +6,4 @@ export default {
   component: Content,
 };
 
-export const normal = () => <Content>This is text.</Content>;
+export const normal = (): JSX.Element => <Content>This is text.</Content>;

@@ -9,11 +9,11 @@ export interface IPostHeaderProps {
   category: string;
 }
 
-export const PostHeader: React.FC<IPostHeaderProps> = ({
+export const PostHeader = ({
   title,
   date,
   category,
-}) => {
+}: IPostHeaderProps): JSX.Element => {
   return (
     <Wrapper>
       <Title>{title}</Title>

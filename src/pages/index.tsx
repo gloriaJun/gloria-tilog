@@ -8,7 +8,7 @@ interface IQueryProps {
   data: HomePageData;
 }
 
-const IndexPage: React.FC<IQueryProps> = ({ data }) => {
+const IndexPage = ({ data }: IQueryProps): JSX.Element => {
   return (
     <Layout>
       <h1>Hello, World!!!</h1>

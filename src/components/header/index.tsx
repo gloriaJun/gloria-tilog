@@ -19,7 +19,7 @@ export interface IHeaderProps {
 /**
  * header of layout
  */
-export const Header: React.FC<IHeaderProps> = ({ title, navigation }) => {
+export const Header = ({ title, navigation }: IHeaderProps): JSX.Element => {
   return (
     <Wrapper>
       <Logo>
