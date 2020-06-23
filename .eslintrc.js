@@ -18,7 +18,7 @@ module.exports = {
     es6: true,
     jest: true,
   },
-  plugins: ['@typescript-eslint', 'react'],
+  plugins: ['@typescript-eslint', 'react', 'react-hooks', 'simple-import-sort'],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
