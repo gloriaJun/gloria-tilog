@@ -114,5 +114,23 @@
     "ts-jest": "^26.1.0",
     "typescript": "^3.8.3",
     "typography": "^0.16.19"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "yarn lint:fix",
+      "prettier --write",
+      "git add"
+    ],
+    "{*.{json,md}}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "yarn lint && prettier -c"
+    }
   }
+
 }
