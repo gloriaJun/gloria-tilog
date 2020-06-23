@@ -28,6 +28,8 @@
     "clean": "gatsby clean",
     "lint": "eslint --ignore-path .gitignore . --ext ts --ext tsx --ext js --ext jsx",
     "lint:fix": "cross-env $npm_execpath run lint --fix",
+    "prettier:fix": "cross-env $npm_execpath run prettier --write .",
+    "prettier:check": "cross-env $npm_execpath run prettier --check .",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "deploy-storybook": "storybook-to-ghpages",
@@ -118,18 +120,18 @@
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
       "yarn lint:fix",
-      "prettier --write",
-      "git add"
+      "yarn prettier:fix",
+      "git add ."
     ],
     "{*.{json,md}}": [
       "prettier --write",
-      "git add"
+      "git add ."
     ]
   },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "pre-push": "yarn lint && prettier --check"
+      "pre-push": "yarn lint && yarn prettier:check"
     }
   }
 
