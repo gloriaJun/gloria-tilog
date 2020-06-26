@@ -21,6 +21,8 @@ install:
 
 jobs:
   include:
+    - stage: lint
+      script: npm run lint
     - stage: unit-test
       script: npm run test
       # require the branch name to be master (note for PRs this is the base branch name)
