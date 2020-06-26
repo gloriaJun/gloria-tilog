@@ -9,7 +9,7 @@ export const Wrapper = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: ${space.medium} ${space.small};
+  padding: ${space.medium} ${space.medium};
   margin-bottom: ${space.medium};
   width: 100%;
   background-color: ${color.primary};
@@ -20,8 +20,6 @@ export const Wrapper = styled.header`
 `;
 
 export const Logo = styled.h1`
-  display: flex;
-  align-items: center;
   color: ${headerFontColor};
   font-weight: 600;
 `;

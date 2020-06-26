@@ -31,13 +31,5 @@
     /* Advanced Options */
     "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */
   },
-  "include": ["src/**/*", "test-helpers/**/*", "jest-preprocess.ts"],
-  "exclude": [
-    "node_modules",
-    "public",
-    ".cache",
-    "**/*.spec.ts",
-    "**/*.spec.tsx",
-    "**/_generated_/*.ts"
-  ]
+  "include": ["src/**/*", "jest-preprocess.ts"]
 }
