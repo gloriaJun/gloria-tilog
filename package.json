@@ -38,9 +38,12 @@
     "cy:run": "cypress run",
     "cy:open": "cypress open",
     "test": "jest",
+    "test:coverage": "jest --coverage",
     "test:watch": "jest --watch",
     "test:e2e:run": "start-test serve 8000 cy:run",
-    "test:e2e:open": "start-test start 8000 cy:open"
+    "test:e2e:open": "start-test start 8000 cy:open",
+    "precoverage": "npm run test:coverage",
+    "coverage": "cat ./coverage/lcov.info | coveralls"
   },
   "dependencies": {
     "@emotion/core": "^10.0.27",
@@ -96,6 +99,7 @@
     "babel-plugin-react-docgen": "^4.1.0",
     "babel-preset-gatsby": "^0.4.8",
     "babel-preset-react-app": "^9.1.2",
+    "coveralls": "^3.1.0",
     "cross-env": "^7.0.2",
     "cypress": "^4.2.0",
     "eslint": "^7.1.0",

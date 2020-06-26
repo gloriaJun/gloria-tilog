@@ -87,5 +87,8 @@ cypress/videos
 # snyk
 .snyk
 
+# coveralls
+.coveralls.yml
+
 # auto generated file
 
