@@ -8,7 +8,7 @@ export interface ILayoutProps {
   children: React.ReactNode;
 }
 
-export const Layout: React.FC<ILayoutProps> = ({ children }) => {
+export const Layout = ({ children }: ILayoutProps): JSX.Element => {
   return (
     <>
       <GlobalStyle />

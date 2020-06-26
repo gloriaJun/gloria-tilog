@@ -8,7 +8,7 @@ interface IQueryProps {
  * the blog comment can write and view by using github issue
  * https://utteranc.es/
  */
-export const Utterances: React.FC<IQueryProps> = ({ repo }) => {
+export const Utterances = ({ repo }: IQueryProps): JSX.Element => {
   const ref = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {

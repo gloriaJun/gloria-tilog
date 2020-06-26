@@ -7,4 +7,4 @@ export default {
   component: Content,
 };
 
-export const normal: React.FC = () => <Content>This is text.</Content>;
+export const normal = (): JSX.Element => <Content>This is text.</Content>;
