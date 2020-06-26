@@ -14,7 +14,7 @@
 
 ## 🚀 Homepages
 
-- Storybook : https://gtilog-storybook.netlify.app
+- Storybook : https://gloriajun.github.io/gloria-tilog/
 
 ## 🧐 What's inside?
 
