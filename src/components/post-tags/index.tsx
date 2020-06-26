@@ -7,7 +7,7 @@ export interface IPostTagsProps {
   tags?: string[];
 }
 
-export const PostTags: React.FC<IPostTagsProps> = ({ tags }) => {
+export const PostTags = ({ tags }: IPostTagsProps): JSX.Element => {
   return (
     <TagGroup>
       {tags &&
