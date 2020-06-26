@@ -1,8 +1,9 @@
 import React from 'react';
+
 import Content from './index';
 
 export default {
-  title: 'Layout/Content',
+  title: 'Content',
   component: Content,
 };
 

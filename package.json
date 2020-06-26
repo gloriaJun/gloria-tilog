@@ -20,16 +20,16 @@
     "cypress"
   ],
   "scripts": {
+    "prebuild": "$npm_execpath run test",
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "cross-env $npm_execpath run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "lint": "eslint --ignore-path .gitignore . --ext ts --ext tsx --ext js --ext jsx",
     "lint:fix": "cross-env $npm_execpath run lint --fix",
-    "prettier:fix": "cross-env $npm_execpath run prettier --write .",
-    "prettier:check": "cross-env $npm_execpath run prettier --check .",
+    "prettier:fix": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "prettier:check": "prettier --check .",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "deploy-storybook": "storybook-to-ghpages",
@@ -121,19 +121,13 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
-      "yarn lint:fix",
-      "yarn prettier:fix",
-      "git add ."
+      "npm run lint:fix",
+      "npm run prettier:fix",
+      "git add"
     ],
     "{*.{json,md}}": [
       "prettier --write",
-      "git add ."
+      "git add"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "pre-push": "yarn lint && yarn prettier:check"
-    }
   }
 }

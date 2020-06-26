@@ -5,7 +5,8 @@ module.exports = {
     '^.+\\.mdx$': '@storybook/addon-docs/jest-transform-mdx',
     '^.+\\.(jsx?|tsx?)$': `<rootDir>/jest-preprocess.js`,
   },
-  testRegex: ['(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$'],
+  // testRegex: ['(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$'],
+  testRegex: ['((\\.|/)(test|spec))\\.tsx?$'],
   // moduleDirectories: ['node_modules', __dirname],
   moduleNameMapper: {
     '\\.svg': '<rootDir>/__mocks__/svgr-mock.ts',
@@ -21,7 +22,7 @@ module.exports = {
   testPathIgnorePatterns: [`node_modules`, `.cache`, `public`],
   transformIgnorePatterns: [`node_modules/(?!(gatsby)/)`, `\\.svg`],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
-  setupFiles: ['<rootDir>/src/__tests__/loadershim.js'],
+  setupFiles: ['<rootDir>/src/__tests__/loadershim.ts'],
   setupFilesAfterEnv: ['<rootDir>/src/__tests__/setup-tests.ts'],
   // 테스트 전에 실행되는 global setup 모듈을 지정할 수 있다.
   // globalSetup: "./src/test/setup.ts",
