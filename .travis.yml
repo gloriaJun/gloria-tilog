@@ -29,6 +29,7 @@ jobs:
       # if: branch = master
     - stage: gh-pages
       script: npm run build-storybook
+      if: branch = master
       deploy:
         provider: pages
         skip-cleanup: true
