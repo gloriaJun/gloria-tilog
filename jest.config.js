@@ -5,7 +5,8 @@ module.exports = {
     '^.+\\.mdx$': '@storybook/addon-docs/jest-transform-mdx',
     '^.+\\.(jsx?|tsx?)$': `<rootDir>/jest-preprocess.js`,
   },
-  testRegex: ['(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$'],
+  // testRegex: ['(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$'],
+  testRegex: ['((\\.|/)(test|spec))\\.tsx?$'],
   // moduleDirectories: ['node_modules', __dirname],
   moduleNameMapper: {
     '\\.svg': '<rootDir>/__mocks__/svgr-mock.ts',

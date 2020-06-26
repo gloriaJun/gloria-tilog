@@ -1,14 +1,14 @@
-export const isNull = (obj: any): boolean => {
+export function isNull<T>(obj: T): boolean {
   return obj === null;
-};
+}
 
-export const isUndefined = (obj: any): boolean => {
+export function isUndefined<T>(obj: T): boolean {
   return obj === undefined;
-};
+}
 
-export const isNullOrUndefined = (obj: any): boolean => {
+export function isNullOrUndefined<T>(obj: T): boolean {
   return isNull(obj) || isUndefined(obj);
-};
+}
 
 // export const isObject = (obj: any): boolean => {
 //   return !isNullOrUndefined(obj) && typeof obj === 'object';
@@ -22,10 +22,10 @@ export const isNullOrUndefined = (obj: any): boolean => {
 //   return !isNullOrUndefined(obj) && typeof obj === 'string';
 // };
 
-export const isEmpty = (obj: any): boolean => {
+export function isEmpty<T>(obj: T): boolean {
   return (
     isNullOrUndefined(obj) ||
-    (!isUndefined(obj.length) && obj.length === 0) ||
+    (Array.isArray(obj) && !isUndefined(obj.length) && obj.length === 0) ||
     Object.keys(obj).length === 0
   );
-};
+}
