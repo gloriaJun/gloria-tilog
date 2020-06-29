@@ -3,3 +3,4 @@ package.json
 package-lock.json
 public
 src/_generated_/*
+apollo.config.js

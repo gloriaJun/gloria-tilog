@@ -7,10 +7,24 @@
 // GraphQL query operation: BlogPostBySlug
 // ====================================================
 
+export interface BlogPostBySlug_mdx_frontmatter_thumbnail_childImageSharp_fluid {
+  src: string;
+}
+
+export interface BlogPostBySlug_mdx_frontmatter_thumbnail_childImageSharp {
+  fluid: BlogPostBySlug_mdx_frontmatter_thumbnail_childImageSharp_fluid | null;
+}
+
+export interface BlogPostBySlug_mdx_frontmatter_thumbnail {
+  childImageSharp: BlogPostBySlug_mdx_frontmatter_thumbnail_childImageSharp | null;
+}
+
 export interface BlogPostBySlug_mdx_frontmatter {
-  date: any | null;
   title: string;
-  thumbnail: string | null;
+  date: any | null;
+  category: string | null;
+  tags: (string | null)[] | null;
+  thumbnail: BlogPostBySlug_mdx_frontmatter_thumbnail | null;
 }
 
 export interface BlogPostBySlug_mdx {
