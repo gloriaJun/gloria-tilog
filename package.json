@@ -51,6 +51,7 @@
     "@mdx-js/mdx": "^1.6.5",
     "@mdx-js/react": "^1.6.5",
     "@svgr/webpack": "^5.4.0",
+    "@types/react-helmet": "^6.0.0",
     "circular-dependency-plugin": "^5.2.0",
     "clipboard": "^2.0.6",
     "emotion-normalize": "^10.1.0",

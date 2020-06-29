@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 
-import { ExternalLink } from 'components/external-link';
+import { ExternalLink } from 'components/atoms/external-link';
 import { ReactComponent as GithubIcon } from 'icons/github.svg';
 import { Wrapper, Logo, LinkGroup, iconStyle, LogoLinkStyle } from './style';
 
