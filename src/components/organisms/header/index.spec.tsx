@@ -15,7 +15,7 @@ describe('<Header />', () => {
     const { getByTestId } = render(<Header {...props} />);
     const logoLink = getByTestId('logo-link');
 
-    expect(logoLink).toHaveAttribute('href', '');
+    expect(logoLink).toHaveAttribute('href', '/');
   });
 
   test('should not draw link group ', () => {

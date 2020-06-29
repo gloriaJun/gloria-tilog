@@ -13,7 +13,7 @@ export const Layout = ({ children }: ILayoutProps): JSX.Element => {
     <>
       <GlobalStyle />
 
-      <Header title={'L.E.T'} />
+      <Header />
 
       <Content>{children}</Content>
     </>
