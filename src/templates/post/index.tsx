@@ -9,6 +9,7 @@ import { PostTags } from 'components/organisms/post-tags';
 import { Utterances } from 'components/organisms/utterances';
 import { ItemplateProps } from 'interfaces';
 import { BlogPostBySlug } from './__generated__/BlogPostBySlug';
+import Head from 'components/organisms/head';
 
 type IQueryProps = ItemplateProps<BlogPostBySlug>;
 
@@ -20,6 +21,8 @@ const PostTemplate = ({
 
   return (
     <Layout>
+      <Head title={frontmatter?.title} description={mdx?.excerpt} />
+
       <article>
         {frontmatter && (
           <>
@@ -67,6 +70,7 @@ export const pageQuery = graphql`
           }
         }
       }
+      excerpt
     }
   }
 `;

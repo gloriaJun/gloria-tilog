@@ -3,7 +3,7 @@ import { Link, graphql } from 'gatsby';
 
 import { Layout } from 'components/layout';
 import { HomePageData } from './__generated__/HomePageData';
-import Head from 'components/head';
+import Head from 'components/organisms/head';
 
 interface IQueryProps {
   data: HomePageData;
@@ -12,7 +12,7 @@ interface IQueryProps {
 const IndexPage = ({ data }: IQueryProps): JSX.Element => {
   return (
     <Layout>
-      <Head siteTitle="L.T.E" />
+      <Head />
 
       <h1>Hello, World!!!</h1>
 

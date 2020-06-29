@@ -1,21 +1,43 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import { useStaticQuery, graphql } from 'gatsby';
 
 interface IHeadProps {
-  siteTitle: string;
-  pageTitle?: string;
+  lang?: string;
+  title?: string;
+  description?: string;
 }
 
 export default function Head({
-  siteTitle,
-  pageTitle,
+  lang = 'en',
+  title,
+  description,
 }: IHeadProps): JSX.Element {
+  const {
+    site: { siteMetadata },
+  } = useStaticQuery(
+    graphql`
+      query SEO {
+        site {
+          siteMetadata {
+            title
+            description
+            author
+          }
+        }
+      }
+    `,
+  );
+
   return (
     <Helmet>
+      <html lang={lang} />
       <meta charSet="utf-8" />
-      <title>
-        {siteTitle} | {pageTitle}
-      </title>
+      <title>{title || siteMetadata.title}</title>
+      <meta
+        name="description"
+        content={description || siteMetadata.description}
+      />
     </Helmet>
   );
 }
