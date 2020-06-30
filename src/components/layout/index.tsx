@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { Header } from 'components/header';
-import Content from 'components/content';
+import { Header } from 'components/organisms/header';
+import Content from 'components/atoms/content';
 import GlobalStyle from 'styles/global-style';
 
 export interface ILayoutProps {
@@ -13,7 +13,7 @@ export const Layout = ({ children }: ILayoutProps): JSX.Element => {
     <>
       <GlobalStyle />
 
-      <Header title={'L.E.T'} />
+      <Header />
 
       <Content>{children}</Content>
     </>

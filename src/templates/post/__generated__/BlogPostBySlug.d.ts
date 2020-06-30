@@ -31,6 +31,7 @@ export interface BlogPostBySlug_mdx {
   id: string;
   body: string;
   frontmatter: BlogPostBySlug_mdx_frontmatter | null;
+  excerpt: string;
 }
 
 export interface BlogPostBySlug {

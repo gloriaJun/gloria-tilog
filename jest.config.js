@@ -30,6 +30,7 @@ module.exports = {
   // globalTeardown: "./src/test/teardown.ts",
   globals: {
     __PATH_PREFIX__: '',
+    __BASE_PATH__: '',
   },
   testURL: `http://localhost`,
 };

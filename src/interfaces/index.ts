@@ -3,7 +3,9 @@ interface ICommentPlugis {
 }
 
 export interface ISiteMetadata {
-  comment: ICommentPlugis;
+  title?: string;
+  description?: string;
+  comment?: ICommentPlugis;
 }
 
 export interface ItemplateProps<T> {

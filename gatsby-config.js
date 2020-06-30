@@ -6,6 +6,7 @@ module.exports = {
   siteMetadata: {
     title: `L.E.T`,
     description: `Learn! Experience! Think!`,
+    siteUrl: `https://gtilog.netlify.app/`,
     author: `@gloriaJun`,
     social: {
       github: 'https://github.com/gloriaJun',

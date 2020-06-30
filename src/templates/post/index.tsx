@@ -4,11 +4,12 @@ import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
 
 import { Layout } from 'components/layout';
-import { PostHeader } from 'components/post-header';
-import { PostTags } from 'components/post-tags';
-import { Utterances } from 'components/utterances';
+import { PostHeader } from 'components/organisms/post-header';
+import { PostTags } from 'components/organisms/post-tags';
+import { Utterances } from 'components/organisms/utterances';
 import { ItemplateProps } from 'interfaces';
 import { BlogPostBySlug } from './__generated__/BlogPostBySlug';
+import Head from 'components/organisms/head';
 
 type IQueryProps = ItemplateProps<BlogPostBySlug>;
 
@@ -20,6 +21,8 @@ const PostTemplate = ({
 
   return (
     <Layout>
+      <Head title={frontmatter?.title} description={mdx?.excerpt} />
+
       <article>
         {frontmatter && (
           <>
@@ -67,6 +70,7 @@ export const pageQuery = graphql`
           }
         }
       }
+      excerpt
     }
   }
 `;

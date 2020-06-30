@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 
-import { ExternalLink } from 'components/external-link';
+import { ExternalLink } from 'components/atoms/external-link';
 import { ReactComponent as GithubIcon } from 'icons/github.svg';
 import { Wrapper, Logo, LinkGroup, iconStyle, LogoLinkStyle } from './style';
 
@@ -11,7 +11,7 @@ interface Navigation {
 
 export interface IHeaderProps {
   /** Title for the site */
-  title: string;
+  title?: string;
   /** Object of navigation items */
   navigation?: Navigation;
 }
@@ -23,7 +23,7 @@ export const Header = ({ title, navigation }: IHeaderProps): JSX.Element => {
   return (
     <Wrapper>
       <Logo>
-        <Link css={LogoLinkStyle} to="" data-testid="logo-link">
+        <Link css={LogoLinkStyle} to="/" data-testid="logo-link">
           {title}
         </Link>
       </Logo>
