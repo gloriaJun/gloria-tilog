@@ -23626,11 +23626,7 @@
         {
           "name": "skip",
           "description": "Directs the executor to skip this field or fragment when the `if` argument is true.",
-          "locations": [
-            "FIELD",
-            "FRAGMENT_SPREAD",
-            "INLINE_FRAGMENT"
-          ],
+          "locations": ["FIELD", "FRAGMENT_SPREAD", "INLINE_FRAGMENT"],
           "args": [
             {
               "name": "if",
@@ -23651,11 +23647,7 @@
         {
           "name": "include",
           "description": "Directs the executor to include this field or fragment only when the `if` argument is true.",
-          "locations": [
-            "FIELD",
-            "FRAGMENT_SPREAD",
-            "INLINE_FRAGMENT"
-          ],
+          "locations": ["FIELD", "FRAGMENT_SPREAD", "INLINE_FRAGMENT"],
           "args": [
             {
               "name": "if",
@@ -23676,10 +23668,7 @@
         {
           "name": "deprecated",
           "description": "Marks an element of a GraphQL schema as no longer supported.",
-          "locations": [
-            "FIELD_DEFINITION",
-            "ENUM_VALUE"
-          ],
+          "locations": ["FIELD_DEFINITION", "ENUM_VALUE"],
           "args": [
             {
               "name": "reason",
@@ -23696,9 +23685,7 @@
         {
           "name": "default",
           "description": "Provides default value for input field.",
-          "locations": [
-            "INPUT_FIELD_DEFINITION"
-          ],
+          "locations": ["INPUT_FIELD_DEFINITION"],
           "args": [
             {
               "name": "value",
@@ -23719,9 +23706,7 @@
         {
           "name": "dateformat",
           "description": "Add date formatting options.",
-          "locations": [
-            "FIELD_DEFINITION"
-          ],
+          "locations": ["FIELD_DEFINITION"],
           "args": [
             {
               "name": "formatString",
@@ -23768,9 +23753,7 @@
         {
           "name": "link",
           "description": "Link to node by foreign-key relation.",
-          "locations": [
-            "FIELD_DEFINITION"
-          ],
+          "locations": ["FIELD_DEFINITION"],
           "args": [
             {
               "name": "by",
@@ -23811,9 +23794,7 @@
         {
           "name": "fileByRelativePath",
           "description": "Link to File node by relative path.",
-          "locations": [
-            "FIELD_DEFINITION"
-          ],
+          "locations": ["FIELD_DEFINITION"],
           "args": [
             {
               "name": "from",
@@ -23830,9 +23811,7 @@
         {
           "name": "proxy",
           "description": "Proxy resolver from another field.",
-          "locations": [
-            "FIELD_DEFINITION"
-          ],
+          "locations": ["FIELD_DEFINITION"],
           "args": [
             {
               "name": "from",
@@ -23867,9 +23846,7 @@
         {
           "name": "infer",
           "description": "Infer field types from field values.",
-          "locations": [
-            "OBJECT"
-          ],
+          "locations": ["OBJECT"],
           "args": [
             {
               "name": "noDefaultResolvers",
@@ -23886,9 +23863,7 @@
         {
           "name": "dontInfer",
           "description": "Do not infer field types from field values.",
-          "locations": [
-            "OBJECT"
-          ],
+          "locations": ["OBJECT"],
           "args": [
             {
               "name": "noDefaultResolvers",
@@ -23905,9 +23880,7 @@
         {
           "name": "mimeTypes",
           "description": "Define the mime-types handled by this type.",
-          "locations": [
-            "OBJECT"
-          ],
+          "locations": ["OBJECT"],
           "args": [
             {
               "name": "types",
@@ -23936,9 +23909,7 @@
         {
           "name": "childOf",
           "description": "Define parent-child relations between types. This is used to add `child*` or `children*` convenience fields like `childImageSharp`.",
-          "locations": [
-            "OBJECT"
-          ],
+          "locations": ["OBJECT"],
           "args": [
             {
               "name": "mimeTypes",
@@ -24003,9 +23974,7 @@
         {
           "name": "nodeInterface",
           "description": "Adds root query fields for an interface. All implementing types must also implement the Node interface.",
-          "locations": [
-            "INTERFACE"
-          ],
+          "locations": ["INTERFACE"],
           "args": []
         }
       ]

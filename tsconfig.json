@@ -3,8 +3,7 @@
     "rootDirs": ["src"],
     "baseUrl": "src",
     "paths": {
-      "*": ["*"],
-      "tests/*": ["__tests__/*"]
+      "*": ["*"]
     },
     /* Basic Options */
     // "incremental": true,                   /* Enable incremental compilation */

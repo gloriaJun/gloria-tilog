@@ -2,32 +2,32 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 
-interface IHeadProps {
+interface IPostCategoryProps {
   lang?: string;
   title?: string;
   description?: string;
 }
 
-const siteMetadataQuery = graphql`
-  query siteMetadataQuery {
-    site {
-      siteMetadata {
-        title
-        description
-        author
-      }
-    }
-  }
-`;
-
-export default function Head({
+export default function PostCategory({
   lang = 'en',
   title,
   description,
-}: IHeadProps): JSX.Element {
+}: IPostCategoryProps): JSX.Element {
   const {
     site: { siteMetadata },
-  } = useStaticQuery(siteMetadataQuery);
+  } = useStaticQuery(
+    graphql`
+      query SEO {
+        site {
+          siteMetadata {
+            title
+            description
+            author
+          }
+        }
+      }
+    `,
+  );
 
   return (
     <Helmet>

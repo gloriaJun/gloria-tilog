@@ -1,7 +1,7 @@
 import React from 'react';
 import { text } from '@storybook/addon-knobs';
 
-import { Header, IHeaderProps } from './index';
+import Header, { IHeaderProps } from './index';
 
 export default {
   title: 'Header',

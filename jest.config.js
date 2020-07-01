@@ -14,11 +14,10 @@ module.exports = {
     '.+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
       '<rootDir>/__mocks__/fileMock.ts',
     '^src/(.*)$': '<rootDir>/src/$1',
-    '^tests/(.*)$': '<rootDir>/src/__tests__/$1',
     '^components/(.*)$': '<rootDir>/src/components/$1',
     '^styles/(.*)$': '<rootDir>/src/styles/$1',
     '^icons/(.*)$': '<rootDir>/src/icons/$1',
-    '^mocks$': '<rootDir>/__mocks__/$1',
+    '^__tests__/(.*)$': '<rootDir>/src/__tests__/$1',
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   testPathIgnorePatterns: [`node_modules`, `.cache`, `public`],

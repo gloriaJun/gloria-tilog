@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Header } from 'components/organisms/header';
+import Header from 'components/organisms/header';
 import Content from 'components/atoms/content';
 import GlobalStyle from 'styles/global-style';
 
