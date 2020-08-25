@@ -10,13 +10,18 @@ interface IQueryProps {
 }
 
 const IndexPage = ({ data }: IQueryProps): JSX.Element => {
+  const {
+    list,
+    site: { siteMetadata },
+  } = data;
+
   return (
     <Layout>
-      <Head />
+      <Head title={siteMetadata.title} description={siteMetadata.description} />
 
       <h1>Hello, World!!!</h1>
 
-      {data.list.group.map(({ edges }) => (
+      {list.group.map(({ edges }) => (
         <>
           <h2>{edges[0].node.sourceInstanceName}</h2>
           <ul>
@@ -47,6 +52,13 @@ export default IndexPage;
 
 export const pageQuery = graphql`
   query HomePageData {
+    site {
+      siteMetadata {
+        title
+        description
+        author
+      }
+    }
     list: allFile(
       sort: {
         order: DESC
