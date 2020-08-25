@@ -1,4 +1,5 @@
 import React from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
 
 import Header from 'components/organisms/header';
 import Content from 'components/atoms/content';
@@ -9,11 +10,28 @@ export interface ILayoutProps {
 }
 
 export const Layout = ({ children }: ILayoutProps): JSX.Element => {
+  const {
+    site: { siteMetadata },
+  } = useStaticQuery(graphql`
+    query siteMetadataQuery {
+      site {
+        siteMetadata {
+          title
+          description
+          social {
+            github
+          }
+          author
+        }
+      }
+    }
+  `);
+
   return (
     <>
       <GlobalStyle />
 
-      <Header />
+      <Header title={siteMetadata.title} navigation={siteMetadata.social} />
 
       <Content>{children}</Content>
     </>
