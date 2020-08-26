@@ -4,7 +4,7 @@ import { Link } from 'gatsby';
 import { TagGroup, TagItem } from './style';
 
 export interface IPostTagsProps {
-  tags?: string[];
+  tags?: (string | null)[] | null;
 }
 
 export const PostTags = ({ tags }: IPostTagsProps): JSX.Element => {

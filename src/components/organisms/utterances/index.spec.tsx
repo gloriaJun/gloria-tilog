@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { render } from 'tests/helpers';
+import { render } from '__tests__/helpers/testing-lib';
 import { Utterances } from './index';
 
 describe('<Utterances />', () => {

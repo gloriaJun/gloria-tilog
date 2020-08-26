@@ -6,7 +6,7 @@ import { Wrapper, Title, Info, Category, Date } from './style';
 export interface IPostHeaderProps {
   title: string;
   date: string;
-  category: string;
+  category: string | null;
 }
 
 export const PostHeader = ({
@@ -19,9 +19,11 @@ export const PostHeader = ({
       <Title>{title}</Title>
       <Info>
         <Date>{date}</Date>
-        <Link to={category} data-testid="category-link">
-          <Category>{category}</Category>
-        </Link>
+        {category && (
+          <Link to={category} data-testid="category-link">
+            <Category>{category}</Category>
+          </Link>
+        )}
       </Info>
     </Wrapper>
   );

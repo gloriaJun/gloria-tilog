@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { render } from 'tests/helpers';
-import { Header } from './index';
+import { render } from '__tests__/helpers/testing-lib';
+import Header from './index';
 
 const props = {
   title: 'Title',

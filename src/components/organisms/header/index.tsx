@@ -19,7 +19,11 @@ export interface IHeaderProps {
 /**
  * header of layout
  */
-export const Header = ({ title, navigation }: IHeaderProps): JSX.Element => {
+
+export default function Header({
+  title,
+  navigation,
+}: IHeaderProps): JSX.Element {
   return (
     <Wrapper>
       <Logo>
@@ -39,6 +43,4 @@ export const Header = ({ title, navigation }: IHeaderProps): JSX.Element => {
       )}
     </Wrapper>
   );
-};
-
-Header.defaultProps = {};
+}
