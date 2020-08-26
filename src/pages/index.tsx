@@ -1,54 +1,66 @@
 import React from 'react';
-import { Link, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 
 import { Layout } from 'components/layout';
-import { HomePageData } from './__generated__/HomePageData';
 import Head from 'components/organisms/head';
+import { PostList, PostListItem } from 'components/organisms/post-list';
+import { ISite, IPostContent } from 'interfaces';
 
 interface IQueryProps {
-  data: HomePageData;
+  data: {
+    site: ISite;
+    list: {
+      group: {
+        edges: {
+          node: {
+            sourceInstanceName: string;
+            childMdx: {
+              id: string;
+              fields: {
+                slug: string;
+              };
+              frontmatter: IPostContent;
+              excerpt: string;
+            };
+          };
+        }[];
+      }[];
+    };
+  };
 }
 
-const IndexPage = ({ data }: IQueryProps): JSX.Element => {
+export default function IndexPage({ data }: IQueryProps): JSX.Element {
   const {
-    list,
     site: { siteMetadata },
+    list,
   } = data;
 
   return (
     <Layout>
       <Head title={siteMetadata.title} description={siteMetadata.description} />
 
-      <h1>Hello, World!!!</h1>
-
-      {list.group.map(({ edges }) => (
-        <>
-          <h2>{edges[0].node.sourceInstanceName}</h2>
-          <ul>
-            {edges.map(({ node: { childMdx } }) => (
-              <li key={childMdx?.id}>
-                {childMdx?.fields?.slug && (
-                  <Link to={childMdx?.fields?.slug}>
-                    <p>{childMdx?.id}</p>
-                    <p>{childMdx?.fields?.slug}</p>
-                    <h3>
-                      [{childMdx?.frontmatter?.category}]{' '}
-                      {childMdx?.frontmatter?.title}{' '}
-                      <span>— {childMdx?.frontmatter?.date}</span>
-                    </h3>
-                    <p>{childMdx?.excerpt}</p>
-                  </Link>
-                )}
-              </li>
-            ))}
-          </ul>
-        </>
+      {list.group.map(({ edges }, i) => (
+        <PostList key={i} title={edges[0].node.sourceInstanceName}>
+          {edges.map(
+            ({ node: { childMdx } }) =>
+              childMdx &&
+              childMdx.fields &&
+              childMdx.frontmatter && (
+                <PostListItem
+                  key={childMdx.id}
+                  pathname={childMdx.fields.slug}
+                  category={childMdx.frontmatter.category}
+                  title={childMdx.frontmatter.title}
+                  date={childMdx.frontmatter.date}
+                  description={childMdx.excerpt}
+                />
+              ),
+          )}
+        </PostList>
       ))}
     </Layout>
   );
-};
-
-export default IndexPage;
+}
 
 export const pageQuery = graphql`
   query HomePageData {

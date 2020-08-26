@@ -7,11 +7,18 @@ import { Layout } from 'components/layout';
 import { PostHeader } from 'components/organisms/post-header';
 import { PostTags } from 'components/organisms/post-tags';
 import { Utterances } from 'components/organisms/utterances';
-import { ItemplateProps } from 'interfaces';
-import { BlogPostBySlug } from './__generated__/BlogPostBySlug';
+import { ITemplateProps, IPostContent } from 'interfaces';
 import Head from 'components/organisms/head';
 
-type IQueryProps = ItemplateProps<BlogPostBySlug>;
+interface BlogPostBySlug {
+  mdx: {
+    id: string;
+    body: string;
+    frontmatter: IPostContent;
+    excerpt: string;
+  };
+}
+type IQueryProps = ITemplateProps<BlogPostBySlug>;
 
 const PostTemplate = ({
   pageContext,
