@@ -63,6 +63,7 @@
     "gatsby-plugin-manifest": "^2.4.24",
     "gatsby-plugin-mdx": "^1.2.35",
     "gatsby-plugin-offline": "^3.2.24",
+    "gatsby-plugin-postcss": "^2.3.12",
     "gatsby-plugin-react-helmet": "^3.3.10",
     "gatsby-plugin-sharp": "^2.6.28",
     "gatsby-plugin-svgr": "^2.0.2",
@@ -77,6 +78,7 @@
     "react-dom": "^16.13.1",
     "react-helmet": "^6.1.0",
     "ts-node": "^9.0.0",
+    "twin.macro": "^1.9.0",
     "typography-theme-moraga": "^0.16.19"
   },
   "devDependencies": {
@@ -122,6 +124,7 @@
     "react-typography": "^0.16.19",
     "serve": "^11.3.2",
     "start-server-and-test": "^1.11.3",
+    "tailwindcss": "^1.8.10",
     "ts-jest": "^26.2.0",
     "typescript": "^4.0.2",
     "typography": "^0.16.19"

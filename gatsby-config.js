@@ -86,5 +86,6 @@ module.exports = {
       options: {},
     },
     'gatsby-plugin-svgr',
+    `gatsby-plugin-postcss`,
   ],
 };

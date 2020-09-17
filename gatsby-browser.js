@@ -7,6 +7,9 @@
 // https://prismjs.com/plugins/inline-color/
 // https://prismjs.com/plugins/diff-highlight/
 
+// global style
+require('./src/styles/main.css');
+
 require('prismjs/themes/prism-tomorrow.css');
 // customize style
 require('./src/styles/prism.css');
