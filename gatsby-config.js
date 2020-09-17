@@ -76,12 +76,6 @@ module.exports = {
     'gatsby-plugin-typescript',
     'gatsby-plugin-emotion',
     {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `src/styles/typography`,
-      },
-    },
-    {
       resolve: 'gatsby-plugin-codegen',
       options: {},
     },

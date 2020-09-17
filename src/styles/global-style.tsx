@@ -1,24 +1,19 @@
 /** @jsx jsx */
 import { ReactElement } from 'react';
+import tw from 'twin.macro';
 import { Global, css, jsx } from '@emotion/core';
-import normalize from 'emotion-normalize';
 
 const styles = css`
-  ${normalize}
-
-  /* reset */
-   * {
-    box-sizing: border-box;
+  body {
+    ${tw`font-sans`};
   }
-
   h1,
   h2,
   h3,
   h4,
   h5,
   h6 {
-    margin: 0;
-    padding: 0;
+    ${tw`font-bold`}
   }
 `;
 

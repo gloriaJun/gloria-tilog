@@ -1,47 +1,25 @@
+import { Link } from 'gatsby';
+import tw from 'twin.macro';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 
-import { zIndex, color, space, icon } from 'styles/variables';
+export const Wrapper = styled.header([
+  tw`flex items-center justify-between flex-wrap bg-indigo-500 p-4 z-50`,
+]);
 
-const headerFontColor = color.white;
+export const Logo = styled.div([tw`text-white text-2xl`]);
 
-export const Wrapper = styled.header`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: ${space.medium} ${space.medium};
-  margin-bottom: ${space.medium};
-  width: 100%;
-  background-color: ${color.primary};
-  position: sticky;
-  top: 0;
-  left: 0;
-  z-index: ${zIndex.high};
-`;
+export const LogoLink = styled(Link)([tw`no-underline text-white`]);
 
-export const Logo = styled.h1`
-  color: ${headerFontColor};
-  font-weight: 600;
-`;
-
-export const LogoLinkStyle = css`
-  color: inherit;
-  font-weight: inherit;
-  text-shadow: none;
-  background-image: none;
-  text-decoration: none;
-  &:hover {
-    color: inherit;
-  }
-`;
-
-export const LinkGroup = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: end;
-  color: ${headerFontColor};
-`;
+export const LinkGroup = styled.div([tw`flex`]);
 
 export const iconStyle = css`
-  ${icon.style};
+  font-size: 1.2rem;
+  width: 1em;
+  height: 1em;
+  fill: #e2e8f0;
+  transition: fill 0.2s ease-in-out;
+  &:hover {
+    fill: #2d3748;
+  }
 `;
