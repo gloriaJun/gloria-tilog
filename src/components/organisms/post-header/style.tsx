@@ -1,30 +1,22 @@
+import { Link } from 'gatsby';
+import tw from 'twin.macro';
 import styled from '@emotion/styled';
 
-import { color } from 'styles/variables';
+export const Wrapper = styled.header([``]);
 
-export const Wrapper = styled.header``;
+export const Title = styled.h1([tw`mb-1`]);
 
-export const Title = styled.h1`
-  margin-bottom: 0.8rem;
-`;
+export const Info = styled.div([tw`flex text-sm text-gray-700`]);
 
-export const Info = styled.div`
-  display: flex;
-  font-size: 0.9rem;
+export const Category = styled.p([tw``]);
 
-  p {
-    margin: 0;
-  }
-`;
+export const CustomLink = styled(Link)([tw`text-blue-500 hover:text-blue-800`]);
 
-export const Category = styled.p`
-  color: ${color.primary};
-`;
-
-export const Date = styled.p`
+export const Date = styled.p([
+  tw`text-gray-600`,
+  `
   ::after {
     padding: 0 5px;
     content: '|';
-  }
-  color: ${color.gray_30};
-`;
+  }`,
+]);

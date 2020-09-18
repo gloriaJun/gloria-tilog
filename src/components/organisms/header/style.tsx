@@ -3,7 +3,7 @@ import tw from 'twin.macro';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 
-export const Wrapper = styled.header([
+export const Wrapper = styled.nav([
   tw`flex items-center justify-between flex-wrap bg-indigo-500 p-4 z-50`,
 ]);
 
