@@ -81,5 +81,11 @@ module.exports = {
     },
     'gatsby-plugin-svgr',
     `gatsby-plugin-postcss`,
+    {
+      resolve: 'gatsby-plugin-purgecss',
+      options: {
+        printRejected: true,
+      },
+    },
   ],
 };

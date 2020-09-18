@@ -10,7 +10,7 @@ export const Info = styled.div([tw`flex text-sm text-gray-700`]);
 
 export const Category = styled.p([tw``]);
 
-export const CustomLink = styled(Link)([tw`text-blue-500 hover:text-blue-800`]);
+export const CustomLink = styled(Link)([tw``]);
 
 export const Date = styled.p([
   tw`text-gray-600`,

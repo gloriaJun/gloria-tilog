@@ -9,7 +9,9 @@ export const Wrapper = styled.nav([
 
 export const Logo = styled.div([tw`text-white text-2xl`]);
 
-export const LogoLink = styled(Link)([tw`no-underline text-white`]);
+export const LogoLink = styled(Link)([
+  tw`no-underline text-white hover:text-current`,
+]);
 
 export const LinkGroup = styled.div([tw`flex`]);
 

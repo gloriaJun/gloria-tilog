@@ -23,7 +23,7 @@ const PostTemplate = ({
     <Layout>
       <Head title={frontmatter?.title} description={mdx?.excerpt} />
 
-      <article>
+      <div>
         {frontmatter && (
           <>
             <PostHeader
@@ -36,16 +36,18 @@ const PostTemplate = ({
           </>
         )}
 
-        {body && (
-          <MDXProvider>
-            <MDXRenderer>{body}</MDXRenderer>
-          </MDXProvider>
-        )}
+        <article className="prose lg:prose-xl">
+          {body && (
+            <MDXProvider>
+              <MDXRenderer>{body}</MDXRenderer>
+            </MDXProvider>
+          )}
+        </article>
 
         {pageContext.commentPlugins.utterances && (
           <Utterances repo={pageContext.commentPlugins.utterances} />
         )}
-      </article>
+      </div>
     </Layout>
   );
 };
