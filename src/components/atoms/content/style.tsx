@@ -1,14 +1,4 @@
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import tw from 'twin.macro';
 
-import mediaQuery from 'styles/helper/media-query';
-import { space } from 'styles/variables';
-
-export const Wrapper = styled.div`
-  padding: ${space.large} ${space.medium};
-  margin: ${space.large} ${space.large};
-
-  ${mediaQuery.phone(css`
-    margin: 0;
-  `)}
-`;
+export const Wrapper = styled.div([tw`w-full md:w-2/5 mx-auto`]);
