@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 
-import { Wrapper, Title, Info, Category, Date } from './style';
+import { Wrapper, Title, Info, Category, Date, CustomLink } from './style';
 
 export interface IPostHeaderProps {
   title: string;
@@ -20,9 +20,11 @@ export const PostHeader = ({
       <Info>
         <Date>{date}</Date>
         {category && (
-          <Link to={category} data-testid="category-link">
-            <Category>{category}</Category>
-          </Link>
+          <Category>
+            <CustomLink to={category} data-testid="category-link">
+              {category}
+            </CustomLink>
+          </Category>
         )}
       </Info>
     </Wrapper>
