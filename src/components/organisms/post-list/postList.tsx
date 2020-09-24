@@ -1,18 +1,17 @@
 import React from 'react';
 
-interface IPostListProps {
+import { CategoryTitle, ListGroup, ListWrapper } from './style';
+
+export interface IPostListProps {
   title?: string | undefined;
   children?: React.ReactNode;
 }
 
-export default function PostList({
-  title,
-  children,
-}: IPostListProps): JSX.Element {
+export function PostList({ title, children }: IPostListProps): JSX.Element {
   return (
-    <>
-      {title && <h2>{title}</h2>}
-      <ul>{children}</ul>
-    </>
+    <ListWrapper>
+      {title && <CategoryTitle>{title}</CategoryTitle>}
+      <ListGroup>{children}</ListGroup>
+    </ListWrapper>
   );
 }

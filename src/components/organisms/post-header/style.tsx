@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 
 export const Wrapper = styled.header([``]);
 
-export const Title = styled.h1([tw`mb-1`]);
+export const Title = styled.h2([tw`mb-1`]);
 
 export const Info = styled.div([tw`flex text-sm text-gray-700`]);
 
@@ -12,7 +12,7 @@ export const Category = styled.p([tw``]);
 
 export const CustomLink = styled(Link)([tw``]);
 
-export const Date = styled.p([
+export const PostDate = styled.p([
   tw`text-gray-600`,
   `
   ::after {

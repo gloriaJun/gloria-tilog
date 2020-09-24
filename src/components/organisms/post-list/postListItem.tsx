@@ -1,7 +1,17 @@
 import React from 'react';
-import { Link } from 'gatsby';
 
-interface IPostListItemProps {
+import {
+  Card,
+  Category,
+  CustomLink,
+  Description,
+  Info,
+  ListItem,
+  PostDate,
+  Title,
+} from './style';
+
+export interface IPostListItemProps {
   // id: string;
   pathname: string;
   category: string;
@@ -10,7 +20,7 @@ interface IPostListItemProps {
   description?: string;
 }
 
-export default function PostListItem({
+export function PostListItem({
   pathname,
   category,
   title,
@@ -18,13 +28,19 @@ export default function PostListItem({
   description,
 }: IPostListItemProps): JSX.Element {
   return (
-    <li>
-      <Link to={pathname}>
-        <h3>
-          [{category}] {title} <span>— {date}</span>
-        </h3>
-        <p>{description}</p>
-      </Link>
-    </li>
+    <ListItem>
+      <Card>
+        <CustomLink to={pathname}>
+          <Title>{title}</Title>
+
+          {description && <Description>{description}</Description>}
+
+          <Info>
+            {category && <Category>{category}</Category>}
+            <PostDate>{date}</PostDate>
+          </Info>
+        </CustomLink>
+      </Card>
+    </ListItem>
   );
 }
