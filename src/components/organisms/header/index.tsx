@@ -1,9 +1,8 @@
 import React from 'react';
-import { Link } from 'gatsby';
 
 import { ExternalLink } from 'components/atoms/external-link';
 import { ReactComponent as GithubIcon } from 'icons/github.svg';
-import { Wrapper, Logo, LinkGroup, iconStyle, LogoLinkStyle } from './style';
+import { Wrapper, Logo, LinkGroup, iconStyle, LogoLink } from './style';
 
 interface Navigation {
   github: string;
@@ -27,9 +26,9 @@ export default function Header({
   return (
     <Wrapper>
       <Logo>
-        <Link css={LogoLinkStyle} to="/" data-testid="logo-link">
+        <LogoLink to="/" data-testid="logo-link">
           {title}
-        </Link>
+        </LogoLink>
       </Logo>
 
       {navigation && (

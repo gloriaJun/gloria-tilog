@@ -9,7 +9,7 @@ export default {
 };
 
 export const normal: React.FC<IPostTagsProps> = () => {
-  const tags = array('tags', ['tag1', 'logn-text-tag2', 'short-tag3']);
+  const tags = array('tags', ['tag1', 'long-text-tag2', 'short-tag3']);
 
   return <PostTags tags={tags} />;
 };

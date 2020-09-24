@@ -1,36 +1,16 @@
+import { Link } from 'gatsby';
+import tw from 'twin.macro';
 import styled from '@emotion/styled';
 
-import { color, space, border } from 'styles/variables';
+export const TagGroup = styled.ul([tw`p-2`]);
 
-export const TagGroup = styled.ul`
-  list-style: none;
-  display: flex;
-  align-items: center;
-  margin: ${space.small} 0;
-`;
-
-export const TagItem = styled.li`
-  font-size: 0.85rem;
-  color: ${color.secondary};
-  background-color: ${color.gray_10};
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 5px ${space.small};
-  margin: 0 ${space.xsmall};
-  border-radius: ${border.radius.small};
-
-  a {
-    color: inherit;
-    text-shadow: none;
-    background-image: none;
-    text-decoration: none;
-    &:hover {
-      color: inherit;
-    }
+export const TagItem = styled.li([
+  tw`inline-flex  text-sm bg-green-600 text-white rounded-full h-6 px-3 mr-2 justify-center items-center hover:bg-opacity-75`,
+  `
+  ::before {
+    content: '#'
   }
+  `,
+]);
 
-  &:hover {
-    opacity: 0.8;
-  }
-`;
+export const TagLink = styled(Link)([tw`no-underline text-current`]);
