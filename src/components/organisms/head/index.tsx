@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet';
 interface IHeadProps {
   lang?: string;
   title: string;
-  description: string;
+  description?: string;
 }
 
 export default function Head({
@@ -17,7 +17,7 @@ export default function Head({
       <html lang={lang} />
       <meta charSet="utf-8" />
       <title>{title}</title>
-      <meta name="description" content={description} />
+      {description && <meta name="description" content={description} />}
     </Helmet>
   );
 }

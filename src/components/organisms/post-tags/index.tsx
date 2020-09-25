@@ -3,7 +3,7 @@ import React from 'react';
 import { TagLink, TagGroup, TagItem } from './style';
 
 export interface IPostTagsProps {
-  tags?: string[] | null;
+  tags?: string[];
 }
 
 export const PostTags = ({ tags }: IPostTagsProps): JSX.Element => {

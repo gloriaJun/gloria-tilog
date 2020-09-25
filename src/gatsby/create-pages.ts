@@ -1,7 +1,7 @@
 import * as path from 'path';
 import { GatsbyNode } from 'gatsby';
 
-import { ISiteMetadata } from 'interfaces';
+import { ISite } from 'interfaces';
 
 interface INode {
   sourceInstanceName: string;
@@ -14,9 +14,7 @@ interface INode {
 }
 
 interface IQueryResult {
-  site: {
-    siteMetadata: ISiteMetadata;
-  };
+  site: ISite;
   blog: {
     edges: {
       node: INode;
