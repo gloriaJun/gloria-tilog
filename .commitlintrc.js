@@ -16,6 +16,7 @@ module.exports = {
         'revert',
         'style',
         'test',
+        'post',
       ],
     ],
     'type-case': [2, 'always', 'lowerCase'],
