@@ -16,21 +16,21 @@ branches:
 # - npm install -g yarn --cache-min 999999999
 
 install:
-  - npm install
+  - yarn install
   # - npm run build-storybook
 
 jobs:
   include:
     - stage: lint
-      script: npm run lint
+      script: yarn run lint
 
     - stage: unit-test
-      script: npm run test
+      script: yarn run test
       after_success:
-        - npm run coverage
+        - yarn run coverage
 
     - stage: gh-pages
-      script: npm run build-storybook
+      script: yarn run build-storybook
       # require the branch name to be master (note for PRs this is the base branch name)
       if: branch = master
       deploy:
