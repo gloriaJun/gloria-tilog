@@ -1,14 +1,12 @@
 ---
-layout: post
-title: "(VueJS) 개발 환경 구성"
-date: 2018-03-19 22:35:00
-author: gloria
-categories: frontend
-tags: javascript vuejs nuxt vuex bootstrap
+category: 'Javascript'
+tags: ['vuejs', 'frontend', 'nuxt', 'vuex']
+title: '(VueJS) 개발 환경 구성'
+date: '2018-03-19 22:35:00'
 ---
 
-* TOC
-{:toc}
+- TOC
+  {:toc}
 
 Nuxt.js를 이용하여 기존에 SPA로 구현한 코드를 SSR로 리팩토링을 하고 있다.
 static page로 generate 해주는 기능도 있어 공부삼아 리팩토링 중~~
@@ -53,7 +51,7 @@ nuxt를 설치한 뒤에 `package.json`에 script 부분을 아래와 같이 추
 
 ```html
 <template>
-    <h1>Hello world!</h1>
+  <h1>Hello world!</h1>
 </template>
 ```
 
@@ -69,6 +67,7 @@ http://localhost:3000/ 에 접속하면 어플리케이션이 실행되는 것�
 https://ko.nuxtjs.org/api/configuration-head
 
 ```javascript
+
 ```
 
 ## build 관련 설정
@@ -82,9 +81,7 @@ https://ko.nuxtjs.org/api/configuration-build
 ```javascript
 module.export = {
   build: {
-    vendor: [
-      'axios',
-    ],
+    vendor: ['axios'],
     analyze: true,
   },
 };
@@ -133,51 +130,46 @@ module.exports = {
   root: true,
   env: {
     browser: true,
-    node: true
+    node: true,
   },
   parserOptions: {
-    parser: 'babel-eslint'
+    parser: 'babel-eslint',
   },
   extends: [
-    "eslint:recommended",
+    'eslint:recommended',
     // https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
     // consider switching to `plugin:vue/strongly-recommended` or `plugin:vue/recommended` for stricter rules.
-    "plugin:vue/recommended",
-    "plugin:prettier/recommended",
+    'plugin:vue/recommended',
+    'plugin:prettier/recommended',
   ],
   // required to lint *.vue files
-  plugins: [
-    "prettier",
-    "vue",
-  ],
+  plugins: ['prettier', 'vue'],
   // add your custom rules here
   rules: {
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    "prettier/prettier": [
-      "error",
+    'prettier/prettier': [
+      'error',
       {
-        "singleQuote": true,
-        "trailingComma": "all",
+        singleQuote: true,
+        trailingComma: 'all',
       },
     ],
-    "semi": [2, "always"],
-    "vue/max-attributes-per-line": "off",
-    "vue/component-name-in-template-casing": [
-      "error",
-      "PascalCase",
+    semi: [2, 'always'],
+    'vue/max-attributes-per-line': 'off',
+    'vue/component-name-in-template-casing': [
+      'error',
+      'PascalCase',
       {
-        "ignores": [
-          "nuxt",
-          "nuxt-link"
-        ]
-      }
+        ignores: ['nuxt', 'nuxt-link'],
+      },
     ],
-  }
+  },
 };
 ```
 
 빌드 시에 lint 동작을 추가 하기 위해서는 `nuxt.config.js`에 아래의 내용을 추가한다.
+
 ```javascript
 /**
   * Build configuration
@@ -214,20 +206,23 @@ npm i node-sass sass-loader --save-dev
 ```
 
 플러그인을 import 하기 위한 `plugins/bootstrap-vue.js` 파일을 생성한다.
+
 ```javascript
 // plugins/bootstrap-vue.js
-import Vue from 'vue'
-import BootstrapVue from 'bootstrap-vue'
+import Vue from 'vue';
+import BootstrapVue from 'bootstrap-vue';
 
-Vue.use(BootstrapVue)
+Vue.use(BootstrapVue);
 ```
 
 사용자 style 커스텀을 위한 `assets/style/app.scss`를 생성한다.
+
 ```scss
 @import '~bootstrap/scss/bootstrap.scss';
 ```
 
 `nuxt.config.js`에 플러그인와 css 파일에 대한 정의를 추가한다.
+
 ```javascript
 // nuxt.config.js
 plugins: [
@@ -268,26 +263,24 @@ yarn add --dev jest @vue/test-utils vue-jest babel-jest jest-serializer-vue babe
 ```javascript
 module.exports = {
   moduleFileExtensions: [
-    "js",
-    "json",
+    'js',
+    'json',
     // tell Jest to handle `*.vue` files
-    "vue"
+    'vue',
   ],
   transform: {
     // process `*.vue` files with `vue-jest`
-    ".*\\.(vue)$": "vue-jest",
+    '.*\\.(vue)$': 'vue-jest',
     // process js with `babel-jest`
-    "^.+\\.js$": "<rootDir>/node_modules/babel-jest"
+    '^.+\\.js$': '<rootDir>/node_modules/babel-jest',
   },
   // support the same @ -> src alias mapping in source code
   moduleNameMapper: {
-    "^@/(.*)$": "<rootDir>/$1"
+    '^@/(.*)$': '<rootDir>/$1',
   },
   // serializer for snapshots
-  snapshotSerializers: [
-    "jest-serializer-vue"
-  ],
-}
+  snapshotSerializers: ['jest-serializer-vue'],
+};
 ```
 
 테스트를 위해 아래와 같이 테스트 코드를 작성 후에 테스트 실행을 해본다.
@@ -298,14 +291,14 @@ import Layout from '@/layouts/default.vue';
 
 describe('Counter.vue', () => {
   test('Setup correctly', () => {
-    expect(true).toBe(true)
-  })
+    expect(true).toBe(true);
+  });
 
   test('snapshot', () => {
-    const wrapper = mount(Layout)
-    expect(wrapper.element).toMatchSnapshot()
-  })
-})
+    const wrapper = mount(Layout);
+    expect(wrapper.element).toMatchSnapshot();
+  });
+});
 ```
 
 # GitHub Pages에 배포하기
@@ -346,7 +339,7 @@ node_js:
 
 cache:
   directories:
-    - "node_modules"
+    - 'node_modules'
 
 branches:
   only:
@@ -359,7 +352,7 @@ install:
 deploy:
   provider: pages
   skip-cleanup: true
-  github-token: $GITHUB_TOKEN  # Set in travis-ci.org dashboard, marked secure https://docs.travis-ci.com/user/deployment/pages/#Setting-the-GitHub-token
+  github-token: $GITHUB_TOKEN # Set in travis-ci.org dashboard, marked secure https://docs.travis-ci.com/user/deployment/pages/#Setting-the-GitHub-token
   target-branch: gh-pages
   local-dir: dist
   on:

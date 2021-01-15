@@ -1,16 +1,12 @@
 ---
-layout: post
-title: "(VueJS) 개발 환경 구성하기 (vue-cli3)"
-date: 2018-10-10 14:35:00
-author: gloria
-categories: frontend
-tags: javascript vuejs vuecli3 typescript
-
+category: 'Javascript'
+tags: ['vuejs', 'frontend', 'typescript']
+title: '(VueJS) 개발 환경 구성하기 (vue-cli3)'
+date: '2018-10-10 14:35:00'
 ---
 
-* TOC
-{:toc}
-
+- TOC
+  {:toc}
 
 ## Vue CLI 3 Installation
 
@@ -24,8 +20,6 @@ npm uninstall vue-cli -g
 yarn global remove vue-cli
 ```
 
-
-
 #### Installation
 
 ```bash
@@ -36,8 +30,6 @@ yarn global add @vue/cli
 ## version check
 vue --version
 ```
-
-
 
 ## Project 생성
 
@@ -125,22 +117,11 @@ http://json.schemastore.org/tsconfig를 보면 사용 가능한 옵션에 대하
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "baseUrl": ".", // 모듈을 import 할 때의 기준 폴더 정의
-    "types": [
-      "webpack-env",
-      "mocha",
-      "chai"
-    ],
+    "types": ["webpack-env", "mocha", "chai"],
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
+      "@/*": ["src/*"]
     },
-    "lib": [
-      "esnext",
-      "dom",
-      "dom.iterable",
-      "scripthost"
-    ]
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
   },
   "include": [
     "src/**/*.ts",
@@ -149,13 +130,9 @@ http://json.schemastore.org/tsconfig를 보면 사용 가능한 옵션에 대하
     "tests/**/*.ts",
     "tests/**/*.tsx"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }
 ```
-
-
 
 ###### tslint.json
 
@@ -164,13 +141,9 @@ Typescript에서의 정적분석 도구에 대한 설정파일
 ```json
 {
   "defaultSeverity": "warning",
-  "extends": [
-    "tslint:recommended"
-  ],
+  "extends": ["tslint:recommended"],
   "linterOptions": {
-    "exclude": [
-      "node_modules/**"
-    ]
+    "exclude": ["node_modules/**"]
   },
   "rules": {
     "quotemark": [true, "single"],
@@ -183,8 +156,6 @@ Typescript에서의 정적분석 도구에 대한 설정파일
 }
 ```
 
-
-
 ###### src/shims-vue.d.ts
 
 Typescript가 `.vue` 파일이 어떠한 인터페이스인지 이해할 수 있도록 미리 정의해놓은 파일이다.
@@ -196,11 +167,9 @@ declare module '*.vue' {
 }
 ```
 
-
-
 ###### src/shims-tsx.d.ts
 
-*이건 무엇에 대해 정의한 건지 모르겠다..ㅠㅠ*
+_이건 무엇에 대해 정의한 건지 모르겠다..ㅠㅠ_
 
 ```typescript
 import Vue, { VNode } from 'vue';
@@ -218,9 +187,7 @@ declare global {
 }
 ```
 
-
-
 ## Reference
 
 - https://cli.vuejs.org/guide/installation.html
-- 
+-
