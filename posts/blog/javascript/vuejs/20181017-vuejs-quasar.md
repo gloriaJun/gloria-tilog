@@ -1,10 +1,8 @@
 ---
-layout: post
-title: "(VueJS) Quasar framework 적용하기"
-date: 2018-10-17 17:35:00
-author: gloria
-categories: frontend
-tags: javascript quasar
+category: 'Javascript'
+tags: ['vuejs', 'frontend', 'quasar']
+title: '(VueJS) Quasar framework 적용하기'
+date: '2018-10-17 17:35:00'
 ---
 
 [TOC]
@@ -17,8 +15,6 @@ tags: javascript quasar
   $ vue --version
   3.0.5
   ```
-
-
 
 ## Installation
 
@@ -79,25 +75,20 @@ success Saved lockfile.
 
    You should review these changes with git diff and commit them.
 
- INFO  quasar  
+ INFO  quasar
              Documentation can be found at: https://quasar-framework.org
-                                                                        
+
 Quasar is relying on donations to evolve. We'd be very grateful if you can
                  take a look at: https://www.patreon.com/quasarframework
                                             Any amount is very welcomed.
 If invoices are required, please first contact razvan.stoenescu@gmail.com
-                                                                        
+
              Please give us a star on Github if you appreciate our work:
                                https://github.com/quasarframework/quasar
-                                                                        
+
                                                     Enjoy! - Quasar Team
 ```
-
-
-
-
 
 ## Reference
 
 - https://quasar-framework.org/guide/index.html#Vue-CLI-3-plugin
-

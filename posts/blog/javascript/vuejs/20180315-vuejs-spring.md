@@ -1,21 +1,22 @@
 ---
-layout: post
-title: "(VueJS) springboot 연동"
-date: 2018-03-15 13:35:00
-author: gloria
-categories: frontend
-tags: javascript vuejs springboot
+category: 'Javascript'
+tags: ['vuejs', 'frontend', 'springboot', 'thymeleaf']
+title: '(VueJS) springboot 연동'
+date: '2018-03-15 13:35:00'
 ---
 
-* TOC
-{:toc}
+- TOC
+  {:toc}
 
 Backend 프레임워크을 Spring Boot로 사용하고,
 Frontend 프레임워크를 Vue.js로 사용하는 경우에 thymeleaf를 이용하여 연동하는 방법이다.
 
 ## Spring Boot 설정
+
 #### thymeleaf 설정
+
 ###### Gradle
+
 ```
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
@@ -25,7 +26,9 @@ dependencies {
 ```
 
 ###### Maven
+
 `pom.xml`에 thymeleaf 모듈을 추가한다
+
 ```xml
 		<!-- template engine library for view -->
 		<dependency>
@@ -39,9 +42,11 @@ dependencies {
 ```
 
 #### thymeleaf 및 static 경로 설정
-**src/main/resources/application.yml**    
+
+**src/main/resources/application.yml**
+
 ```
-//thymeleaf의 경우 html5 모드가 기본으로 설정되어 있어 아래의 설정을 추가해주어야 meta tag로 인한 에러가 발생하지 않는다.   
+//thymeleaf의 경우 html5 모드가 기본으로 설정되어 있어 아래의 설정을 추가해주어야 meta tag로 인한 에러가 발생하지 않는다.
 spring.thymeleaf.mode: LEGACYHTML5
 // 기본 설정 값이므로 별도로 정의하지 않아도 된다.
 #spring.thymeleaf.prefix: classpath:/templates
@@ -50,7 +55,9 @@ spring.thymeleaf.mode: LEGACYHTML5
 ```
 
 #### Router Controller 설정
+
 url로 전달된 요청을 처리하기 위한 `RouteController`를 생성한다
+
 ```java
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -71,8 +78,11 @@ public class RouteController {
 ```
 
 ## 빌드 설정
+
 ###### Gradle
+
 npm을 실행하기 위한 gradle 설정
+
 ```
 plugins {
   id "com.moowork.node" version "1.2.0"
@@ -96,6 +106,7 @@ npmBuild.dependsOn(npmInstall)
 ```
 
 `npm run build`를 수행한 뒤에 생성된 산출물을 backend의 build 디렉토리로 복사하고 jar 파일을 생성하기 위한 부분
+
 ```
 // frontend build & copy to build dir
 task resourcesCopy(dependsOn: ':frontend:npmBuild') {
@@ -122,9 +133,11 @@ bootJar {
 ```
 
 ###### Maven
+
 maven으로 빌드 시에 frontend 소스도 빌드되도록 설정하기 위해서는 [eirslett/frontend-maven-plugin](https://github.com/eirslett/frontend-maven-plugin#running-npm) 플러그인을 이용하여 설정한다.
 
 `npm run build`를 수행하기 위한 로직이다.
+
 ```xml
   <build>
     <plugins>
@@ -201,6 +214,7 @@ maven으로 빌드 시에 frontend 소스도 빌드되도록 설정하기 위해
 ```
 
 frontend에서 빌드된 산출물을 backend 빌드 시 jar로 묶는 작업을 정의한다.
+
 ```xml
     <build>
         <plugins>
@@ -255,14 +269,14 @@ frontend에서 빌드된 산출물을 backend 빌드 시 jar로 묶는 작업을
     </build>
 ```
 
-
 ## 실습해본 소스 코드
+
 - [springboot-vuejs-spa](https://github.com/gloriaJun/springboot-vuejs-spa.git)
 - [springboot-vuejs-prerender](https://github.com/gloriaJun/springboot-vuejs-prerender)
 
-
 ## Reference
-- [Spring Boot + Vue.js 연동하기](http://itstory.tk/entry/Spring-Boot-Vuejs-%EC%97%B0%EB%8F%99%ED%95%98%EA%B8%B0)  
+
+- [Spring Boot + Vue.js 연동하기](http://itstory.tk/entry/Spring-Boot-Vuejs-%EC%97%B0%EB%8F%99%ED%95%98%EA%B8%B0)
 - [Apache + Tomcat , SPA](https://medium.com/@circlee7/apache-tomcat-spa-59e3d58ced6f)
 - [gradle-node-plugin](https://github.com/srs/gradle-node-plugin/blob/master/docs/node.md)
 - [globe42](https://github.com/Ninja-Squad/globe42)

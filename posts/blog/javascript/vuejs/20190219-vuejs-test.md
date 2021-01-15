@@ -1,14 +1,12 @@
 ---
-layout: post
-title: "(VueJS) 테스트케이스 작성하기"
-date: 2019-02-19 14:35:00
-author: gloria
-categories: frontend
-tags: javascript test jest tdd
+category: 'Javascript'
+tags: ['vuejs', 'unit-test', 'frontend', 'jest']
+title: '(VueJS) 테스트케이스 작성하기'
+date: '2019-02-19 14:35:00'
 ---
 
-* TOC
-{:toc}
+- TOC
+  {:toc}
 
 [realworld](https://github.com/gloriaJun/realworld)를 참고해서 Nuxt 기반으로 한 토이프로젝트에 단위테스트 작성을 하면서 배운 부분과 참고한 링크들 정리하기.
 
@@ -26,7 +24,7 @@ tags: javascript test jest tdd
 내 경험에 의하면...대부분의 관리자나 개발자들은 테스트에 대해, 특히 단위 테스트에 대해 중요하게 생각하지 않는다.
 누구나 빠른 결과물을 내기를 원한다. 내부의 코드가 어떻게 작성되어 있던, 작은 코드의 수정으로 미칠 영향도가 어떻든지 간에...
 나중에 문제가 될 때서야 문제 제기를 하기도 한다.
-하지만 내가 생각하기에 테스트는 어떻게 보면..하나의 건물을 짓는 과정에 있어서 구조를 잘 설계하고, 기초부터 튼튼하게 지은 건물에 문제가 없는 지 확인을 하는 과정이 아닌가 싶다. 
+하지만 내가 생각하기에 테스트는 어떻게 보면..하나의 건물을 짓는 과정에 있어서 구조를 잘 설계하고, 기초부터 튼튼하게 지은 건물에 문제가 없는 지 확인을 하는 과정이 아닌가 싶다.
 만약, 그 확인하는 과정을 거치지 않고 건물만 설계에 맞추어 쌓아올리기만 한다면...과연 어떻게 될까???
 아무튼 개발도 마찬가지 아닌가 싶다. 단지, 사고가 인명사고로 이어질 가능성이 희박(?)하다는 것 뿐..이 아닐까나...
 
@@ -36,6 +34,7 @@ tags: javascript test jest tdd
 
 Test Driven Development의 약자이다.
 쉽게 말하면 테스트케이스를 먼저 작성하고, 실제 구현되는 코드를 작성하는 것이다.
+
 - [TDD(Test Driven Development) 를 연습하면서 참고하기 좋은 팁 10가지](https://medium.com/@rinae/tdd-test-driven-development-%EB%A5%BC-%EC%97%B0%EC%8A%B5%ED%95%98%EB%A9%B4%EC%84%9C-%EC%B0%B8%EA%B3%A0%ED%95%98%EA%B8%B0-%EC%A2%8B%EC%9D%80-%ED%8C%81-10%EA%B0%80%EC%A7%80-d8cf46ae1806)
 
 # 단위 테스트 작성하기
