@@ -55,7 +55,15 @@ export const createPages: GatsbyNode['createPages'] = async ({
             }
           }
         }
-        blog: allFile(filter: { childMdx: { id: { ne: null } } }) {
+        blog: allFile(
+          filter: {
+            childMdx: {
+              id: { ne: null }
+              frontmatter: { isDraft: { ne: true } }
+            }
+          }
+          sort: { fields: childMdx___frontmatter___date, order: DESC }
+        ) {
           edges {
             node {
               sourceInstanceName
