@@ -15,7 +15,7 @@ interface INode {
 
 interface IQueryResult {
   site: ISite;
-  blog: {
+  devLogs: {
     edges: {
       node: INode;
     }[];
@@ -55,7 +55,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
             }
           }
         }
-        blog: allFile(
+        devLogs: allFile(
           filter: {
             childMdx: {
               id: { ne: null }
@@ -95,7 +95,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
     site: {
       siteMetadata: { comment },
     },
-    blog: { edges: posts },
+    devLogs: { edges: posts },
   } = data;
 
   posts.forEach(({ node }) => {

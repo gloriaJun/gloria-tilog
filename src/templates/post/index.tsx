@@ -71,15 +71,30 @@ export const pageQuery = graphql`
         date
         category
         tags
-        thumbnail {
-          childImageSharp {
-            fluid {
-              src
-            }
-          }
-        }
       }
       excerpt
     }
   }
 `;
+// export const pageQuery = graphql`
+//   query BlogPostBySlug($id: String!) {
+//     mdx(id: { eq: $id }) {
+//       id
+//       body
+//       frontmatter {
+//         title
+//         date
+//         category
+//         tags
+//         thumbnail {
+//           childImageSharp {
+//             fluid {
+//               src
+//             }
+//           }
+//         }
+//       }
+//       excerpt
+//     }
+//   }
+// `;

@@ -11,10 +11,8 @@ export const CreateNode: GatsbyNode['onCreateNode'] = ({
   if (node.internal.type === `Mdx`) {
     // const type = node.frontmatter.type;
     const filePath = createFilePath({ node, getNode });
-    const path = filePath.replace('/blog/', '').replace(/(^\/|\/$)/g, '');
-
-    const fileNode = getNode(node.parent);
-    const source = fileNode.sourceInstanceName;
+    const path = filePath.replace('/devLogs/', '').replace(/(^\/|\/$)/g, '');
+    const source = getNode(node.parent || '').sourceInstanceName;
 
     createNodeField({
       name: `slug`,
