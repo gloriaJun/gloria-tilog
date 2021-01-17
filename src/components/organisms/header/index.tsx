@@ -1,0 +1,45 @@
+import React from 'react';
+
+import { ExternalLink } from 'components/atoms/external-link';
+import { ReactComponent as GithubIcon } from 'icons/github.svg';
+import { Wrapper, Logo, LinkGroup, iconStyle, LogoLink } from './style';
+
+interface Navigation {
+  github: string;
+}
+
+export interface IHeaderProps {
+  /** Title for the site */
+  title?: string;
+  /** Object of navigation items */
+  navigation?: Navigation;
+}
+
+/**
+ * header of layout
+ */
+
+export default function Header({
+  title,
+  navigation,
+}: IHeaderProps): JSX.Element {
+  return (
+    <Wrapper>
+      <Logo>
+        <LogoLink to="/" data-testid="logo-link">
+          {title}
+        </LogoLink>
+      </Logo>
+
+      {navigation && (
+        <LinkGroup data-testid="link-group">
+          {navigation.github && (
+            <ExternalLink href={navigation.github}>
+              <GithubIcon css={iconStyle} />
+            </ExternalLink>
+          )}
+        </LinkGroup>
+      )}
+    </Wrapper>
+  );
+}

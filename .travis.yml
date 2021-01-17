@@ -10,23 +10,35 @@ cache:
 branches:
   only:
     - master
-    - /^greenkeeper/.*$/
+    - develop
 
 before_install:
   - npm install -g yarn --cache-min 999999999
 
 install:
   - yarn install
-  - yarn build-storybook
+  # - npm run build-storybook
 
-deploy:
-  provider: pages
-  skip-cleanup: true
-  github-token: $GITHUB_TOKEN # Set in travis-ci.org dashboard, marked secure https://docs.travis-ci.com/user/deployment/pages/#Setting-the-GitHub-token
-  target-branch: gh-pages
-  local-dir: storybook-static
-  # on:
-  #   branch: master
+jobs:
+  include:
+    - stage: lint
+      script: yarn run lint
+
+    - stage: unit-test
+      script: yarn run test
+      after_success:
+        - yarn run coverage
+
+    - stage: gh-pages
+      script: yarn run build-storybook
+      # require the branch name to be master (note for PRs this is the base branch name)
+      if: branch = master
+      deploy:
+        provider: pages
+        skip-cleanup: true
+        github-token: $GITHUB_TOKEN # Set in travis-ci.org dashboard, marked secure https://docs.travis-ci.com/user/deployment/pages/#Setting-the-GitHub-token
+        target-branch: gh-pages
+        local-dir: storybook-static
 # notifications:
 #   email: false
 #   slack:

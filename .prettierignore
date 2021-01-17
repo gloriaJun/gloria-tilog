@@ -1,4 +1,13 @@
 .cache
+
+# package file
 package.json
 package-lock.json
+
+# output
 public
+src/_generated_/*
+schema.json
+
+# config file
+apollo.config.js

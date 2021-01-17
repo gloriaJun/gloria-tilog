@@ -62,17 +62,32 @@ public
 .DS_Store
 
 # Yarn
-yarn.lock
 yarn-error.log
 .pnp/
 .pnp.js
 # Yarn Integrity file
 .yarn-integrity
 
+# NPM
+package-lock.json
+
 # Ide files
 .idea/
+*.iml
 
 # Output of 'storybook'
 .out
 storybook-static
+
+# cypress
+cypress/screenshots
+cypress/videos
+
+# snyk
+.snyk
+
+# coveralls
+.coveralls.yml
+
+# auto generated file
 

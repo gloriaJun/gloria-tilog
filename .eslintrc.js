@@ -16,8 +16,9 @@ module.exports = {
     browser: true,
     node: true,
     es6: true,
+    jest: true,
   },
-  plugins: ['@typescript-eslint', 'react'],
+  plugins: ['@typescript-eslint', 'react', 'react-hooks', 'simple-import-sort'],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -26,7 +27,7 @@ module.exports = {
     sourceType: 'module', // Allows for the use of imports
   },
   rules: {
-    'react/prop-types': 'off', // Disable prop-types as we use TypeScript for type checking
+    // 'react/prop-types': 'off', // Disable prop-types as we use TypeScript for type checking
     '@typescript-eslint/explicit-function-return-type': 'off',
   },
   overrides: [

@@ -7,8 +7,10 @@
   Gloria's Lessoned Learn
 </h1>
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/c09ffbed-6152-47a7-9ae0-63f68bb0cd6d/deploy-status)](https://app.netlify.com/sites/gloriajun/deploys)
-[![Build Status](https://travis-ci.org/gloriaJun/gloria-tilog.svg?branch=master)](https://travis-ci.org/gloriaJun/gloria-tilog) [![Greenkeeper badge](https://badges.greenkeeper.io/gloriaJun/gloria-tilog.svg)](https://greenkeeper.io/)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/0c173e77-2b08-479c-9002-08cbdde55ddd/deploy-status)](https://app.netlify.com/sites/gtilog/deploys)
+[![Build Status](https://travis-ci.com/gloriaJun/gloria-tilog.svg?branch=master)](https://travis-ci.com/gloriaJun/gloria-tilog)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/1bbd3cdcdded460faf19ca042923fed7)](https://app.codacy.com/manual/pureainu/gloria-tilog?utm_source=github.com&utm_medium=referral&utm_content=gloriaJun/gloria-tilog&utm_campaign=Badge_Grade_Dashboard)
+[![Coverage Status](https://coveralls.io/repos/github/gloriaJun/gloria-tilog/badge.svg?branch=develop)](https://coveralls.io/github/gloriaJun/gloria-tilog?branch=develop)
 
 ## 🚀 Homepages
 
@@ -18,6 +20,9 @@
 
 - Gatsby
 - React
-- Styled-component
 - TypeScript
+- Emotion
 - Storybook
+- Cypress
+- Jest
+- @testing-library/react
