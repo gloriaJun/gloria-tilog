@@ -72,11 +72,10 @@ export const pageQuery = graphql`
       }
     }
     list: allFile(
-      sort: {
-        order: DESC
-        fields: [sourceInstanceName, childMdx___frontmatter___date]
+      filter: {
+        childMdx: { id: { ne: null }, frontmatter: { isDraft: { ne: true } } }
       }
-      filter: { childMdx: { id: { ne: null } } }
+      sort: { fields: childMdx___frontmatter___date, order: DESC }
     ) {
       group(field: sourceInstanceName) {
         edges {

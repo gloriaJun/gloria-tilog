@@ -1,0 +1,70 @@
+---
+category: 'Javascript'
+tags: ['promise']
+title: '(Javascript) Promise Pattern Example'
+date: '2018-03-06 14:35:00'
+---
+
+- TOC
+  {:toc}
+
+# 특정 조건을 만족할 때까지 반복하기
+
+```Javascript
+function funcPromise (data, percent) {
+  return new Promise((resolve, reject) => {
+    resolve({
+      result: percent === 100? 'ok' : 'no',
+      percent: percent
+    })
+  })
+}
+
+function promiseLoop (data, func) {
+  let percent = 0
+  return new Promise((resolve, reject) => {
+    let loop = () => {
+      func(data, percent)
+        .then(res => {
+          if (res.percent >= 100) {
+            resolve(res.result)
+          } else {
+            percent += 25
+            console.info('[INFO] api call retry : ', percent)
+            setTimeout(loop(data), 30 * 1000)
+          }
+        })
+    }
+    loop(data)
+  })
+}
+
+promiseLoop({key: 10}, funcPromise)
+  .then(res => {
+    console.log('result : ', res)
+  })
+```
+
+## setTimeout을 promise 패턴으로 구현
+
+```javascript
+function delay(sec = 3000) {
+  return new Promise((resolve) => setTimeout(resolve, sec));
+}
+
+console.log('timeout call');
+await delay();
+console.log('timeout called');
+```
+
+# Promise.race(iterable)
+
+iterable 안에 있는 Promise 중에 가장 먼저 resolve 또는 reject 된 Promise의 결과값을 반환받는다.
+
+- https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise/race
+
+# Reference
+
+- http://www.datchley.name/promise-patterns-anti-patterns/
+- http://han41858.tistory.com/11
+- https://lowrey.me/while-loop-with-es6-promises/
