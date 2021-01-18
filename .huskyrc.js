@@ -7,7 +7,7 @@ module.exports = {
     'pre-push': tasks([
       // 'npm run lint',
       // 'yarn run prettier:check',
-      'yarn run test',
+      // 'yarn run test',
     ]),
   },
 };
