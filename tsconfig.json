@@ -2,6 +2,7 @@
   "compilerOptions": {
     "rootDirs": ["src"],
     "baseUrl": "src",
+    "outDir": "./dist",
     "paths": {
       "*": ["*"]
     },

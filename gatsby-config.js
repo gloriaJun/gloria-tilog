@@ -1,12 +1,13 @@
 const path = require('path');
 
 const resolve = (dir) => path.resolve(__dirname, dir);
+const siteUrl = `https://gtilog.netlify.app`;
 
 module.exports = {
   siteMetadata: {
     title: `L.E.T`,
     description: `Learn! Experience! Think!`,
-    siteUrl: `https://gtilog.netlify.app/`,
+    siteUrl,
     author: `@gloriaJun`,
     social: {
       github: 'https://github.com/gloriaJun',
@@ -88,6 +89,18 @@ module.exports = {
       resolve: 'gatsby-plugin-purgecss',
       options: {
         printRejected: true,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {},
+    },
+    {
+      resolve: `gatsby-plugin-robots-txt`,
+      options: {
+        host: siteUrl,
+        sitemap: `${siteUrl}/sitemap.xml`,
+        policy: [{ userAgent: '*', allow: '/' }],
       },
     },
   ],
