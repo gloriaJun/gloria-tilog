@@ -1,7 +1,7 @@
 import { Link } from 'gatsby';
 import tw from 'twin.macro';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 
 export const Wrapper = styled.nav([
   tw`flex items-center justify-between flex-wrap bg-indigo-500 p-4 z-50`,
