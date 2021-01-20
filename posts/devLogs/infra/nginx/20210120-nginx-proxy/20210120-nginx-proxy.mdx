@@ -1,0 +1,50 @@
+---
+category: 'Infra'
+tags: ['nginx', 'proxy']
+title: '(Nginx) Reverse Proxy'
+date: '2021-01-20 14:31:00'
+---
+
+개발 산출물에 대하여 하나의 서비스 포트에서 개발 브랜치에 따라 라우팅 처리를 하여 접속이 가능하도록 구성을 할 필요가 있어서
+nginx의 `reverse proxy`를 활용하여 설정한 기능록
+
+## nginx.conf
+
+[StackOverflow](https://superuser.com/questions/330194/how-to-i-get-variables-from-location-in-nginx)의 글을 참고하여
+`location`의 설정을 정규식 패턴을 이용하여 정의한 후에 읽어들인 변수를 기반으로 경로를 찾아서 static 페이지를 보여주도록 처리하였다.
+
+```bash
+server {
+    listen       10080;
+    server_name _;
+
+   	root		 /home1/irteam/deploy/storybook;
+	index        index.html;
+
+	location ~* ^/(?<branch>(\w+))/(.*) {
+    	root		 /home1/irteam/deploy/storybook;
+	}
+
+	location / {
+		if ($arg_branch) {
+			rewrite ^ /$arg_branch break;
+		}
+
+		rewrite ^ /master break;
+    }
+}
+```
+
+위와 같이 설정 후에, nginx를 재기동 후 테스트를 해보면..
+
+`<도메인>`으로 접근을 하게 되면 아래와 같이 빌드하여 배포해둔 스토리북 화면으로 리다이렉트 되어 보여진다.
+![master](./master.png)
+
+그리고 `<도메인>?branch=dev`를 요청을 하면 **location ~_ ^/(?<branch>(\w+))/(._)** 에 정의한
+root 경로 하위에서 해당 파일을 찾아서 노출해준다.
+![dev](./dev.png)
+
+## Reference
+
+- [Nginx-변수](https://opentutorials.org/module/384/4508)
+- [NGINX에 대한 정리 #Upstream #Reverse Proxy #Proxy_pass](https://developer88.tistory.com/299/)
