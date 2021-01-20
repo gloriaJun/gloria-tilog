@@ -30,5 +30,6 @@
     /* Advanced Options */
     "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */
   },
-  "include": ["src/**/*", "jest-preprocess.ts"]
+  "include": ["src/**/*", "jest-preprocess.ts"],
+  "exclude": ["node_modules", "dis", "coverage", ".*rc.js", "*.config.js"]
 }
