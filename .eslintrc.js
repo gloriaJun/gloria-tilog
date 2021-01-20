@@ -16,7 +16,7 @@ module.exports = {
   parser: '@typescript-eslint/parser', // Specifies the ESLint parser
   parserOptions: {
     tsconfigRootDir: __dirname,
-    project: ['./tsconfig.json'],
+    project: './tsconfig.json',
     ecmaFeatures: {
       jsx: true,
     },
@@ -31,8 +31,6 @@ module.exports = {
   rules: {
     // 'react/prop-types': 'off', // Disable prop-types as we use TypeScript for type checking
     '@typescript-eslint/explicit-function-return-type': 'off',
-
-    '@typescript-eslint/no-unsafe-member-access': 'error',
   },
   overrides: [
     // Override some TypeScript rules just for .js files

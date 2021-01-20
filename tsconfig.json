@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
-    "rootDirs": ["src"],
-    "baseUrl": "src",
+    "baseUrl": ".",
+    // "rootDirs": ["src"],
     "paths": {
-      "*": ["*"]
+      "*": ["src/*"]
     },
     /* Basic Options */
     // "incremental": true,                   /* Enable incremental compilation */
@@ -30,6 +30,6 @@
     /* Advanced Options */
     "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */
   },
-  "include": ["src/**/*", "jest-preprocess.ts"],
-  "exclude": ["node_modules", "dis", "coverage", ".*rc.js", "*.config.js"]
+  "include": ["src", "cypress"],
+  "exclude": ["node_modules", "dist", "coverage", ".*rc.js", "*.config.js"]
 }

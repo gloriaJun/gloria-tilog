@@ -2,7 +2,6 @@
 .cache/*
 node_modules/*
 public/*
-.storybook/*
 @types
 __mocks__
 __tests__
@@ -22,3 +21,7 @@ loadershim.ts
 # config files
 *.config.js
 .*rc.js
+jest-preprocess.js
+
+# test
+.storybook/
