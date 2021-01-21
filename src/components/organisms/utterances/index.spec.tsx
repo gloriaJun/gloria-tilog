@@ -8,6 +8,6 @@ describe('<Utterances />', () => {
     const { getByTestId } = render(<Utterances repo="test/repo" />);
     const container = getByTestId('utterances');
 
-    expect(container).not.toEqual(null);
+    expect(container).not.NaN;
   });
 });
