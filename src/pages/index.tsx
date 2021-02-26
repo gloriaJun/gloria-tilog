@@ -11,10 +11,6 @@ export const BUTTON_SIZE = {
   MAX: 'max',
 } as const;
 
-const add = (a) => 'aaaaa';
-console.log('AAAA', add());
-console.log('AAAA', BUTTON_SIZE.MMM);
-
 interface IQueryProps {
   data: {
     site: ISite;
