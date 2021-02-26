@@ -3,7 +3,6 @@ module.exports = {
     browser: true,
     node: true,
     es6: true,
-    jest: true,
   },
   plugins: ['@typescript-eslint', 'react', 'react-hooks', 'simple-import-sort'],
   extends: [
@@ -44,6 +43,19 @@ module.exports = {
     {
       files: ['./packages/react/**/*.stories.tsx'],
       rules: {},
+    },
+    {
+      files: ['**/*.spec.js', '**/*.spec.ts', '**/.test.js', '**/.test.ts'],
+      env: {
+        jest: true,
+        'cypress/globals': true,
+      },
+      extends: ['plugin:jest/recommended', 'plugin:cypress/recommended'],
+      plugins: ['jest', 'cypress'],
+      rules: {
+        '@typescript-eslint/no-unsafe-member-access': 'off',
+        '@typescript-eslint/no-unsafe-assignment': 'off',
+      },
     },
   ],
 };

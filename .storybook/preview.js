@@ -2,7 +2,6 @@
 import { addDecorator, addParameters } from '@storybook/react';
 import { DocsPage, DocsContainer } from '@storybook/addon-docs/blocks';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
-import { withConsole } from '@storybook/addon-console';
 // import { withA11y } from '@storybook/addon-a11y';
 // import { action } from '@storybook/addon-actions';
 //
@@ -40,7 +39,6 @@ addParameters({
 // ============================================
 // Global Styles ==============================
 addDecorator(GlobalStyleProvider);
-addDecorator((storyFn, context) => withConsole()(storyFn)(context));
 
 // // Emotion Theme Provider =====================
 // addDecorator(EmotionThemeProvider);
