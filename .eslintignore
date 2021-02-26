@@ -2,13 +2,11 @@
 .cache/*
 node_modules/*
 public/*
-.storybook/*
 @types
 __mocks__
 __tests__
 
 gatsby-*.js
-stories/*
 
 jest*.js
 gatsby*.ts
@@ -19,4 +17,12 @@ jest*.ts
 **/_generated_/*
 
 loadershim.ts
-.huskyrc.js
+
+# config files
+*.config.js
+.*rc.js
+jest-preprocess.js
+
+# test
+.storybook/
+coverage/
