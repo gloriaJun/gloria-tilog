@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 
 import { Layout } from 'components/layout';
-import Head from 'components/organisms/head';
+import Head from 'components/head';
 import { PostList, PostListItem } from 'components/organisms/post-list';
 import { ISite, IPostContent } from 'interfaces';
 
