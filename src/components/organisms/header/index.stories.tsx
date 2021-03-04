@@ -1,23 +1,27 @@
 import React from 'react';
-import { text } from '@storybook/addon-knobs';
+import { Story, Meta } from '@storybook/react/types-6-0';
 
 import Header, { IHeaderProps } from './index';
 
 export default {
   title: 'Header',
   component: Header,
+  argTypes: {},
+} as Meta;
+
+const Template: Story<IHeaderProps> = (args) => {
+  return <Header {...args} />;
 };
 
-export const normal: React.FC<IHeaderProps> = () => {
-  const title = text('title', 'Logo');
-
-  return <Header title={title} />;
+export const Default = Template.bind({});
+Default.args = {
+  title: 'Logo',
 };
 
-export const withNavi: React.FC<IHeaderProps> = () => {
-  const title = text('title', 'Logo');
-
-  return (
-    <Header title={title} navigation={{ github: 'https://github.com/' }} />
-  );
+export const WithNavigation = Template.bind({});
+WithNavigation.args = {
+  title: 'My Blog',
+  navigation: {
+    github: 'https://github.com/',
+  },
 };

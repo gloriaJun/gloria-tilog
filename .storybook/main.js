@@ -1,13 +1,21 @@
 const path = require('path');
 
+const resolve = (...args) => path.resolve(process.cwd(), ...args);
+
 module.exports = {
-  stories: [path.resolve(__dirname, '../src', '**/*.stories.@(js|ts|tsx|mdx)')],
+  stories: [
+    // component stories
+    resolve('./src', `**/*.stories.@(js|ts|tsx|mdx)`),
+  ],
   addons: [
-    '@storybook/addon-actions',
     '@storybook/addon-links',
-    '@storybook/addon-viewport/register',
-    '@storybook/addon-knobs/register',
-    '@storybook/addon-docs/preset',
+    {
+      name: '@storybook/addon-essentials',
+      options: {
+        // backgrounds: false,
+      },
+    },
+    '@storybook/addon-a11y',
   ],
   webpackFinal: async (config) => {
     // set the NODE_ENV to 'production' by default, to allow babel-plugin-remove-graphql-queries to remove static queries
@@ -64,14 +72,6 @@ module.exports = {
             ],
           },
         },
-        // {
-        //   loader: require.resolve('react-docgen-typescript-loader'),
-        //   // options: {
-        //   //   // Provide the path to your tsconfig.json so that your stories can
-        //   //   // display types from outside each individual story.
-        //   //   tsconfigPath: path.resolve(__dirname, '../tsconfig.json'),
-        //   // },
-        // },
       ],
     });
 
@@ -95,6 +95,15 @@ module.exports = {
       test: /\.svg$/,
       use: ['@svgr/webpack', assetLoader],
     });
+
+    // Set alias
+    // ========================================================
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@emotion/core': resolve('node_modules/@emotion/react'),
+      '@emotion/styled': resolve('node_modules/@emotion/styled'),
+      'emotion-theming': resolve('node_modules/@emotion/react'),
+    };
 
     // Set import alias
     // ========================================================

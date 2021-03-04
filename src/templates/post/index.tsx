@@ -8,7 +8,7 @@ import { PostHeader } from 'components/organisms/post-header';
 import { PostTags } from 'components/organisms/post-tags';
 import { Utterances } from 'components/organisms/utterances';
 import { ITemplateProps, IPostContent } from 'interfaces';
-import Head from 'components/organisms/head';
+import Head from 'components/head';
 
 interface BlogPostBySlug {
   mdx: {

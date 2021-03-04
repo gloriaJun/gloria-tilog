@@ -1,8 +1,8 @@
 import React from 'react';
 
 import { ExternalLink } from 'components/atoms/external-link';
-import { ReactComponent as GithubIcon } from 'icons/github.svg';
-import { Wrapper, Logo, LinkGroup, iconStyle, LogoLink } from './style';
+import { Wrapper, Logo, LinkGroup, LogoLink } from './style';
+import Icon from 'components/atoms/icon';
 
 interface Navigation {
   github: string;
@@ -35,7 +35,7 @@ export default function Header({
         <LinkGroup data-testid="link-group">
           {navigation.github && (
             <ExternalLink href={navigation.github}>
-              <GithubIcon css={iconStyle} />
+              <Icon icon={'github'} />
             </ExternalLink>
           )}
         </LinkGroup>
