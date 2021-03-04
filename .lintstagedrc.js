@@ -1,7 +1,9 @@
 module.exports = {
-  '*.{js,jsx,ts,tsx}': [
-    'eslint . --ext .js,.jsx,.ts,.tsx --fix',
-    'prettier --write "**/*.{js,jsx,json,md}"',
+  '*.{js,jsx,ts,tsx}': ['eslint --fix', 'prettier --write', 'git add'],
+  '*.{ts,tsx}': [
+    () => 'tsc --skipLibCheck --noEmit',
+    'eslint --fix',
+    'prettier --write',
     'git add',
   ],
   '{*.{json,md}}': ['prettier --write', 'git add'],
