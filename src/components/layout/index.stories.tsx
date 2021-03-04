@@ -1,12 +1,19 @@
-import React from 'react';
+// import React from 'react';
+// import { Story, Meta } from '@storybook/react/types-6-0';
 
-import { Layout, ILayoutProps } from './index';
+// import { Layout, ILayoutProps } from './index';
 
-export default {
-  title: 'Layout',
-  component: Layout,
-};
+// export default {
+//   title: 'Layout',
+//   component: Layout,
+//   argTypes: {},
+// } as Meta;
 
-export const normal: React.FC<ILayoutProps> = () => {
-  return <Layout>Content</Layout>;
-};
+// const Template: Story<ILayoutProps> = (args) => {
+//   return <Layout {...args} />;
+// };
+
+// export const Default = Template.bind({});
+// Default.args = {
+//   children: `Content`,
+// };
