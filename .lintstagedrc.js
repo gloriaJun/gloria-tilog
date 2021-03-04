@@ -1,7 +1,7 @@
 module.exports = {
   '*.{js,jsx,ts,tsx}': [
-    'yarn run lint:fix',
-    'yarn run prettier:fix',
+    'eslint . --ext .js,.jsx,.ts,.tsx --fix',
+    'prettier --write "**/*.{js,jsx,json,md}"',
     'git add',
   ],
   '{*.{json,md}}': ['prettier --write', 'git add'],
