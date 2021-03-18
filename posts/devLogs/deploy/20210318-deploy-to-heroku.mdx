@@ -1,0 +1,149 @@
+---
+category: 'CI/CD'
+tags: ['heroku', 'monorepo']
+title: '(CI/CD) Deploy React app to heroku with Docker'
+date: '2021-03-18 09:31:00'
+---
+
+모노레포로 구성한 프로젝트 중 일부를 heroku에 Docker를 이용해서 배포한 경험을 기록하려고 한다.
+프로젝트 중 아래의 서비스들을 하나의 heroku 도메인에 하위 도메인으로 구분하도록 묶어서 배포하려고 하는 것이 목적이다.
+
+- Storybook : <도메인>/ui
+- Utility Document : <도메인>/util
+
+먼저 heroku에 가입하기 전에 Docker 를 이용하여 환경 구성하는 부분부터 시작하였다.
+
+### Create Dockerfile
+
+App 빌드를 위한 Dockerfile을 생성하기 전에 `<rootDir>/.dockerigner`을 생성해둔다.
+
+```bash
+node_modules
+```
+
+#### Building the App
+
+배포하고자 하는 서비스를 빌드하기 위한 스크립트를 “<rootDir>/Dockerfile”에 먼저 작성한다.
+여기서 node 버전은 Docker Hub에 있는 가장 최신 LTS 버전을 지정하였다.
+빌드 시에 사용하고자 하는 버전을 지정하여주면 된다.
+
+```bash
+ # Name the node stage "builder"
+FROM node:15 AS builder
+
+# Set working directory
+WORKDIR /app
+
+# Copy all files from current directory to working dir in image
+COPY . .
+
+# install node modules and build assets
+RUN yarn install
+
+# build assets
+RUN yarn build:doc
+```
+
+#### Configure the nginx server
+
+먼저 “<rootDir>/config/nginx.conf”를 생성하여 nginx 설정 파일을 생성한다.
+
+```bash
+# auto detects a good number of processes to run
+worker_processes  auto;
+
+#Provides the configuration file context in which the directives that affect connection processing are specified.
+events {
+    # Sets the maximum number of simultaneous connections that can be opened by a worker process.
+    worker_connections  1024;
+    # Tells the worker to accept multiple connections at a time
+    multi_accept on;
+}
+
+http {
+    # what times to include
+    include       /etc/nginx/mime.types;
+    # what is the default one
+    default_type  application/octet-stream;
+
+    # Sets the path, format, and configuration for a buffered log write
+log_format compression '$remote_addr - $remote_user [$time_local] '
+	'"$request" $status $upstream_addr '
+	'"$http_referer" "$http_user_agent"';
+
+
+	server {
+		listen 80;
+		server_name _;
+
+		root /usr/share/nginx/html;
+
+# save logs here
+access_log /var/log/nginx/access.log compression;
+error_log  /var/log/nginx/error.log warn;
+
+		location ~ ^/ui/(.*) {
+			try_files $$uri ui/index.html;
+		}
+
+		location ~ ^/utils/(.*) {
+			try_files $$uri utils/index.html;
+		}
+
+		location ~ ^/logger/(.*) {
+			try_files $$uri logger/index.html;
+		}
+
+# Set the cache headers
+location ~* \.(?:ico|css|js|gif|jpe?g|png)$ {
+    expires 30d;
+}
+
+	}
+}
+```
+
+“<rootDir>/Dockerfile”에 nginx 설정을 추가해준다.
+
+```bash
+# nginx state for serving content
+FROM nginx:alpine
+
+# Set working directory to nginx asset directory
+WORKDIR /usr/share/nginx/html
+
+# Remove default nginx static assets
+RUN rm -rf ./*
+
+# Copy static assets from builder stage
+COPY --from=builder /app/build .
+
+# Copy nginx.conf
+COPY nginx.conf /etc/nginx/nginx.conf
+
+# Containers run nginx with global directives and daemon off
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
+```
+
+#### docker 실행해서 확인해보기
+
+생성한 Dockerfile을 빌드하고, 실행해서 원하는 데로 서비스 접속이 가능한지 확인해본다.
+
+```bash
+docker build -t glria-lib-nginx .
+docker run --rm -it -p 8080:80 glria-lib-nginx
+```
+
+정상적으로 서비스가 올라갔다면…
+아래와 같은 도메인을 통해 확인할 수 있다.
+
+http://localhost:8080
+
+## Reference
+
+- https://nodejs.org/ko/docs/guides/nodejs-docker-webapp/
+- https://typeofnan.dev/how-to-serve-a-react-app-with-nginx-in-docker/
+- https://medium.com/@sroze/using-a-monolith-repository-with-heroku-17918618f145
+- https://github.com/dhavalthakkar93/Heroku-monorepo-POC
+- https://medium.com/inato/how-to-setup-heroku-with-yarn-workspaces-d8eac0db0256
+- https://developer.okta.com/blog/2020/06/24/heroku-docker-react
