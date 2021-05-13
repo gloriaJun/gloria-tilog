@@ -13,6 +13,7 @@ require('./src/styles/main.css');
 require('prismjs/themes/prism-tomorrow.css');
 // customize style
 require('./src/styles/prism.css');
+require('./src/styles/gatsby.css');
 
 // plugin
 require('prismjs/plugins/line-numbers/prism-line-numbers.css');
