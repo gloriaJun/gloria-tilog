@@ -10,6 +10,7 @@
   h5,
   h6 {
     @apply font-semibold;
+    @apply my-4;
   }
   h1 {
     @apply text-4xl;
