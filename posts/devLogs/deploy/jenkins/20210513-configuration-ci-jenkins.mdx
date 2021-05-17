@@ -9,7 +9,7 @@ date: '2021-05-13 09:31:00'
 
 구성한 환경은 아래와 같다.
 
-> Server: 2cpu 8ram 100G
+> Server: CentOS 7.9 4cpu 12ram 100G SSD
 > Jenkins v2.277.4
 > SonarQube v7.9.4
 
@@ -34,7 +34,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /usr/bin/docker:/usr/bin/docker
-      - /home/soul/jenkins_home:/var/jenkins_home
+      - "$HOME/jenkins_home:/var/jenkins_home"
     ports:
       - 8080:8080
       - 5000:5000
