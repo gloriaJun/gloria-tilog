@@ -1,13 +1,16 @@
 {
   "endOfLine": "lf",
-  "semi": true,
+  "printWidth": 80,
   "singleQuote": true,
+  "semi": true,
   "tabWidth": 2,
   "useTabs": false,
   "trailingComma": "all",
-  "printWidth": 80,
   "arrowParens": "always",
   "bracketSpacing": true,
   "jsxSingleQuote": false,
-  "jsxBracketSameLine": false
+  "jsxBracketSameLine": false,
+  "newline-before-return": true,
+  "no-duplicate-variable": [true, "check-parameters"],
+  "no-var-keyword": true
 }
