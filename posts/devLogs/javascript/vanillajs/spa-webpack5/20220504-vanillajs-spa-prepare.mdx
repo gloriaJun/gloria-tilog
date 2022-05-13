@@ -5,8 +5,13 @@ title: 'VanillaJS로 SPA 환경 구축하기 - Step1: Prepare'
 date: '2022-05-04 19:37:00'
 ---
 
+- 관련 글
+  - [VanillaJS로 SPA 환경 구축하기 - Step2: TypeScript](/devLogs/javascript/vanillajs/spa-webpack5/20220506-vanillajs-spa-typescript)
+  - [VanillaJS로 SPA 환경 구축하기 - Step3: Webpack5](https://gtilog.netlify.app/devLogs/javascript/vanillajs/spa-webpack5/20220512-vanillajs-spa-webpack5)
+
 React, VueJs 등과 같은 별도의 프레임워크를 이용하지 않고 온전히 자바스크립트만을 이용하여 Step by Step으로 SPA(Single Page Application)을 구현하기 위한 과정이다.
 해당 환경 구성을 위한 과정에서는 아래와 같은 기술들을 사용하여 적용할 예정이다.
+
 - webpack3
 - typescript
 - eslint + prettier + lint-staged + husky
@@ -17,6 +22,8 @@ React, VueJs 등과 같은 별도의 프레임워크를 이용하지 않고 온�
 ## Project Structure
 
 다음과 같이 기본적으로 폴더를 구성한다.
+
+```bash
 ├── src
 │ ├── frontend
 │ │ ├── index.html
@@ -27,8 +34,15 @@ React, VueJs 등과 같은 별도의 프레임워크를 이용하지 않고 온�
 │ │ │ └── index.js
 │ └── server.js
 └── README.md
+```
 
 ## Create `package.json`
+
+만약, yarn3가 설치되어있지 않다면 아래와 같이 수행해서 project에서 사용하는 yarn 버전을 설정해준다.
+
+```bash
+yarn set version berry
+```
 
 다음과 같은 커맨드를 수행하여 프로젝트에 `package.json` 파일을 생성한다.
 
@@ -53,22 +67,22 @@ yarn add -D express
 `<project_root_dir>/src/server.js` 파일을 생성하여 아래와 같이 작성해준다.
 
 ```javascript
-const express = require("express");
-const path = require("path");
+const express = require('express');
+const path = require('path');
 
 const app = express();
-const resolve = (dir) => path.resolve(__dirname, "frontend", dir);
+const resolve = (dir) => path.resolve(__dirname, 'frontend', dir);
 
 /* Ensure any requests prefixed with /static will serve our "src/static" directory */
-app.use("/static", express.static(resolve("static")));
+app.use('/static', express.static(resolve('static')));
 
 /* Redirect all routes to our (soon to exist) "index.html" file */
-app.get("/*", (req, res) => {
-  res.sendFile(resolve("index.html"));
+app.get('/*', (req, res) => {
+  res.sendFile(resolve('index.html'));
 });
 
 app.listen(process.env.PORT || 3000, () => {
-  console.log("Server running...");
+  console.log('Server running...');
 });
 ```
 
@@ -117,7 +131,9 @@ console.log("I'm console.");
 `<project_root_dir>/src/frontend/static/css/index.css` 파일을 작성한다.
 
 ```css
-backgou
+h1 {
+  color: blue;
+}
 ```
 
 해당 스크립트를 실행하여 서버를 기동해준다
@@ -131,5 +147,7 @@ Server running...
 !['vanillajs-spa-first-web'](./assets/vanillajs-spa-first-web.png)
 
 그러면 이제 기본적인 구성은 완료된 것이다!!!
+
+- [Step1 과정까지의 작업 내용](https://github.com/gloriaJun/vanilajs-spa-webpack-boilerplate/tree/3f33e9f98e4c6914fc8e6bd0439bef6cfac87ffe)
 
 그럼 다음 step에서는 typescript를 이용하여 구성하기 위해 설정을 수정해보자.

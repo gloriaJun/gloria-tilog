@@ -9,6 +9,7 @@ import { PostTags } from 'components/organisms/post-tags';
 import { Utterances } from 'components/organisms/utterances';
 import { ITemplateProps, IPostContent } from 'interfaces';
 import Head from 'components/head';
+import CodeBlock from 'components/atoms/code-block';
 
 interface BlogPostBySlug {
   mdx: {
@@ -45,7 +46,9 @@ const PostTemplate = ({
 
         <article className="prose lg:prose-xl">
           {body && (
-            <MDXProvider>
+            <MDXProvider
+            // components={{ code: CodeBlock }}
+            >
               <MDXRenderer>{body}</MDXRenderer>
             </MDXProvider>
           )}

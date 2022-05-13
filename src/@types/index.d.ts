@@ -3,7 +3,7 @@ declare module '@mdx-js/react' {
 
   type MDXProps = {
     children: React.ReactNode;
-    // components: { wrapper: React.ReactNode };
+    components?: { pre: React.ReactNode };
   };
   export class MDXProvider extends React.Component<MDXProps> {}
 }
