@@ -103,7 +103,7 @@
     "gatsby-plugin-alias-imports": "^1.0.5",
     "gatsby-plugin-emotion": "^6.0.0",
     "gatsby-plugin-manifest": "^3.0.0",
-    "gatsby-plugin-mdx": "^2.0.0",
+    "gatsby-plugin-mdx": "^2.14.1",
     "gatsby-plugin-offline": "^4.0.0",
     "gatsby-plugin-postcss": "^4.0.0",
     "gatsby-plugin-purgecss": "^6.0.0",
