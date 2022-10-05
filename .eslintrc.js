@@ -4,8 +4,15 @@ module.exports = {
     node: true,
     es6: true,
   },
-  plugins: ['@typescript-eslint', 'react', 'react-hooks', 'simple-import-sort'],
+  plugins: [
+    '@docusaurus',
+    '@typescript-eslint',
+    'react',
+    'react-hooks',
+    'simple-import-sort',
+  ],
   extends: [
+    'plugin:@docusaurus/recommended',
     'eslint:recommended',
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
@@ -14,12 +21,12 @@ module.exports = {
   ],
   parser: '@typescript-eslint/parser', // Specifies the ESLint parser
   parserOptions: {
-    tsconfigRootDir: __dirname,
-    project: './tsconfig.json',
+    // tsconfigRootDir: __dirname,
+    // project: './tsconfig.json',
     ecmaFeatures: {
       jsx: true,
     },
-    ecmaVersion: 2018, // Allows for the parsing of modern ECMAScript features
+    ecmaVersion: 2021, // Allows for the parsing of modern ECMAScript features
     sourceType: 'module', // Allows for the use of imports
   },
   settings: {
@@ -30,32 +37,34 @@ module.exports = {
   rules: {
     // 'react/prop-types': 'off', // Disable prop-types as we use TypeScript for type checking
     '@typescript-eslint/explicit-function-return-type': 'off',
+    // temp
+    '@typescript-eslint/no-var-requires': 'off',
   },
   overrides: [
     // Override some TypeScript rules just for .js files
     {
       files: ['*.js'],
       rules: {
-        '@typescript-eslint/no-var-requires': 'off', //
+        '@typescript-eslint/no-var-requires': 'off',
       },
     },
     /** story files */
-    {
-      files: ['./packages/react/**/*.stories.tsx'],
-      rules: {},
-    },
-    {
-      files: ['**/*.spec.js', '**/*.spec.ts', '**/.test.js', '**/.test.ts'],
-      env: {
-        jest: true,
-        'cypress/globals': true,
-      },
-      extends: ['plugin:jest/recommended', 'plugin:cypress/recommended'],
-      plugins: ['jest', 'cypress'],
-      rules: {
-        '@typescript-eslint/no-unsafe-member-access': 'off',
-        '@typescript-eslint/no-unsafe-assignment': 'off',
-      },
-    },
+    // {
+    //   files: ['./packages/react/**/*.stories.tsx'],
+    //   rules: {},
+    // },
+    // {
+    //   files: ['**/*.spec.js', '**/*.spec.ts', '**/.test.js', '**/.test.ts'],
+    //   env: {
+    //     jest: true,
+    //     'cypress/globals': true,
+    //   },
+    //   extends: ['plugin:jest/recommended', 'plugin:cypress/recommended'],
+    //   plugins: ['jest', 'cypress'],
+    //   rules: {
+    //     '@typescript-eslint/no-unsafe-member-access': 'off',
+    //     '@typescript-eslint/no-unsafe-assignment': 'off',
+    //   },
+    // },
   ],
 };
