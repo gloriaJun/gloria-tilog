@@ -1,0 +1,76 @@
+---
+title: '[CI/CD] Configuration CI (2) - Install Jenkins (master-slave) Plugins'
+tags: ['jenkins', 'sonarQube', 'coverage']
+date: '2021-05-14T09:31'
+---
+
+<!--truncate-->
+
+## Configuration Jenkins
+
+사용자가 설정한 사용자로 로그인을 하고 나면 이제 젠킨스 CI 구성에 필요한 플러그인을 설치한다.
+플러그인은 **젠킨스 관리 → 플러그인 관리** 매뉴로 접근하여 **설치가능** 탭을 클릭하여 원하는 플러그인을 선택하여 설치하면 된다.
+![plugin](./jenkins-install-plugin.png)
+![plugin-avaliable](./jenkins-install-plugin-avaliable.png)
+
+나는 CI 환경 구성을 위해 아래와 같은 플러그인들을 설치하였다.
+
+- Warnings Next Generation
+  ![checkstyle](./jenkins-checkstyle.png)
+  - ESLint와 같은 정적 분석 도구에 대한 리포트를 생성하기 위해 설치
+  - https://plugins.jenkins.io/warnings-ng/
+- GitHub Authentication
+  - 사내 GitHub 계정을 이용하여 로그인을 할 수 있도록 설정하기 위해 설치 (즉, GitHub AOuth 이용을 위함)
+  - https://plugins.jenkins.io/github-oauth/https://plugins.jenkins.io/github-oauth/
+- GitHub Integration
+  - https://plugins.jenkins.io/github-pullrequest/
+- Blue Ocean
+  - jenkinsfiles 를 이용하여 스크립트를 정의할 수 있고, 좀 더 이쁜 파이프라인 그래프를 확인할 수 있다.
+  - https://plugins.jenkins.io/blueocean/
+- docker pipeline
+  - https://plugins.jenkins.io/docker-workflow/
+- SSH Pipeline Steps
+  - pipeline 내에서 ssh 명령어를 사용하기 위함
+  - https://plugins.jenkins.io/ssh-steps/
+- Embeddable Build Status
+  - 빌드 상태에 대해 README에 뱃지를 등록하기 위함
+  - https://plugins.jenkins.io/embeddable-build-status/
+- Slack Notification Plugin
+  - slack으로 알림 전송을 위함
+  - https://plugins.jenkins.io/slack/
+- Merics
+  - 각 빌드 stage 간의 시간 등을 기록하기 위함
+  - https://plugins.jenkins.io/metrics/
+
+### System Configuration
+
+**Jenkins 관리 -> 시스템 설정**에서 다음과 같은 설정을 하였다.
+
+#### Github OAuth 설정
+
+GitHub 계정을 이용하여 로그인을 하기 위해 **Configure Global Security**에서 설정을 해주어야 한다.
+![jenkins-oauth](./jenkins-oauth.png)
+
+젠킨스 서버에 대한 정보를 GitHub에 로그인 후, **Settings - Developer Settings - OAuth Apps**에서 OAuth App을 생성하여 등록해준다.
+![github-oauth-app](./github-oauth-app.png)
+
+- Homepage URL : jenkins domain
+- Authorization callback URL : [jenkins domain]/securityRealm/finishLogin
+
+#### Github Server 설정
+
+**GitHub Sever** 설정을 한다.
+![jenkins-github-server](./jenkins-github-server.png)
+
+GitHub에 로그인을 위해 사용하는 Token 정보는 해당 매뉴의 **고급** 버튼을 클릭해서 출력되는 매뉴에서 다음과 같은 매뉴를 통해 생성할 수 있다.
+![jenkins-git-token](./jenkins-git-token.png)
+
+위와 같이 GitHub Token을 생성하면, GitHub에 로그인 후 **Settings - Developer Settings - Personal Access Token** 매뉴에서 생성된 토큰을 확인할 수 있다.
+
+#### Github API 설정
+
+엔터프라이즈 GitHub을 사용하는 경우, 해당 매뉴를 통해 등록을 해주어야한다.
+![jenkins-git-api](./jenkins-git-api.png)
+
+일단 이렇게 기본적인 설정을 완료하였다.
+빌드 Job 생성에 대한 과정은 다음에....

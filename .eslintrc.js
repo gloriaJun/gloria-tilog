@@ -22,7 +22,7 @@ module.exports = {
   parser: '@typescript-eslint/parser', // Specifies the ESLint parser
   parserOptions: {
     // tsconfigRootDir: __dirname,
-    // project: './tsconfig.json',
+    project: './tsconfig.json',
     ecmaFeatures: {
       jsx: true,
     },

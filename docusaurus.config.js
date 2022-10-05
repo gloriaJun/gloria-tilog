@@ -1,13 +1,47 @@
-// @ts-check
+// @ts-nocheck
 // Note: type annotations allow type checking and IDEs autocompletion
 
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
+const title = 'L.E.T';
+const description = 'Learn! Experience! Think!';
+const gitHubUrl = 'https://github.com/gloriaJun';
+const repoName = 'gloria-tilog';
+const baseUrls = {
+  logs: 'devlogs',
+  trouble: 'trouble-shootings',
+  diary: 'blog',
+};
+
+const devLogItems = [
+  {
+    label: 'Frontend',
+    to: `${baseUrls.logs}/frontend`,
+  },
+  {
+    label: 'CI/CD',
+    to: `${baseUrls.logs}/ci-cd`,
+  },
+  {
+    label: 'Etc',
+    to: `${baseUrls.logs}/etc`,
+  },
+];
+
+const editUrlForBlog = ({
+  // locale,
+  blogDirPath,
+  blogPath,
+  // permalink,
+}) => {
+  return `${gitHubUrl}/${repoName}/edit/master/${blogDirPath}/${blogPath}`;
+};
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'L.E.T',
-  tagline: 'Learn! Experience! Think!',
+  title,
+  tagline: description,
   url: 'https://gtilog.netlify.app',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -37,18 +71,22 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          editUrl: function ({
+            // locale,
+            // version,
+            versionDocsDirPath,
+            docPath,
+            // permalink,
+          }) {
+            return `${gitHubUrl}/${repoName}/edit/master/${versionDocsDirPath}/${docPath}`;
+          },
+          // showLastUpdateAuthor: true,
+          showLastUpdateTime: true,
         },
-        blog: {
-          showReadingTime: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-        },
+        // blog: {
+        //   showReadingTime: false,
+        //   editUrl: editUrlForBlog,
+        // },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
@@ -56,11 +94,27 @@ const config = {
     ],
   ],
 
+  plugins: [
+    ...[...devLogItems, { to: baseUrls.trouble }].reduce((result, item) => {
+      result.push([
+        '@docusaurus/plugin-content-blog',
+        {
+          id: item.to.replace(/^\//, '').replace('/', '-'),
+          path: `./${item.to}`,
+          routeBasePath: item.to,
+          editUrl: editUrlForBlog,
+          showReadingTime: false,
+        },
+      ]);
+      return result;
+    }, []),
+  ],
+
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'My Site',
+        title,
         logo: {
           alt: 'My Site Logo',
           src: 'img/logo.svg',
@@ -68,13 +122,27 @@ const config = {
         items: [
           {
             type: 'doc',
-            docId: 'intro',
+            docId: 'algorithm/2017-05-26-fibonacci',
+            label: 'Docs',
             position: 'left',
-            label: 'Tutorial',
           },
-          { to: '/blog', label: 'Blog', position: 'left' },
           {
-            href: 'https://github.com/gloriaJun',
+            label: 'DevLogs',
+            items: devLogItems,
+            position: 'left',
+          },
+          // {
+          //   label: 'Trouble Shootings',
+          //   to: baseUrls.trouble,
+          //   position: 'left',
+          // },
+          // {
+          //   label: 'Diary',
+          //   to: baseUrls.diary,
+          //   position: 'left',
+          // },
+          {
+            href: gitHubUrl,
             label: 'GitHub',
             position: 'right',
           },
@@ -98,14 +166,6 @@ const config = {
         //       {
         //         label: 'Stack Overflow',
         //         href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-        //       },
-        //       {
-        //         label: 'Discord',
-        //         href: 'https://discordapp.com/invite/docusaurus',
-        //       },
-        //       {
-        //         label: 'Twitter',
-        //         href: 'https://twitter.com/docusaurus',
         //       },
         //     ],
         //   },
