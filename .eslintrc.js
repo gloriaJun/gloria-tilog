@@ -20,15 +20,7 @@ module.exports = {
     'plugin:prettier/recommended',
   ],
   parser: '@typescript-eslint/parser', // Specifies the ESLint parser
-  parserOptions: {
-    // tsconfigRootDir: __dirname,
-    project: './tsconfig.json',
-    ecmaFeatures: {
-      jsx: true,
-    },
-    ecmaVersion: 2021, // Allows for the parsing of modern ECMAScript features
-    sourceType: 'module', // Allows for the use of imports
-  },
+  parserOptions: {},
   settings: {
     react: {
       version: 'detect',
@@ -41,6 +33,20 @@ module.exports = {
     '@typescript-eslint/no-var-requires': 'off',
   },
   overrides: [
+    {
+      files: ['src/**/*.ts'],
+      parser: '@typescript-eslint/parser',
+      parserOptions: {
+        tsconfigRootDir: __dirname,
+        project: './tsconfig.json',
+        ecmaFeatures: {
+          jsx: true,
+        },
+        ecmaVersion: 2021, // Allows for the parsing of modern ECMAScript features
+        sourceType: 'module', // Allows for the use of imports
+      },
+      rules: {},
+    },
     // Override some TypeScript rules just for .js files
     {
       files: ['*.js'],
