@@ -1,12 +1,114 @@
 ---
 title: '[CI/CD] GitHub Actions을 이용하여 gh-pages 배포하기'
-tags: ['github', 'github-action', 'gh-pages']
+tags: ['github', 'github-action', 'gh-pages', 'example']
 date: 2022-10-07
 ---
 
-## using node version from `.nvmrc`
+기존에 **Netlify**를 이용하여 CI/CD를 자동화한 부분을 금번에 *[docusaurus](https://docusaurus.io/)*로 변경을 하면서 **GitHub Actions**를 이용하여 `gh-pages`에 배포하는 것으로 변경하였다.
 
-- https://github.com/actions/setup-node/issues/32
+## workflow 생성하기
+
+레포에 아직 정의된 workflow가 없다면, `Actions` 탭을 클릭하면, GitHub에서 해당 레포를 분석하여 추천하는 workflow를 선택하여 생성할 수 있다.
+또는 `.github/workflows/<filename>.yml`과 같이 직접 파일을 생성하여 아래 예시와 같이 정의하여 `main 브랜치`에 반영하면 workflow의 `on` 에 정의된 조건에 해당하는 경우 정의한 action이 수행된다.
+
+```yml
+name: deploy-github-actions
+on:
+  push:
+    branches: [main]
+  pull_request:
+    types:
+      - opened
+    # branches: [main]
+    paths-ignore:
+      - 'docs/**'
+      - 'devlogs/**'
+      - 'trouble-shootings/**'
+      - '.husky/**'
+      - '.vscode/**'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v3
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: Cache yarn dependencies
+        uses: actions/cache@v1
+        id: yarn-cache
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install Dependencies
+        run: yarn install
+
+      - name: Lint
+        run: yarn run lint
+
+      # - name: Unit Test
+      #   run: |
+      #     yarn run test
+      #     yarn run coverage
+
+      - name: Build
+        run: yarn run build
+```
+
+### using node version from `.nvmrc`
+
+프로젝트에 정의된 `.nvmrc`의 파일을 읽어서 node 버전을 설치하고자 하는 경우 아래와 같이 workflow를 정의해준다.
+
+```yml
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v3
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+```
+
+위와 같이 정의하면 github action이 수행될 때에 아래와 같이 `.nvmrc`의 파일에 정의된 버전의 node를 설치하여 job이 수행되는 것을 확인할 수 있다.
+
+```bash
+Run actions/setup-node@v3
+  with:
+    node-version-file: .nvmrc
+    always-auth: false
+    check-latest: false
+    token: ***
+
+Node version file is not JSON file
+Resolved .nvmrc as 16.15.0
+Attempting to download 16.15.0...
+Acquiring 16.15.0 - x64 from https://github.com/actions/node-versions/releases/download/16.15.0-2233943534/node-16.15.0-linux-x64.tar.gz
+Extracting ...
+/usr/bin/tar xz --strip 1 --warning=no-unknown-keyword -C /home/runner/work/_temp/becdc76f-1e88-4edc-bc18-4fd3ce04c15e -f /home/runner/work/_temp/070949ef-1124-4206-b790-a3ac92b70b51
+Adding to the cache ...
+Done
+```
+
+## Conclusion
+
+약 1일 정도를 조사해보고 적용 후에 내가 생각하는 ...
+
+- 장점은...
+  - 별도로 Netlify, TravisCI 등과 같은 도구를 연동하는 것보다 GitHub과 마치 하나의 flow로 묶여 있는 느낌이다.
+  - GitHub 내에서 Actions 탭을 이용하여 확인이 가능하니 접근성이 더 좋은 것 같다.
+- 단점은...
+  - 새로운 러닝 커브!!!!
 
 ## References
 
