@@ -1,7 +1,7 @@
 language: node_js
 
-node_js:
-  - 'stable'
+# node_js:
+#   - 'stable'
 
 cache:
   directories:
@@ -13,6 +13,7 @@ branches:
     - develop
 
 before_install:
+  # - nvm install $(cat .nvmrc)
   - npm install -g yarn --cache-min 999999999
 
 install:

@@ -29,6 +29,16 @@ const devLogItems = [
   },
 ];
 
+const editUrlForDoc = ({
+  // locale,
+  // version,
+  versionDocsDirPath,
+  docPath,
+  // permalink,
+}) => {
+  return `${gitHubUrl}/${repoName}/edit/master/${versionDocsDirPath}/${docPath}`;
+};
+
 const editUrlForBlog = ({
   // locale,
   blogDirPath,
@@ -71,16 +81,8 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          editUrl: function ({
-            // locale,
-            // version,
-            versionDocsDirPath,
-            docPath,
-            // permalink,
-          }) {
-            return `${gitHubUrl}/${repoName}/edit/master/${versionDocsDirPath}/${docPath}`;
-          },
-          // showLastUpdateAuthor: true,
+          editUrl: editUrlForDoc,
+          showLastUpdateAuthor: false,
           showLastUpdateTime: true,
         },
         // blog: {
@@ -95,7 +97,7 @@ const config = {
   ],
 
   plugins: [
-    ...[...devLogItems, { to: baseUrls.trouble }].reduce((result, item) => {
+    ...[...devLogItems].reduce((result, item) => {
       result.push([
         '@docusaurus/plugin-content-blog',
         {
@@ -104,6 +106,21 @@ const config = {
           routeBasePath: item.to,
           editUrl: editUrlForBlog,
           showReadingTime: false,
+        },
+      ]);
+      return result;
+    }, []),
+    ...[{ to: baseUrls.trouble }].reduce((result, item) => {
+      result.push([
+        '@docusaurus/plugin-content-docs',
+        {
+          sidebarPath: require.resolve('./sidebars.js'),
+          id: item.to.replace(/^\//, '').replace('/', '-'),
+          path: `./${item.to}`,
+          routeBasePath: item.to,
+          editUrl: editUrlForDoc,
+          showLastUpdateAuthor: false,
+          showLastUpdateTime: true,
         },
       ]);
       return result;
@@ -131,11 +148,12 @@ const config = {
             items: devLogItems,
             position: 'left',
           },
-          // {
-          //   label: 'Trouble Shootings',
-          //   to: baseUrls.trouble,
-          //   position: 'left',
-          // },
+          {
+            label: 'Trouble Shootings',
+            to: `${baseUrls.trouble}/infra/address-already-in-use`,
+            position: 'left',
+            activeBaseRegex: `${baseUrls.trouble}/`,
+          },
           // {
           //   label: 'Diary',
           //   to: baseUrls.diary,
