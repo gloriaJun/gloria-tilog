@@ -26,3 +26,7 @@ jest-preprocess.js
 # test
 .storybook/
 coverage/
+
+# temp
+src_bak/
+__mocks__

@@ -1,0 +1,149 @@
+---
+title: '[JavaScript] Custom Eslint 만들어 배포하기'
+slug: js-custom-eslint
+tags: ['JavaScript', 'eslint', 'configuration']
+date: '2021-01-17T22:31'
+---
+
+<!--truncate-->
+
+매번 프로젝트 구성 시마다 이전에 사용하던 eslint 규칙을 복사해서 다시 붙여넣고,
+프로젝트에서 필요한 규칙들은 더 추가하거나 재정의 후에 사용을 하게 되는데,
+
+이러한 반복 작업들에 대한 방법으로 git 레파지토리 생성 시의 template 기능 활용할 수도 있지만..
+각 프로젝트마다의 초기 프로젝트 셋팅 구조가 모노레포, 리액트 프로젝트 등에 따라 eslint의 규칙이 달라
+내가 사용하기 위한 eslint 규칙을 정의하고 npm에 배포하여 활용해보기로 하였다.
+
+## 프로젝트 생성
+
+```bash
+mkdir gloria-eslint-config
+cd gloria-eslint-config
+yarn init
+```
+
+## 의존 모듈 설치
+
+> [airbnb](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb)에서 정의한 것처럼
+> 각 프로젝트의 성격(vanila, react ...)에 맞는 규칙을 별도 정의 및 배포하여 사용하기 위해 모노레포 구조로 프로젝트 구성을 하였다.
+
+```bash
+yarn install -D lerna eslint eslint-config-prettier eslint-plugin-import eslint-plugin-prettier prettier @typescript-eslint/eslint-plugin @typescript-eslint/parser
+```
+
+## 모노레포 설정
+
+- lerna.json
+
+```bash
+{
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "packages": ["packages/*"],
+  "version": "independent"
+}
+```
+
+- package.json
+
+```json
+{
+  "name": "eslint-config-gloria",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/gloriaJun/gloria-eslint-config.git",
+  "author": "gloriaJun <pureainu@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": ["packages/*"],
+  "scripts": {
+    "clean": "lerna clean -y",
+    "postinstall": "lerna bootstrap",
+    "bootstrap": "lerna bootstrap",
+    "start": "lerna run start",
+    "build": "lerna run build",
+    "test": "lerna run test"
+  }
+  //...SKIP...
+}
+```
+
+## 기본 규칙 정의
+
+`<rootDir>/packages/eslint-config-gloria-base`를 생성하고, 기본적으로 사용하는 규칙들을 정의하였다.
+요즘 주로 typescript로 작업을 하고 있어서 별도의 패키지로 정의할까 하다가 일단은 기본 규칙에 포함을 시켰다.
+
+정의한 규칙들에 대한 구조는 [Repo](https://github.com/gloriaJun/gloria-eslint-config/tree/d816b03615dee3c863f712bf39ac5aa2aad2a618/packages/eslint-config-gloria-base)에서 확인할 수 있다.
+
+## 빌드 스크립트 정의
+
+`Travis CI`를 이용하여 **main(=master)** 브랜치가 변경이 발생한 경우에 수행이 되어 npm에 배포가 되도록 정의하였다.
+
+```yaml
+language: node_js
+
+node_js:
+  # node latest stable Node.js release
+  - node
+  # lts/* latest LTS Node.js release
+  #- 'lts/*'
+
+cache:
+  directories:
+    - node_modules
+
+branches:
+  only:
+    - main
+
+before_install:
+  - npm install -g yarn --cache-min 999999999
+
+install:
+  - yarn install
+
+before_deploy:
+  - npm config set //registry.npmjs.org/:_authToken=$NPM_TOKEN
+
+deploy:
+  provider: script
+  script: lerna publish -y from-package
+  skip_cleanup: true
+  on:
+    branch: main
+```
+
+## npm 배포 확인
+
+정상적으로 빌드가 되었다면, 다른 프로젝트에서 npm을 이용하여 다운받아 아래와 같이 사용할 수 있다.
+
+```bash
+yarn add -D eslint eslint-config-gloria-base
+```
+
+```javascript
+// .eslintrc.js
+module.exports = {
+  root: true,
+  env: {
+    es6: true,
+    browser: true,
+    node: true,
+  },
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    tsconfigRootDir: __dirname,
+    project: ['./tsconfig.json'],
+  },
+  plugins: [],
+  extends: ['gloria-base'],
+  settings: {},
+  rules: {},
+  ignorePatterns: ['node_modules', '*.config.js', '.*rc.js', 'dist'],
+};
+```
+
+## Reference
+
+- [Lerna를 활용한 Mono-Repo 구축 완벽 가이드 - 예제를 통한 완벽 파악](https://kdydesign.github.io/2020/08/27/mono-repo-lerna-example/)
+- [러나 (Lerna) 훑어보기](https://www.awesomezero.com/development/lerna/)
