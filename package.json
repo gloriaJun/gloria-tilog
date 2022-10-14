@@ -24,6 +24,7 @@
     "prepare": "husky install",
     "start:website": "yarn workspace website start",
     "build:website": "yarn workspace website build",
+    "deploy:website": "yarn workspace website deploy",
     "tsclint": "tsc --noEmit",
     "prelint": "$npm_execpath run tsclint",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",

@@ -52,8 +52,11 @@ const editUrlForBlog = ({
 const config = {
   title,
   tagline: description,
-  url: 'https://gtilog.netlify.app',
+  url: 'https://gloriajun.github.io',
   baseUrl: '/',
+  // projectName: 'gloriajun.github.io',
+  projectName: 'gloria-tilog',
+  organizationName: 'gloriajun',
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
