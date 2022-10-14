@@ -38,16 +38,6 @@ node_modules/
 # dotenv environment variable files
 .env*
 
-# Production
-/build
-
-# Build
-./dist
-
-# Generated files
-.docusaurus
-.cache-loader
-
 # Mac files
 .DS_Store
 
@@ -80,12 +70,6 @@ package-lock.json
 # Output of 'storybook'
 .out
 storybook-static
-
-# snyk
-.snyk
-
-# coveralls
-.coveralls.yml
 
 # auto generated file
 

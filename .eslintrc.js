@@ -4,15 +4,8 @@ module.exports = {
     node: true,
     es6: true,
   },
-  plugins: [
-    '@docusaurus',
-    '@typescript-eslint',
-    'react',
-    'react-hooks',
-    'simple-import-sort',
-  ],
+  plugins: ['@typescript-eslint', 'react', 'react-hooks', 'simple-import-sort'],
   extends: [
-    'plugin:@docusaurus/recommended',
     'eslint:recommended',
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
@@ -34,10 +27,10 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['src/**/*.ts'],
+      files: ['**/src/**/*.ts'],
       parser: '@typescript-eslint/parser',
       parserOptions: {
-        tsconfigRootDir: __dirname,
+        // tsconfigRootDir: __dirname,
         project: './tsconfig.json',
         ecmaFeatures: {
           jsx: true,
@@ -53,6 +46,13 @@ module.exports = {
       rules: {
         '@typescript-eslint/no-var-requires': 'off',
       },
+    },
+    // apps/website rules
+    {
+      files: ['apps/website/*.{js,jsx,ts,tsx}'],
+      plugins: ['@docusaurus'],
+      extends: ['plugin:@docusaurus/recommended'],
+      rules: {},
     },
     /** story files */
     // {
