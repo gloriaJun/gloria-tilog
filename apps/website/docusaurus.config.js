@@ -9,9 +9,9 @@ const description = 'Learn! Experience! Think!';
 const gitHubUrl = 'https://github.com/gloriaJun';
 const repoName = 'gloria-tilog';
 const baseUrls = {
-  logs: 'devlogs',
-  trouble: 'trouble-shootings',
-  diary: 'blog',
+  logs: '/devlogs',
+  trouble: '/trouble-shootings',
+  diary: '/blog',
 };
 
 const devLogItems = [
@@ -54,7 +54,7 @@ const config = {
   tagline: description,
   url: 'https://gtilog.netlify.app',
   baseUrl: '/',
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
 

@@ -7,22 +7,22 @@ on:
       - opened
     # branches: [main]
     paths-ignore:
-      - 'docs/**'
-      - 'devlogs/**'
-      - 'trouble-shootings/**'
+      - 'apps/website/docs/**'
+      - 'apps/website/devlogs/**'
+      - 'apps/website/trouble-shootings/**'
       - '.husky/**'
       - '.vscode/**'
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout source code
+        uses: actions/checkout@v3
+
       - name: Setup node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version-file: '.nvmrc'
-
-      - name: Checkout source code
-        uses: actions/checkout@v2
 
       - name: Cache yarn dependencies
         uses: actions/cache@v1
@@ -44,5 +44,5 @@ jobs:
       #     yarn run test
       #     yarn run coverage
 
-      - name: Build
-        run: yarn run build
+      - name: Build Website
+        run: yarn run build:website
