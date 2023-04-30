@@ -48,12 +48,12 @@ module.exports = {
       },
     },
     // apps/website rules
-    {
-      files: ['apps/website/*.{js,jsx,ts,tsx}'],
-      plugins: ['@docusaurus'],
-      extends: ['plugin:@docusaurus/recommended'],
-      rules: {},
-    },
+    // {
+    //   files: ['apps/website/*.{js,jsx,ts,tsx}'],
+    //   plugins: ['@docusaurus'],
+    //   extends: ['plugin:@docusaurus/recommended'],
+    //   rules: {},
+    // },
     /** story files */
     // {
     //   files: ['./packages/react/**/*.stories.tsx'],

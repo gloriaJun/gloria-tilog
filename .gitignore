@@ -1,9 +1,51 @@
-# Logs
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+dist
+tmp
+/out-tsc
+
+# dependencies
+node_modules
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+
+# System Files
+.DS_Store
+Thumbs.db
+
+
+#############################
+#### custom congfiguration
+#############################
+
+# Log files
 logs
 *.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 
 # Runtime data
 pids
@@ -23,12 +65,6 @@ coverage
 # node-waf configuration
 .lock-wscript
 
-# Dependency directories
-node_modules/
-
-# Optional npm cache directory
-.npm
-
 # Optional eslint cache
 .eslintcache
 
@@ -38,8 +74,9 @@ node_modules/
 # dotenv environment variable files
 .env*
 
-# Mac files
-.DS_Store
+# Optional npm cache directory
+.npm
+package-lock.json
 
 ### yarn ###
 # used Zero-Install
@@ -60,16 +97,11 @@ node_modules/
 !.yarn/versions
 .pnp.*
 
-# NPM
-package-lock.json
-
-# Ide files
-.idea/
-*.iml
-
-# Output of 'storybook'
-.out
-storybook-static
-
 # auto generated file
 
+# Generated Docusaurus files
+.docusaurus/
+.cache-loader/
+
+## temp
+.backup
