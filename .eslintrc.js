@@ -1,76 +1,46 @@
 module.exports = {
-  env: {
-    browser: true,
-    node: true,
-    es6: true,
-  },
-  plugins: ['@typescript-eslint', 'react', 'react-hooks', 'simple-import-sort'],
-  extends: [
-    'eslint:recommended',
-    'plugin:react/recommended',
-    'plugin:@typescript-eslint/recommended',
-    'prettier',
-    'plugin:prettier/recommended',
-  ],
-  parser: '@typescript-eslint/parser', // Specifies the ESLint parser
-  parserOptions: {},
-  settings: {
-    react: {
-      version: 'detect',
-    },
-  },
+  root: true,
+  ignorePatterns: ['**/*'],
+  plugins: ['@nx'],
+  extends: ['airbnb', 'plugin:prettier/recommended'],
   rules: {
-    // 'react/prop-types': 'off', // Disable prop-types as we use TypeScript for type checking
-    '@typescript-eslint/explicit-function-return-type': 'off',
-    // temp
-    '@typescript-eslint/no-var-requires': 'off',
+    'prettier/prettier': ['error'],
   },
   overrides: [
     {
-      files: ['**/src/**/*.ts'],
-      parser: '@typescript-eslint/parser',
-      parserOptions: {
-        // tsconfigRootDir: __dirname,
-        project: './tsconfig.json',
-        ecmaFeatures: {
-          jsx: true,
-        },
-        ecmaVersion: 2021, // Allows for the parsing of modern ECMAScript features
-        sourceType: 'module', // Allows for the use of imports
+      files: ['*.ts', '*.tsx', '*.js', '*.jsx'],
+      rules: {
+        '@nx/enforce-module-boundaries': [
+          'error',
+          {
+            enforceBuildableLibDependency: true,
+            allow: [],
+            depConstraints: [
+              {
+                sourceTag: '*',
+                onlyDependOnLibsWithTags: ['*'],
+              },
+            ],
+          },
+        ],
+      },
+    },
+    {
+      files: ['*.ts', '*.tsx'],
+      extends: ['plugin:@nx/typescript', 'airbnb-typescript'],
+      rules: {},
+    },
+    {
+      files: ['*.js', '*.jsx'],
+      extends: ['plugin:@nx/javascript'],
+      rules: {},
+    },
+    {
+      files: ['*.spec.ts', '*.spec.tsx', '*.spec.js', '*.spec.jsx'],
+      env: {
+        jest: true,
       },
       rules: {},
     },
-    // Override some TypeScript rules just for .js files
-    {
-      files: ['*.js'],
-      rules: {
-        '@typescript-eslint/no-var-requires': 'off',
-      },
-    },
-    // apps/website rules
-    // {
-    //   files: ['apps/website/*.{js,jsx,ts,tsx}'],
-    //   plugins: ['@docusaurus'],
-    //   extends: ['plugin:@docusaurus/recommended'],
-    //   rules: {},
-    // },
-    /** story files */
-    // {
-    //   files: ['./packages/react/**/*.stories.tsx'],
-    //   rules: {},
-    // },
-    // {
-    //   files: ['**/*.spec.js', '**/*.spec.ts', '**/.test.js', '**/.test.ts'],
-    //   env: {
-    //     jest: true,
-    //     'cypress/globals': true,
-    //   },
-    //   extends: ['plugin:jest/recommended', 'plugin:cypress/recommended'],
-    //   plugins: ['jest', 'cypress'],
-    //   rules: {
-    //     '@typescript-eslint/no-unsafe-member-access': 'off',
-    //     '@typescript-eslint/no-unsafe-assignment': 'off',
-    //   },
-    // },
   ],
 };
