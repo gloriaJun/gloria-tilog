@@ -7,9 +7,9 @@ on:
       - opened
     # branches: [main]
     paths-ignore:
-      - 'apps/website/docs/**'
-      - 'apps/website/devlogs/**'
-      - 'apps/website/trouble-shootings/**'
+      - 'apps/doc/docs/**'
+#      - 'apps/website/devlogs/**'
+#      - 'apps/website/trouble-shootings/**'
       - '.husky/**'
       - '.vscode/**'
 jobs:
@@ -37,7 +37,7 @@ jobs:
         run: yarn install
 
       - name: Lint
-        run: yarn run lint
+        run: yarn run lint:all
 
       # - name: Unit Test
       #   run: |
@@ -45,4 +45,4 @@ jobs:
       #     yarn run coverage
 
       - name: Build Website
-        run: yarn run build:website
+        run: yarn run build doc
