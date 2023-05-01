@@ -4,7 +4,7 @@ import Ui from './ui';
 
 describe('Ui', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<Ui />);
+    const { baseElement } = render(<Ui name={'test'} />);
     expect(baseElement).toBeTruthy();
   });
 });

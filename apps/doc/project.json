@@ -4,6 +4,23 @@
   "projectType": "application",
   "sourceRoot": "apps/doc/src",
   "targets": {
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/doc/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "type-check": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "yarn run tsc --noEmit -p ./apps/doc/tsconfig.json"
+          }
+        ]
+      }
+    },
     "build": {
       "executor": "@nx-plus/docusaurus:browser",
       "options": {

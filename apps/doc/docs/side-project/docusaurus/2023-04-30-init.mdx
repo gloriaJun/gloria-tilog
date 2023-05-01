@@ -22,11 +22,13 @@ jekyll, gatsby와 같은 도구를 이용하여 github repo를 이용하여 개�
 
 **create-nx-workspace**를 이용하여 레파지토리를 생성한다.
 기본적인 폴더만 구성된 프로젝트를 생성하기 위해 `--preset=apps`를 명시하여 생성하였다.
+
 ```bash
 npx create-nx-workspace gloria-tilog --preset=apps
 ```
 
 그럼 다음과 같은 구조로 프로젝트가 생성된다.
+
 ```bash
 ├── README.md
 ├── apps
@@ -43,34 +45,40 @@ npx create-nx-workspace gloria-tilog --preset=apps
 ### Configure yarn berry (yarn 3.0)
 
 yarn 3.0을 이용하기 위해 다른 설정을 진행하기 전에 yarn 설정을 먼저 진행하였다.
+
 ```bash
 # yarn 최신버전으로 업데이트하기 위함
 yarn set version stable
 ```
 
 업데이트된 yarn을 이용해서 다시 패키지 모듈을 설치한다.
+
 ```bash
 # re-install package modules
 yarn install
 ```
 
 > yarn document
+>
 > - https://yarnpkg.com/getting-started/install#updating-to-the-latest-versions
 > - https://yarnpkg.com/getting-started/editor-sdks
 
 ### Setting Up React
 
 React를 이용하여 블로그에서 사용할 컴포넌트를 개발할 계획이므로 [`@nrwl/react`](https://nx.dev/packages/react)을 설치해주었다.
+
 ```bash
 yarn add -D @nx/react
 ```
 
 그리고 블로그에서 라이브러리 형태로 사용할 것이므로 다음과 같이 library를 생성해주었다.
+
 ```bash
 npx nx g @nx/react:lib ui
 ```
 
 위와 같이 실행하고 나면 다음과 같이 **libs** 폴더 하위에 generator 실행 시 명시한 폴더명인 **ui**가 생성되어있다.
+
 ```bash
 libs
 └── ui
@@ -88,6 +96,7 @@ libs
 ```
 
 만약, 위의 과정에서 다음과 같은 에러가 발생한다면....
+
 ```bash
 > npx nx g @nx/react:lib ui
 Need to install the following packages:
@@ -100,32 +109,36 @@ Ok to proceed? (y) y
 ```
 
 다음과 같은 과정으로 수정하여 해결하였다. (ref: https://github.com/nrwl/nx/issues/2386#issuecomment-890019994)
+
 1. Add `nodeLinker: node-modules` from `.yarnrc.yml` (if you define `pnpMode: loose`, please remove it)
 2. Run `yarn install`
 3. Run `npx nx g @nx/react:lib ui` Again
 4. Remove `nodeLinker: node-modules` from `.yarnrc.yml`
 5. Run `yarn install` again to remove the `node_modules` directory and add back the .pnp.cjs file
 
-
 ## Create MonoRepo Project with NX
 
 [`@nx-plus/docusaurus`](https://www.npmjs.com/package/@nx-plus/docusaurus) 플러그인을 이용하여 docusaurus를 구성한다.
+
 ```bash
 yarn add @nx-plus/docusaurus --dev
 ```
 
 docusaurus application을 생성해준다.
+
 ```bash
 npx nx g @nx-plus/docusaurus:app doc
-````
+```
 
 이제 docusaurus CLI를 이용하여 docusaurus application을 **apps** 폴더 하위에 추가해준다.
+
 ```bash
 npx create-docusaurus docs classic apps/ --typescript
 yarn add -D typescript @docusaurus/module-type-aliases @tsconfig/docusaurus
 ```
 
 설치가 되고나면 다음과 같이 확인할 수 있다.
+
 ```bash
 apps
 └── doc
@@ -143,6 +156,7 @@ apps
 ## Run Serve
 
 `package.json` 파일에 다음과 같이 스크립트를 추가해준다.
+
 ```json
 "scripts": {
   "start": "nx serve",
@@ -153,6 +167,7 @@ apps
 ```
 
 위와 같이 구성 후 다음과 같이 실행을 하면 서버가 정상적으로 기동된 것을 확인할 수 있따.
+
 ```bash
 ❯ yarn start doc
 
@@ -173,12 +188,12 @@ client (webpack 5.81.0) compiled successfully
 ```
 
 이제 다음에는 다음과 같은 설정들을 보완해봐겠다.
+
 - husky
 - lint-staged
 - eslint
 - commitlint
 - cspell
-
 
 ## References
 

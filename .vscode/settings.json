@@ -1,3 +1,11 @@
 {
-  "githubPullRequests.showInSCM": true
+  "githubPullRequests.showInSCM": true,
+  "editor.formatOnSave": true,
+  "[typescript]": {
+    "editor.formatOnSave": true
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "eslint.alwaysShowStatus": true
 }

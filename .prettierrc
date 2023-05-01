@@ -9,7 +9,6 @@
   "arrowParens": "always",
   "bracketSpacing": true,
   "jsxSingleQuote": false,
-  "jsxBracketSameLine": false,
   "newline-before-return": true,
   "no-duplicate-variable": [true, "check-parameters"],
   "no-var-keyword": true
