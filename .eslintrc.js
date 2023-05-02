@@ -1,76 +1,112 @@
 module.exports = {
-  env: {
-    browser: true,
-    node: true,
-    es6: true,
-  },
-  plugins: ['@typescript-eslint', 'react', 'react-hooks', 'simple-import-sort'],
-  extends: [
-    'eslint:recommended',
-    'plugin:react/recommended',
-    'plugin:@typescript-eslint/recommended',
-    'prettier',
-    'plugin:prettier/recommended',
-  ],
-  parser: '@typescript-eslint/parser', // Specifies the ESLint parser
-  parserOptions: {},
-  settings: {
-    react: {
-      version: 'detect',
-    },
-  },
+  root: true,
+  ignorePatterns: ['**/*'],
+  plugins: ['@nx', 'import', 'regexp'],
+  extends: ['plugin:regexp/recommended', 'plugin:prettier/recommended'],
   rules: {
-    // 'react/prop-types': 'off', // Disable prop-types as we use TypeScript for type checking
-    '@typescript-eslint/explicit-function-return-type': 'off',
-    // temp
-    '@typescript-eslint/no-var-requires': 'off',
+    'prettier/prettier': ['error'],
+
+    // import
+    'import/order': [
+      'error',
+      {
+        groups: [
+          'builtin',
+          'external',
+          'internal',
+          ['parent', 'sibling', 'index'],
+          'type',
+          'unknown',
+        ],
+        pathGroups: [
+          {
+            pattern: '{react*,react*/**}',
+            group: 'external',
+            position: 'before',
+          },
+          {
+            pattern: '{@storybook/**}',
+            group: 'external',
+            position: 'after',
+          },
+          {
+            pattern: '{@**/**}',
+            group: 'internal',
+          },
+          {
+            pattern: '{@markup/**}',
+            group: 'unknown',
+          },
+        ],
+        pathGroupsExcludedImportTypes: ['react'],
+        'newlines-between': 'always',
+        alphabetize: {
+          order: 'asc',
+          caseInsensitive: true,
+        },
+      },
+    ],
+    'import/newline-after-import': 'error',
+    'import/group-exports': 'off',
+    'import/no-self-import': 'error',
+    'import/no-cycle': 'error',
+    'import/no-absolute-path': 'error',
+    'import/no-named-as-default-member': 'error',
   },
   overrides: [
     {
-      files: ['**/src/**/*.ts'],
-      parser: '@typescript-eslint/parser',
+      files: ['*.ts', '*.tsx', '*.js', '*.jsx'],
+      rules: {
+        '@nx/enforce-module-boundaries': [
+          'error',
+          {
+            enforceBuildableLibDependency: true,
+            allow: [],
+            depConstraints: [
+              {
+                sourceTag: '*',
+                onlyDependOnLibsWithTags: ['*'],
+              },
+            ],
+          },
+        ],
+      },
+    },
+    {
+      files: ['*.ts', '*.tsx'],
+      extends: [
+        'plugin:@typescript-eslint/eslint-recommended',
+        'plugin:@typescript-eslint/recommended',
+        'plugin:@typescript-eslint/recommended-requiring-type-checking',
+        'plugin:@nx/typescript',
+      ],
       parserOptions: {
-        // tsconfigRootDir: __dirname,
-        project: './tsconfig.json',
-        ecmaFeatures: {
-          jsx: true,
-        },
-        ecmaVersion: 2021, // Allows for the parsing of modern ECMAScript features
-        sourceType: 'module', // Allows for the use of imports
+        sourceType: 'module',
+        tsconfigRootDir: __dirname,
+        project: [
+          './tsconfig.base.json',
+          './lib/*/tsconfig.json',
+          './apps/doc/tsconfig.json',
+        ],
       },
       rules: {},
     },
-    // Override some TypeScript rules just for .js files
     {
-      files: ['*.js'],
-      rules: {
-        '@typescript-eslint/no-var-requires': 'off',
-      },
+      files: ['*.js', '*.jsx'],
+      extends: ['plugin:@nx/javascript'],
+      rules: {},
     },
-    // apps/website rules
-    // {
-    //   files: ['apps/website/*.{js,jsx,ts,tsx}'],
-    //   plugins: ['@docusaurus'],
-    //   extends: ['plugin:@docusaurus/recommended'],
-    //   rules: {},
-    // },
-    /** story files */
-    // {
-    //   files: ['./packages/react/**/*.stories.tsx'],
-    //   rules: {},
-    // },
-    // {
-    //   files: ['**/*.spec.js', '**/*.spec.ts', '**/.test.js', '**/.test.ts'],
-    //   env: {
-    //     jest: true,
-    //     'cypress/globals': true,
-    //   },
-    //   extends: ['plugin:jest/recommended', 'plugin:cypress/recommended'],
-    //   plugins: ['jest', 'cypress'],
-    //   rules: {
-    //     '@typescript-eslint/no-unsafe-member-access': 'off',
-    //     '@typescript-eslint/no-unsafe-assignment': 'off',
-    //   },
-    // },
+    {
+      files: ['*.spec.ts', '*.spec.tsx', '*.spec.js', '*.spec.jsx'],
+      env: {
+        jest: true,
+      },
+      rules: {},
+    },
+    {
+      files: ['*.stories.ts', '*.stories.tsx', '*.stories.js', '*.stories.jsx'],
+      extends: ['plugin:storybook/recommended'],
+      rules: {},
+    },
   ],
 };

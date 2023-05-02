@@ -12,6 +12,16 @@
         "lintFilePatterns": ["libs/ui/**/*.{ts,tsx,js,jsx}"]
       }
     },
+    "type-check": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "tsc --noEmit -p ./libs/ui/tsconfig.eslint.json"
+          }
+        ]
+      }
+    },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],

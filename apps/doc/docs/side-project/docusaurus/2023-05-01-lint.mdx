@@ -1,0 +1,327 @@
+---
+# main_category: Mini Project
+# category: 1. DevLog
+title: 'Configure lint'
+tags: ['devlog', 'nx']
+created_time: 2023-05-01T21:03
+updated_time: 2023-05-01T21:03
+---
+
+이번에는 lint와 cspeel 그리고 husky 설정을 적용하고자 한다.
+
+## eslint
+
+기본적으로 앞에서 설정하면서 적용이 되어있어서, 필요한 부분만 추가로 커스텀해주었다.
+추가로 설정하고자 하는 플러그인들을 설치한다.
+
+```bash
+yarn add -D eslint-plugin-prettier
+```
+
+그리고 다음과 같이 설정 파일에 parserOptions.project와 위에서 설치한 플러그인들에 대한 설정을 추가해주었다.
+
+```javascript
+module.exports = {
+  root: true,
+  ignorePatterns: ['**/*'],
+  plugins: ['@nx'],
+  extends: ['plugin:prettier/recommended'],
+  rules: {
+    'prettier/prettier': ['error'],
+  },
+  overrides: [
+    {
+      files: ['*.ts', '*.tsx', '*.js', '*.jsx'],
+      rules: {
+        '@nx/enforce-module-boundaries': [
+          'error',
+          {
+            enforceBuildableLibDependency: true,
+            allow: [],
+            depConstraints: [
+              {
+                sourceTag: '*',
+                onlyDependOnLibsWithTags: ['*'],
+              },
+            ],
+          },
+        ],
+      },
+    },
+    {
+      files: ['*.ts', '*.tsx'],
+      extends: [
+        'plugin:@typescript-eslint/recommended',
+        'plugin:@typescript-eslint/recommended-requiring-type-checking',
+        'plugin:@nx/typescript',
+      ],
+      parserOptions: {
+        project: [
+          './tsconfig.base.json',
+          './lib/*/tsconfig.json',
+          './apps/doc/tsconfig.json',
+        ],
+      },
+      rules: {},
+    },
+    {
+      files: ['*.js', '*.jsx'],
+      extends: ['plugin:@nx/javascript'],
+      rules: {},
+    },
+    {
+      files: ['*.spec.ts', '*.spec.tsx', '*.spec.js', '*.spec.jsx'],
+      env: {
+        jest: true,
+      },
+      rules: {},
+    },
+  ],
+};
+```
+
+그리고 `project.json` 파일의 **target** 설정에 lint와 type check를 위해서 다음과 같이 설정을 추가하였다.
+
+```json
+"targets": {
+   "lint": {
+     "executor": "@nx/linter:eslint",
+     "outputs": ["{options.outputFile}"],
+     "options": {
+       "lintFilePatterns": ["apps/doc/**/*.{ts,tsx,js,jsx}"]
+     }
+   },
+    "type-check": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "tsc --noEmit -p ./libs/ui/tsconfig.eslint.json"
+          }
+        ]
+      }
+    },
+ ....(SKIP)
+},
+```
+
+nx에서 기본으로 설정되어있는 `tsconfig.json` 파일에 정의된 **reference** 설정으로 인해 type check가 의도된데로 동작하지 않아서 **tsconfig.eslint.json** 파일을 다음과 같이 추가하여 설정해주었다.
+
+```json
+// tsconfig.eslint.json
+{
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "allowJs": false,
+    "esModuleInterop": false,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+  },
+  "extends": "../../tsconfig.base.json"
+}
+
+// tsconfig.json
+{
+  "references": [
+    {
+      "path": "./tsconfig.lib.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ],
+  "extends": "./tsconfig.eslint.json"
+}
+```
+
+그리고 **ui.tsx** 파일에 다음과 같이 일부러 타입 에러를 유발시켰다.
+
+```javascript
+const a = 5;
+a = 'ssss';
+```
+
+`package.json`에 추가한 린트 체크 명령어를 스크립트에 정의해주었다.
+
+```json
+"type-check": "nx type-check",
+"type-check:many": "nx run-many --target=type-check",
+"lint": "nx lint",
+"lint:many": "nx run-many --target=lint",
+"lint:all": "npm-run-all type-check:many lint:many",
+```
+
+추가한 명령어를 수행하면 다음과 같이 타입체크와 린트가 동작하는 것을 확인할 수 있다.
+
+```bash
+❯ yarn run type-check ui
+> nx run ui:type-check
+
+libs/ui/src/lib/ui.tsx(16,5): error TS2588: Cannot assign to 'a' because it is a constant.
+Warning: run-commands command "tsc --noEmit -p ./libs/ui/tsconfig.eslint.json" exited with non-zero status code
+
+ ———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+ >  NX   Ran target type-check for project ui (1s)
+
+    ✖    1/1 failed
+    ✔    0/1 succeeded [0 read from cache]
+
+```
+
+## cspell
+
+코드 작성 중에 오타를 입력하게 되는 경우를 체크하기 위해 [`cspell`](https://cspell.org/docs/getting-started/)을 설정하였다.
+
+```bash
+yarn add -D cspell
+```
+
+ignore할 단어들을 정의하기위한 설정파일을 추가한다.
+
+```yaml
+// cspell.config.yaml
+---
+$schema: https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json
+version: '0.2'
+
+useGitignore: true
+
+language: en,eo,typescript,javqscript
+
+ignoreWords:
+  # styled-component
+  - clsx
+```
+
+package.json에 다음과 같이 스크립트를 정의한다.
+
+```json
+"cspell": "cspell --config cspell.config.yaml \"**/*.{ts,js,tsx,jsx}\" --no-progress --show-suggestions",
+```
+
+## commitlint
+
+커밋 메시지 정의 시의 기본적인 규칙 체크를 위한 린트 설정이다.
+
+```bash
+yarn add -D commitlint @commitlint/config-conventional
+```
+
+commit lint 설정 파일을 추가해준다.
+
+```javascript
+// .commitlintrc.js
+module.exports = {
+  extends: ['@commitlint/config-conventional'],
+  rules: {
+    'type-enum': [
+      2,
+      'always',
+      [
+        'build',
+        'ci',
+        'chore',
+        'docs',
+        'feat',
+        'fix',
+        'perf',
+        'refactor',
+        'revert',
+        'style',
+        'test',
+        'post',
+      ],
+    ],
+    'type-case': [2, 'always', 'lowerCase'],
+    'type-empty': [2, 'never'],
+    'subject-empty': [2, 'never'],
+    'header-max-length': [2, 'always', 100],
+  },
+};
+```
+
+## lint-staged & husky
+
+git commit과 push를 할 때에 husky + lint-staged를 이용하여 git hook을 설정한다.
+
+다음과 같이 플러그인을 설치하고..
+
+```bash
+npx husky-init && yarn
+yarn add -D lint-staged
+```
+
+다음과 같이 package script에 추가를 해준다.
+
+```json
+"prepare": "husky install",
+```
+
+그리고 husky를 설치해준다.
+
+```bash
+yarn install
+```
+
+lint-staged에서 수행하고자 하는 부분들을 `.lintstagedrc.js` 파일을 생성하여 정의해준다.
+
+```javascript
+module.exports = {
+  '*.{js,jsx,ts,tsx,json,md,mdx}': ['prettier --write', 'git add'],
+  '*.{js,jsx,ts,tsx}': [
+    () => 'yarn run lint:all',
+    'yarn run cspell',
+    'git add',
+  ],
+};
+```
+
+그러고 나서 마지막으로 다음과 같이 husky에 `pre-commit` 단계에서 정의한 lint-staged가 동작하도록 설정해주었다.
+
+```bash
+npx husky add .husky/pre-commit "yarn run lint-staged"
+```
+
+그리고 git commit을 해보면 다음과 같이 확인해볼 수 있다.
+
+```bash
+⚠ Some of your tasks use `git add` command. Please remove it from the config since all modifications made by tasks will be automatically added to the git commit index.
+
+[STARTED] Preparing lint-staged...
+[SUCCESS] Preparing lint-staged...
+[STARTED] Running tasks for staged files...
+[STARTED] .lintstagedrc.js — 5 files
+[STARTED] *.{js,jsx,ts,tsx,json,md,mdx} — 4 files
+[STARTED] *.{js,jsx,ts,tsx} — 2 files
+[STARTED] prettier --write
+[STARTED] yarn run lint:all
+[SUCCESS] prettier --write
+[STARTED] git add
+[SUCCESS] git add
+[SUCCESS] *.{js,jsx,ts,tsx,json,md,mdx} — 4 files
+[SUCCESS] yarn run lint:all
+[STARTED] yarn run cspell
+[SUCCESS] yarn run cspell
+[STARTED] git add
+[SUCCESS] git add
+[SUCCESS] *.{js,jsx,ts,tsx} — 2 files
+[SUCCESS] .lintstagedrc.js — 5 files
+[SUCCESS] Running tasks for staged files...
+[STARTED] Applying modifications from tasks...
+[SUCCESS] Applying modifications from tasks...
+[STARTED] Cleaning up temporary files...
+[SUCCESS] Cleaning up temporary files...
+[chore/lint 540987f] chore: configure lint-staged
+ 5 files changed, 327 insertions(+), 36 deletions(-)
+ rewrite .lintstagedrc.js (62%)
+```
+
+이제 다음에는 docusaurus 설정을 해봐야겠다.
+
+## References
+
+- [Using ESLint in Nx Workspaces](https://nx.dev/recipes/other/eslint)
+- [lint-staged + husky でコミットするファイルだけ cspell を走らせる](https://zenn.dev/luvmini511/articles/ade1f0e4b64770)
+- [Linting with Type Information](https://typescript-eslint.io/linting/typed-linting/)
+- [4 Simple Steps to Streamline Your Development: Creating a Monorepo Setup with Nx & Yarn Workspaces.](https://karthickragavendran.medium.com/streamline-your-development-with-nx-and-yarn-workspaces-building-a-monorepo-setup-with-nestjs-and-e3d0d560decf)

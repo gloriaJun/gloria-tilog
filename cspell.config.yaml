@@ -1,0 +1,16 @@
+---
+$schema: https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json
+version: '0.2'
+
+useGitignore: true
+
+language: en,eo,typescript,javqscript
+#languageSettings: typescript, javascript
+
+# promised
+words:
+  # styled-component
+  - clsx
+## not promised, but it has to allow
+#ignoreWords:
+#  - xx
