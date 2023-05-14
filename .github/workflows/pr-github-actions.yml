@@ -1,14 +1,17 @@
 name: deploy-github-actions
 on:
-  push:
-    branches: [main]
+  pull_request:
+#    types:
+#      - opened
+    # branches: [main]
     paths-ignore:
+      - 'apps/doc/docs/**'
+      - 'apps/doc/blogs/**'
       - '.husky/**'
       - '.vscode/**'
 
-# Allow one concurrent deployment
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: ${{ github.head_ref || github.run_id }}
   cancel-in-progress: true
 
 jobs:
