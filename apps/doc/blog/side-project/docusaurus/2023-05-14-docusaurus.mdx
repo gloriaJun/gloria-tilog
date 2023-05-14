@@ -1,0 +1,200 @@
+---
+title: '[docusaurus] Configure docusaurus'
+tags: ['devlog', 'nx', 'docusaurus']
+date: 2023-05-14T18:38
+---
+
+이번에는 내 블로그를 위해 [docusaurus](https://docusaurus.io/ko/)의 설정을 커스텀하기 위한 과정이다.
+
+> **docusaurus**는 페이스북 오픈소스 커뮤니티에서 관리하는 문서 웹사이트 생성 도구이다.
+
+## docusaurus 기본적인 폴더 구조
+
+먼저 기본적인 폴더 구조 및 각 폴더의 성격은 다음과 같다.
+
+```bash
+apps/doc/
+├── babel.config.js
+├── blog
+├── docs
+├── docusaurus.config.js
+├── project.json
+├── sidebars.js
+├── src
+├── static
+└── tsconfig.json
+```
+
+- blog
+  - 마크다운으로 작성된 블로그 형태의 글이 위치하는 곳이다
+- docs
+  - 마크다운으로 작성된 가이드 문서 형태의 글이 위치하는 곳이다.
+- src
+  - 페이지 또는 리액트 컴포넌트로 작성된 부분을 커스터마이징할 수 있는 소스 파일이 위치한다.
+- static
+  - 정적인 파일이 위치한 곳이다.
+
+## Basic Configuration
+
+https://docusaurus.io/docs/configuration 을 참고하여 다음과 같이 `docusaurus.config.js` 파일을 다음과 같이 수정하였다.
+
+```javascript
+// @ts-check
+// Note: type annotations allow type checking and IDEs autocompletion
+
+const lightCodeTheme = require('prism-react-renderer/themes/github');
+const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+
+const blogTitle = 'L.E.T';
+const myGitHubUrl = 'https://github.com/gloriajun';
+
+/** @type {import('@docusaurus/types').Config} */
+const config = {
+  title: blogTitle,
+  tagline: 'Learn! Experience! Think!',
+  url: 'https://gloriajun.github.io',
+  baseUrl: '/gloria-tilog/',
+  onBrokenLinks: 'throw',
+  onBrokenMarkdownLinks: 'warn',
+  favicon: 'img/favicon.ico',
+  organizationName: 'gloriajun', // Usually your GitHub org/user name.
+  projectName: 'gloria-tilog', // Usually your repo name.
+
+  presets: [
+    [
+      'classic',
+      /** @type {import('@docusaurus/preset-classic').Options} */
+      ({
+        docs: false,
+        blog: {
+          routeBasePath: '/',
+          showReadingTime: true,
+        },
+        theme: {
+          customCss: require.resolve('./src/css/custom.css'),
+        },
+      }),
+    ],
+  ],
+
+  themeConfig:
+    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+    ({
+      navbar: {
+        title: blogTitle,
+        logo: {
+          alt: 'My Site Logo',
+          src: 'img/docusaurus.png',
+        },
+        items: [
+          {
+            href: myGitHubUrl,
+            label: 'GitHub',
+            position: 'right',
+          },
+        ],
+      },
+      footer: {
+        style: 'dark',
+        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      },
+      prism: {
+        theme: lightCodeTheme,
+        darkTheme: darkCodeTheme,
+      },
+    }),
+};
+
+module.exports = config;
+```
+
+그리고 작성한 블로그를 바로 노출하기 위해 `src/pages/index.tsx`가 위치한 **src/pages** 폴더를 일단 제거하였다.
+이 부분은 차후에 어떠한 형태로 구성할 지 고민을 하여 적용해보아야할 것 같다.
+(왠지 지금처럼 최근 blog 포스트들이 보여지는 형태를 개인적으로 선호하고 있지 않기도 해서....)
+
+## CI/CD
+
+- https://docusaurus.io/docs/deployment#deploying-to-github-pages
+
+해당 Repo의 GitHub Page로 배포하기 위해서 다음과 같은 설정이 `docusaurus.config.js`에 정의되어있어야한다.
+
+```javascript
+const config = {
+  // ...(SKIP)....
+  organizationName: 'gloriajun', // Usually your GitHub org/user name.
+  projectName: 'gloria-tilog', // Usually your repo name
+  // ...(SKIP)....
+```
+
+그리고 Git Repository의 [Settings > Pages](https://github.com/gloriaJun/gloria-tilog/settings/pages)에서 `Build and deployment` 부분을 다음과 같이 설정해준다.
+
+- Source : Deploy from a branch
+- Branch : gh-pages
+
+다음으로는 Github Action을 이용하여 배포 스크립트를 작성한다.
+
+```yaml
+name: deploy-github-actions
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - '.husky/**'
+      - '.vscode/**'
+
+# Allow one concurrent deployment
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v3
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: Cache yarn dependencies
+        uses: actions/cache@v1
+        id: yarn-cache
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install Dependencies
+        run: yarn install
+
+      - name: Lint
+        run: yarn run lint:all
+
+      # - name: Unit Test
+      #   run: |
+      #     yarn run test
+      #     yarn run coverage
+
+      - name: Build Website
+        run: yarn run build doc
+
+      # Popular action to deploy to GitHub Pages:
+      # Docs: https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-docusaurus
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # Build output to publish to the `gh-pages` branch:
+          publish_dir: ./build
+          # The following lines assign commit authorship to the official
+          # GH-Actions bot for deploys to `gh-pages` branch:
+          # https://github.com/actions/checkout/issues/13#issuecomment-724415212
+          # The GH actions bot is used by default if you didn't specify the two fields.
+          # You can swap them out with your own user credentials.
+          user_name: github-actions[bot]
+          user_email: 41898282+github-actions[bot]@users.noreply.github.com
+```

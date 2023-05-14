@@ -4,11 +4,13 @@ version: '0.2'
 
 useGitignore: true
 
-language: en,eo,typescript,javqscript
+language: en,eo,typescript,javascript
 #languageSettings: typescript, javascript
 
 # promised
 words:
+  - tilog
+  - gloriajun
   # styled-component
   - clsx
 ## not promised, but it has to allow
