@@ -1,0 +1,78 @@
+---
+title: 'react component test with mocking child component'
+tags: ['react', 'unit-test']
+date: 2023-03-27T21:38
+---
+
+## 임의의 요소로 생성하여 mocking 하기
+
+```javascript
+const ConsentTitleComponentMock = jest.fn();
+
+jest.mock('../title', () => ({
+  ConsentTitle: (props: unknown) => {
+    ConsentTitleComponentMock(props);
+    return <div />;
+  },
+}));
+
+// 컴포넌트로 전달하는 props 검증
+expect(ConsentTitleComponentMock).toHaveBeenNthCalledWith(1, {
+  title: 'title text',
+});
+
+// 무언가 전달되는 지에 대한 검증
+expect(ConsentTitleComponentMock).toHaveBeenNthCalledWith(1, expect.anything());
+```
+
+## 실제 컴포넌트 생성하며 mocking 하기
+
+실제 주입받는 컴포넌트의 이벤트 핸들러에 대한 검증이 필요한 경우 활용할 수 있음
+
+```javascript
+const ContentRadioGroupComponentMock = jest.fn();
+
+jest.mock('./input', () => {
+  const { RadioGroup, ...originalModule } = jest.requireActual('./input');
+
+  return {
+    RadioGroup: (props: unknown) => {
+      ContentRadioGroupComponentMock(props);
+
+      return <RadioGroup {...props} />;
+    },
+    ...originalModule,
+  };
+});
+
+it(`should be fire onChange by radio change value`, () => {
+  const { onChangeMockCallback } = renderComponent({
+    ...defaultProps,
+    ...disagreeProps,
+    radioInitValue: 'N',
+  });
+
+  // when mounted
+  expect(onChangeMockCallback).toHaveBeenNthCalledWith(1, consentId, 'N', {
+    isInit: true,
+  });
+  onChangeMockCallback.mockClear();
+
+  // click agree button
+  userEvent.click(screen.getByTestId(`input-radio-${agreeOption.id}`));
+  expect(onChangeMockCallback).toHaveBeenNthCalledWith(1, consentId, 'Y', {
+    isInit: false,
+  });
+  onChangeMockCallback.mockClear();
+
+  // click disagree button
+  userEvent.click(screen.getByTestId(`input-radio-${consentId}-disagree`));
+  expect(onChangeMockCallback).toHaveBeenNthCalledWith(1, consentId, 'N', {
+    isInit: false,
+  });
+});
+```
+
+### References
+
+- https://dev.to/d_ir/verifying-children-passed-to-react-mock-components-2mf9

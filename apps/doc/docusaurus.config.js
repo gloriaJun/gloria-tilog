@@ -25,15 +25,14 @@ const config = {
       'classic',
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
-        docs: false,
-        // docs: {
-        //   sidebarPath: require.resolve('./sidebars.js'),
-        //   // Please change this to your repo.
-        //   // editUrl:
-        //   //   'https://github.com/gloriaJun/gloria-tilog/edit/main/apps/doc/',
-        //   showLastUpdateAuthor: false,
-        //   showLastUpdateTime: true,
-        // },
+        docs: {
+          sidebarPath: require.resolve('./sidebars.js'),
+          // Please change this to your repo.
+          // editUrl:
+          //   'https://github.com/gloriaJun/gloria-tilog/edit/main/apps/doc/',
+          showLastUpdateAuthor: false,
+          showLastUpdateTime: true,
+        },
         blog: {
           routeBasePath: '/',
           showReadingTime: true,
@@ -58,12 +57,12 @@ const config = {
           src: 'img/docusaurus.png',
         },
         items: [
-          // {
-          //   type: 'doc',
-          //   docId: 'side-project/docusaurus/2023-04-30-init',
-          //   position: 'left',
-          //   label: 'Docs',
-          // },
+          {
+            type: 'doc',
+            docId: 'intro',
+            position: 'left',
+            label: 'Bookmark',
+          },
           // { to: '/blog', label: 'Blog', position: 'left' },
           {
             href: myGitHubUrl,
