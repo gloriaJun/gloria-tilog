@@ -1,0 +1,26 @@
+---
+title: 'update java version on linux'
+tags: ['linux', 'java']
+date: 2022-08-15T11:53
+---
+
+설치 가능한 java 버전 확인
+
+```bash
+yum list java*jdk-devel
+```
+
+설치하기
+
+```bash
+yum install -y java-11-openjdk-devel.x86_64
+```
+
+설치한 자바 버전으로 변경하기
+
+```bash
+/usr/sbin/alternatives --config java
+```
+
+- https://hye0-log.tistory.com/32
+- https://www.infracody.com/2022/05/centos-7-yum-install-java-openjdk-11.html

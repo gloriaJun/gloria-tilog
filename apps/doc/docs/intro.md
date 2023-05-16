@@ -1,4 +1,5 @@
 ---
+slug: '/webstorm-configuration'
 title: 'WebStorm Configuration'
 tags: ['ide', 'webstorm']
 created_time: 2023-01-18 16:21
