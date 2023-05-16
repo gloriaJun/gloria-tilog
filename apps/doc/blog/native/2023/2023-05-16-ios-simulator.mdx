@@ -1,0 +1,47 @@
+---
+title: 'How to delete or check iOS simulator'
+tags: ['trouble-shooting', 'ios', 'simulator']
+date: 2023-05-16T18:38
+---
+
+## Check the installed list
+
+```bash
+xcrun simctl list devices
+```
+
+## Delete the installed simulator
+
+### 유효하지 않은 시뮬레이터 디바이스 삭제하기
+
+```bash
+xcrun simctl delete unavailable
+```
+
+### 특정 시뮬레이터 디바이스 삭제하기
+
+```bash
+xcrun simctl delete 디바이스코드
+```
+
+예시)
+
+```bash
+# check the installed list
+❯ xcrun simctl list devices
+== Devices ==
+-- iOS 16.4 --
+    iPhone 14 Pro (3DF66D25-6A7A-4AE9-BA57-968BE69B7B05) (Shutdown)
+    iPhone 14 Pro Max (45554A3F-0F2C-427C-9DE7-12F8EFF2C0A6) (Shutdown)
+    iPad Air (5th generation) (60EB117D-7F5B-4A52-8E81-C06B01857370) (Shutdown)
+
+# delete
+❯ xcrun simctl delete 60EB117D-7F5B-4A52-8E81-C06B01857370
+
+# check again
+❯ xcrun simctl list devices
+== Devices ==
+-- iOS 16.4 --
+    iPhone 14 Pro (3DF66D25-6A7A-4AE9-BA57-968BE69B7B05) (Shutdown)
+    iPhone 14 Pro Max (45554A3F-0F2C-427C-9DE7-12F8EFF2C0A6) (Shutdown)
+```
