@@ -1,6 +1,6 @@
 ---
 title: '[docusaurus] Configure docusaurus'
-tags: ['devlog', 'nx', 'docusaurus']
+tags: ['devlog', 'docusaurus']
 date: 2023-05-14T18:38
 ---
 
@@ -38,33 +38,40 @@ apps/doc/
 
 https://docusaurus.io/docs/configuration 을 참고하여 다음과 같이 `docusaurus.config.js` 파일을 다음과 같이 수정하였다.
 
-```javascript
+```js
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
+// highlight-start
 const blogTitle = 'L.E.T';
 const myGitHubUrl = 'https://github.com/gloriajun';
+// highlight-end
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
+  // highlight-start
   title: blogTitle,
   tagline: 'Learn! Experience! Think!',
   url: 'https://gloriajun.github.io',
   baseUrl: '/gloria-tilog/',
+  // highlight-end
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
+  // highlight-start
   organizationName: 'gloriajun', // Usually your GitHub org/user name.
   projectName: 'gloria-tilog', // Usually your repo name.
+  // highlight-end
 
   presets: [
     [
       'classic',
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
+        // highlight-next-line
         docs: false,
         blog: {
           routeBasePath: '/',
@@ -81,6 +88,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
+        // highlight-next-line
         title: blogTitle,
         logo: {
           alt: 'My Site Logo',
@@ -88,6 +96,7 @@ const config = {
         },
         items: [
           {
+            // highlight-next-line
             href: myGitHubUrl,
             label: 'GitHub',
             position: 'right',
@@ -173,11 +182,6 @@ jobs:
 
       - name: Lint
         run: yarn run lint:all
-
-      # - name: Unit Test
-      #   run: |
-      #     yarn run test
-      #     yarn run coverage
 
       - name: Build Website
         run: yarn run build doc
