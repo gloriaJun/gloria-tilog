@@ -33,8 +33,9 @@
     "cspell": "cspell --config cspell.config.yaml \"**/*.{ts,js,tsx,jsx}\" --gitignore --no-progress --show-suggestions --no-must-find-files"
   },
   "dependencies": {
-    "@docusaurus/core": "2.1.0",
-    "@docusaurus/preset-classic": "2.1.0",
+    "@docusaurus/core": "^2.4.1",
+    "@docusaurus/preset-classic": "^2.4.1",
+    "@docusaurus/remark-plugin-npm2yarn": "^2.4.1",
     "@docusaurus/theme-live-codeblock": "^2.4.1",
     "@mdx-js/react": "^1.6.22",
     "clsx": "^1.2.1",
@@ -48,8 +49,8 @@
   "devDependencies": {
     "@babel/preset-react": "^7.14.5",
     "@commitlint/config-conventional": "^17.6.1",
-    "@docusaurus/eslint-plugin": "^2.4.0",
-    "@docusaurus/module-type-aliases": "^2.4.0",
+    "@docusaurus/eslint-plugin": "^2.4.1",
+    "@docusaurus/module-type-aliases": "^2.4.1",
     "@nrwl/workspace": "15.9.3",
     "@nx-plus/docusaurus": "^15.0.0-rc.0",
     "@nx/eslint-plugin": "16.0.1",

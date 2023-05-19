@@ -1,0 +1,48 @@
+---
+title: '[NX] Tips'
+tags: ['nx', 'monorepo']
+date: 2023-05-19T18:38
+---
+
+[NX](https://nx.dev/getting-started/intro)를 사용하면서 기록하고자 하는 나만의 Tips
+
+## 특정 apps에만 정의한 command 실행하기
+
+각 apps에서 사용되는 모든 command를 root의 package.json에 정의하기에는 스크립트가 너~~~무 많고 관리도 어렵다.
+기본적으로 모든 apps에서 동일하게 사용하는 script만 root에 정의하고, 나머지 각 app에만 종속적인 부분들의 스크립트를 실행하고자 하는 경우라면..
+
+root의 package.json에는 다음과 같이 script를 추가해주었다.
+솔직히 "run"이라고 명시하고 싶었는데 `yarn run` 또는 `npm run`과 같이 범용적으로 사용되는 *run*이라는 키워드와 충돌이 날 것 같아서...
+
+```json title="package.json"
+//...(SKIP)...
+  "scripts": {
+    //...(SKIP)...
+    "cmd": "nx run",
+    //...(SKIP)...
+  },
+//...(SKIP)...
+```
+
+그리고 app에 종속적인 command는 `apps/<app_dir>/project.json`에 다음과 같이 정의해준다.
+
+```json title="project.json"
+//...(SKIP)...
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "yarn run test"
+          }
+        ]
+      }
+    }
+//...(SKIP)...
+```
+
+마지막으로 아래와 같이 해당 명령어를 실행해주면 된다.
+
+```bash
+yarn run cmd doc:test
+```

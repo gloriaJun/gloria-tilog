@@ -22,7 +22,7 @@ const config = {
 
   presets: [
     [
-      'classic',
+      '@docusaurus/preset-classic',
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
@@ -32,6 +32,9 @@ const config = {
           //   'https://github.com/gloriaJun/gloria-tilog/edit/main/apps/doc/',
           showLastUpdateAuthor: false,
           showLastUpdateTime: true,
+          remarkPlugins: [
+            [require('@docusaurus/remark-plugin-npm2yarn'), { sync: true }],
+          ],
         },
         blog: {
           routeBasePath: '/',
@@ -39,6 +42,9 @@ const config = {
           // Please change this to your repo.
           // editUrl:
           //   'https://github.com/facebook/docusaurus/edit/main/website/blog/',
+          remarkPlugins: [
+            [require('@docusaurus/remark-plugin-npm2yarn'), { sync: true }],
+          ],
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -46,6 +52,8 @@ const config = {
       }),
     ],
   ],
+
+  themes: ['@docusaurus/theme-live-codeblock'],
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -76,8 +84,25 @@ const config = {
         copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
       },
       prism: {
-        theme: lightCodeTheme,
-        darkTheme: darkCodeTheme,
+        theme: require('prism-react-renderer/themes/dracula'),
+        liveCodeBlock: {
+          /**
+           * The position of the live playground, above or under the editor
+           * Possible values: "top" | "bottom"
+           */
+          playgroundPosition: 'bottom',
+        },
+        magicComments: [
+          {
+            className: 'theme-code-block-highlighted-line',
+            line: 'highlight-next-line',
+            block: { start: 'highlight-start', end: 'highlight-end' },
+          },
+          {
+            className: 'code-block-error-line',
+            line: 'error-next-line',
+          },
+        ],
       },
     }),
 };
