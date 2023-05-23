@@ -1,9 +1,6 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
-
 const blogTitle = 'L.E.T';
 const myGitHubUrl = 'https://github.com/gloriajun';
 
@@ -58,6 +55,12 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      metadata: [
+        {
+          name: 'google-site-verification',
+          content: process.env.GOOGLE_SEARCH_CONSOLE_KEY,
+        },
+      ],
       navbar: {
         title: blogTitle,
         logo: {
