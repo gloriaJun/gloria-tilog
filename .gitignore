@@ -72,7 +72,7 @@ coverage
 *.tgz
 
 # dotenv environment variable files
-.env*
+#.env*
 
 # Optional npm cache directory
 .npm
