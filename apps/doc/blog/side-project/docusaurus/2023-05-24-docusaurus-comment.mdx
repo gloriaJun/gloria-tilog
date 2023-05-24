@@ -4,6 +4,10 @@ tags: ['devlog', 'docusaurus', 'utterances']
 date: 2023-05-24T09:18
 ---
 
+개인 개발 블로그에 `Utterances` 적용을 하기 위한 과정을 간략히 정리해두었다.
+
+<!--truncate-->
+
 코멘트 기능을 추가하기 위해 [Utterances](https://utteranc.es/)를 적용하였다.
 Disqus도 있지만, Github의 Repo의 issue로 관리가 된다는 부분이 매력적이고 가벼운 느낌이 들어 해당 플랫폼을 선택하게 되었다.
 
@@ -100,8 +104,29 @@ npx docusaurus swizzle @docusaurus/theme-classic DocItem --wrap
 ```javascript title="src/theme/BlogPostItem/index.tsx"
 import React from 'react';
 
+import { useBlogPost } from '@docusaurus/theme-common/internal';
 import { Comment } from '@site/src/components/Comment';
 import BlogPostItem from '@theme-original/BlogPostItem';
+
+export default function BlogPostItemWrapper(props) {
+  // highlight-next-line
+  const { isBlogPostPage } = useBlogPost();
+
+  return (
+    <>
+      <BlogPostItem {...props} />
+      // highlight-next-line
+      {isBlogPostPage && <Comment />}
+    </>
+  );
+}
+```
+
+```javascript title="src/theme/DocItem/index.tsx"
+import React from 'react';
+
+import { Comment } from '@site/src/components/Comment';
+import DocItem from '@theme-original/DocItem';
 
 export default function BlogPostItemWrapper(props) {
   return (

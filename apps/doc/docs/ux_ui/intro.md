@@ -1,5 +1,5 @@
 ---
-title: '[UI/UX] 참고할 자료 정리'
+title: 'UI/UX'
 tags: ['site', 'ui/ux']
 created_time: 2018-10-04 14:21
 updated_time: 2018-10-04 14:21

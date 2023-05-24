@@ -1,8 +1,0 @@
-{
-  "label": "Bookmark",
-  "position": 1,
-  "link": {
-    "type": "generated-index",
-    "description": "My bookmark list"
-  }
-}
