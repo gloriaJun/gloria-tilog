@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkgloria_tilog_root=self.webpackChunkgloria_tilog_root||[]).push([[2502],{4863:o=>{o.exports=JSON.parse('{"label":"icon","permalink":"/gloria-tilog/docs/tags/icon","allTagsPath":"/gloria-tilog/docs/tags","count":1,"items":[{"id":"ux_ui/icons","title":"Icons","description":"\uc544\uc774\ucf58","permalink":"/gloria-tilog/docs/ux_ui/icons"}]}')}}]);

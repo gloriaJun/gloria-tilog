@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkgloria_tilog_root=self.webpackChunkgloria_tilog_root||[]).push([[4121],{5163:o=>{o.exports=JSON.parse('[{"label":"ide","permalink":"/gloria-tilog/docs/tags/ide","count":1},{"label":"webstorm","permalink":"/gloria-tilog/docs/tags/webstorm","count":1}]')}}]);
