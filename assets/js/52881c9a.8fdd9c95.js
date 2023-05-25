@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkgloria_tilog_root=self.webpackChunkgloria_tilog_root||[]).push([[7628],{96340:l=>{l.exports=JSON.parse('{"label":"polyfill","permalink":"/gloria-tilog/tags/polyfill","allTagsPath":"/gloria-tilog/tags","count":1}')}}]);

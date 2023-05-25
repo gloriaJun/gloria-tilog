@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkgloria_tilog_root=self.webpackChunkgloria_tilog_root||[]).push([[1659],{275:o=>{o.exports=JSON.parse('{"permalink":"/gloria-tilog/tags/java","page":1,"postsPerPage":10,"totalPages":1,"totalCount":7,"blogDescription":"Blog","blogTitle":"Blog"}')}}]);

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkgloria_tilog_root=self.webpackChunkgloria_tilog_root||[]).push([[9158],{53035:l=>{l.exports=JSON.parse('{"label":"selectbox","permalink":"/gloria-tilog/tags/selectbox","allTagsPath":"/gloria-tilog/tags","count":1}')}}]);

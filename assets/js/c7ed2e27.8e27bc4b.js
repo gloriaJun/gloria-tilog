@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkgloria_tilog_root=self.webpackChunkgloria_tilog_root||[]).push([[5172],{95262:o=>{o.exports=JSON.parse('{"permalink":"/gloria-tilog/tags/vue-js/page/2","page":2,"postsPerPage":10,"totalPages":2,"totalCount":19,"previousPage":"/gloria-tilog/tags/vue-js","blogDescription":"Blog","blogTitle":"Blog"}')}}]);

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkgloria_tilog_root=self.webpackChunkgloria_tilog_root||[]).push([[3508],{94498:l=>{l.exports=JSON.parse('{"label":"vanillajs","permalink":"/gloria-tilog/tags/vanillajs","allTagsPath":"/gloria-tilog/tags","count":4}')}}]);

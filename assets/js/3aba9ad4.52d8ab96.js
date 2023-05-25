@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkgloria_tilog_root=self.webpackChunkgloria_tilog_root||[]).push([[4521],{42451:l=>{l.exports=JSON.parse('{"label":"vuex","permalink":"/gloria-tilog/tags/vuex","allTagsPath":"/gloria-tilog/tags","count":2}')}}]);
