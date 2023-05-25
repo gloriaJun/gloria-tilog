@@ -35,8 +35,8 @@ getData(function (tableData) {
 
 ## Promise
 
-ECMA Script6에 정식으로 추가된 문법으로 비동기 계산을 위해 사용되는 객체이다.  
-promise의 뜻 그대로 *약속*으로 이해하면 좀 더 쉬운 것 같다.  
+ECMA Script6에 정식으로 추가된 문법으로 비동기 계산을 위해 사용되는 객체이다.
+promise의 뜻 그대로 *약속*으로 이해하면 좀 더 쉬운 것 같다.
 즉, "지금은 아니지만, 곧 해당 약속한 부분을 완료하겠다"라는 뜻으로....
 
 #### 구문
@@ -94,7 +94,7 @@ get()
 
 ## Generator (co)
 
-[co](github.com/tj/co)는 Generator를 이용한 control flow 모듈로써 내부적으로 promise를 사용하여 구현되어 있다.
+[co](https://github.com/tj/co)는 Generator를 이용한 control flow 모듈로써 내부적으로 promise를 사용하여 구현되어 있다.
 
 #### 예제
 
@@ -174,7 +174,7 @@ function loadData() {
             var parsed = JSON.parse(response);
             console.log(parsed);
         }).catch(function(e) { // Catches asynchronous errors
-            console.log(e); 
+            console.log(e);
         });
     } catch(e) {
         console.log(e);
