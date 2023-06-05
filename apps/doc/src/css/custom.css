@@ -42,7 +42,20 @@
 }
 
 /* title size */
-html.plugin-blog h2,
+/*html.plugin-blog.blog-post-page h1 {*/
+/*  font-size: 2.125rem;*/
+/*}*/
+/*html.plugin-blog h2 {*/
+/*  font-size: 1.7rem;*/
+/*}*/
+
+html {
+  font-size: 87.5%;
+  /* changes a default 16px font size to 14px */
+}
 html.plugin-blog.blog-post-page h1 {
+  font-size: 2.4rem;
+}
+html.plugin-blog h2  {
   font-size: 1.8rem;
 }
