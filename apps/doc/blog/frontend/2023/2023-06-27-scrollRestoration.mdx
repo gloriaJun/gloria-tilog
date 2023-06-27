@@ -1,0 +1,23 @@
+---
+title: scrollRestoration
+tags: ['scroll']
+date: 2023-06-27T16:38
+---
+
+<!--truncate-->
+
+`window.history.scrollRestoration` 속성을 통하여 "뒤로 가기" 이벤트(history.back())가 발생하였을 때, 이전 페이지에서 사용자가 스크롤 했던 위치로 돌아갈지에 대한 여부를 설정할 수 있다.
+
+```javascript
+// 사용자가 스크롤한 페이지의 위치로 복원된다
+window.history.scrollRestoration = 'auto'; // default
+
+// 페이지의 위치는 복원되지 않으므로, 해당 위치로 수동으로 스크롤해야 한다.
+window.history.scrollRestoration = 'manual';
+```
+
+## References
+
+- [History: scrollRestoration property | MDN](https://developer.mozilla.org/en-US/docs/Web/API/History/scrollRestoration)
+- [(WebView) aOS, iOS에서 키패드 유무 파악하기](https://velog.io/@dongkyun/WebView-aOS-iOS%EC%97%90%EC%84%9C-%ED%82%A4%ED%8C%A8%EB%93%9C-%EC%9C%A0%EB%AC%B4-%ED%8C%8C%EC%95%85%ED%95%98%EA%B8%B0)
+- [이슈) Fixed DOM과 가상 키보드](https://nuhends.tistory.com/2)
