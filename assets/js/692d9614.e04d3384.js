@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkgloria_tilog_root=self.webpackChunkgloria_tilog_root||[]).push([[413],{19612:o=>{o.exports=JSON.parse('{"permalink":"/gloria-tilog/page/8","page":8,"postsPerPage":10,"totalPages":9,"totalCount":81,"previousPage":"/gloria-tilog/page/7","nextPage":"/gloria-tilog/page/9","blogDescription":"Blog","blogTitle":"Blog"}')}}]);
