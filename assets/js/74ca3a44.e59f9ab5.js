@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkgloria_tilog_root=self.webpackChunkgloria_tilog_root||[]).push([[4194],{73997:a=>{a.exports=JSON.parse('{"label":"keypad","permalink":"/gloria-tilog/tags/keypad","allTagsPath":"/gloria-tilog/tags","count":1}')}}]);

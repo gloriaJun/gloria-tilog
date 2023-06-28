@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkgloria_tilog_root=self.webpackChunkgloria_tilog_root||[]).push([[2042],{13087:l=>{l.exports=JSON.parse('{"label":"mobile-devie","permalink":"/gloria-tilog/tags/mobile-devie","allTagsPath":"/gloria-tilog/tags","count":1}')}}]);
